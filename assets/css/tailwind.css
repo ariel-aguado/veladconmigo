@@ -1,3 +1,53 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@font-face {
+  font-family: 'Montserrat Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Montserrat Regular'),
+    url('~assets/fonts/Montserrat-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Inconsolata-Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Inconsolata-Regular'),
+    url('~assets/fonts/Inconsolata-Regular.woff') format('woff');
+}
+
+html {
+
+  @apply text-sm;
+
+  @media only screen and (min-width: 640px) {
+    @apply text-base;
+  }
+
+  @media only screen and (min-width: 768px) {
+    @apply text-lg;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    @apply text-xl;
+  }
+
+  @media only screen and (min-width: 1280px) {
+    @apply text-2xl;
+  }
+}
+
+body {
+  @apply font-body;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-display;
+}

@@ -53,8 +53,13 @@ export default {
   */
   modules: [
     // Doc: https://github.com/nuxt/content
-    '@nuxt/content',
+    "@nuxt/content",
+    "@nuxtjs/svg",
+    "@nuxtjs/style-resources"
   ],
+  styleResources: {
+    scss: ['~/assets/css/tokens.scss', '~/assets/css/breakpoints.scss']
+  },
   /*
   ** Content module configuration
   ** See https://content.nuxtjs.org/configuration

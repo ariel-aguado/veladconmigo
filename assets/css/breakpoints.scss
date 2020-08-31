@@ -1,0 +1,43 @@
+// Media Query Manager
+
+/*
+$breakpoint arguement choices:
+640px + :       sm
+768px + :       md
+1024px + :      lg
+1280px + :      xl
+1448px + :      xxl
+*/
+
+@mixin breakpoint($breakpoint) {
+
+  @if $breakpoint==sm {
+    @media only screen and (min-width: #{em(640)}) {
+      @content
+    };
+  }
+
+  @if $breakpoint==md {
+    @media only screen and (max-width: #{em(768)}) {
+      @content
+    };
+  }
+
+  @if $breakpoint==lg {
+    @media only screen and (min-width: #{em(1024)}) {
+      @content
+    };
+  }
+
+  @if $breakpoint==xl {
+    @media only screen and (min-width: #{em(1280)}) {
+      @content
+    };
+  }
+
+  @if $breakpoint==xxl {
+    @media only screen and (min-width: #{em(1448)}) {
+      @content
+    };
+  }
+}
