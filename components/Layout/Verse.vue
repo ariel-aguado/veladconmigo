@@ -16,7 +16,6 @@
         px-6
         md:py-4
         md:px-20
-        rounded-lg
         my-6
         overflow-hidden
         relative
@@ -46,6 +45,8 @@ main {
 }
 
 .verse {
+  border-radius: 18px;
+
   &::before {
     content: "\201C";
     position: absolute;

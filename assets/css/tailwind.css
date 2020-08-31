@@ -11,10 +11,10 @@
 }
 
 @font-face {
-  font-family: 'Inconsolata-Regular';
+  font-family: 'Inconsolata Regular';
   font-style: normal;
   font-weight: normal;
-  src: local('Inconsolata-Regular'),
+  src: local('Inconsolata Regular'),
     url('~assets/fonts/Inconsolata-Regular.woff') format('woff');
 }
 
