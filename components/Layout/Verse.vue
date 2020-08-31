@@ -15,13 +15,15 @@
         pb-6
         px-6
         md:py-4
-        md:px-20
+        md:pl-24
+        md:pr-16
         my-6
         overflow-hidden
         relative
         bg-gradient-to-br
         from-light-orange
-        to-dark-orange">
+        to-dark-orange
+        z-10">
         <blockquote class="text-lg text-white font-bold">
           Paraos en los caminos, y mirad, y preguntad por las sendas antiguas, cuál sea el buen camino, y andad por él, y hallaréis descanso para vuestra alma.
         </blockquote>
@@ -53,10 +55,10 @@ main {
     top: -2.75rem;
     left: -1rem;
     line-height: 1;
+    font-family: Montserrat Regular !important;
     font-size: 20rem;
     color: theme('colors.orange.200');
     font-family: sans-serif;
-    z-index: 1;
   }
 }
 </style>
