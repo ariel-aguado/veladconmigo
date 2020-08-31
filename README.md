@@ -1,4 +1,6 @@
-# nuxt-v2.13-static
+# Velad Conmigo
+
+A blog to feed the faith of Church of Christ in Cuba
 
 ## Build Setup
 
