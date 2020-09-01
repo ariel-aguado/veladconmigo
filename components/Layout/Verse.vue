@@ -1,20 +1,19 @@
 <template>
-  <main class="bg-orange-100 py-8 px-6">
+  <main class="bg-orange-100 py-16 px-6">
     <div class="container mx-auto">
-      <h2 class="text-2xl text-orange-700 text-center uppercase p-8">Vivimos en tiempos cambiantes</h2>
-      <div class="text-center text-dark-gray">
+      <h2 class="text-2xl text-scripture-600 text-center uppercase">Vivimos en tiempos cambiantes</h2>
+      <div class="text-center text-scripture-500 mt-8">
         <p>Desde la perspectiva cristiana hay mucha desorientación.</p>
         <p>Hace mucho tiempo atrás, el profeta de Dios instó como lo hacemos hoy:</p>
       </div>
       <figure class="
         verse
         bg-orange-200
-        shadow-2xl
         text-center
         pt-24
         pb-6
         px-6
-        md:py-4
+        md:py-6
         md:pl-24
         md:pr-16
         my-6
@@ -48,6 +47,7 @@ main {
 
 .verse {
   border-radius: 18px;
+  box-shadow: 0 0.332071px 2.21381px rgba(0,0,0,.0119), 0 0.798012px 5.32008px rgba(0,0,0,.0258), 0 1.50259px 10.0172px rgba(0,0,0,.0368), 0 2.68036px 17.869px rgba(0,0,0,.0479), 0 5.01331px 33.4221px rgba(0,0,0,.0621), 0 12px 80px rgba(0,0,0,.09);
 
   &::before {
     content: "\201C";
