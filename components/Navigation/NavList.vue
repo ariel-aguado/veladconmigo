@@ -15,7 +15,7 @@
             hover:bg-opacity-100
             transition-color
             duration-150"
-            to="/articles" exact>Artículos</nuxt-link>
+            to="/articulos" exact>Artículos</nuxt-link>
       </li>
     </ul>
   </nav>
