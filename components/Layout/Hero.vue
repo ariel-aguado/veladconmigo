@@ -23,27 +23,22 @@
         from-light-orange
         to-dark-orange">Velad Conmigo<span class="block text-base text-white mt-5 md:mt-1 leading-6">A la luz de las Escrituras</span></h1>
     </div>
-    <picture class="w-full h-full">
-      <source srcset="~/assets/images/bg/main-xl.jpg 1920w, ~/assets/images/bg/main-xl@2x.jpg 3840w" media="(min-width: 1380px)">
-      <source srcset="~/assets/images/bg/main-md.jpg 1380w, ~/assets/images/bg/main-md@2x.jpg 2760w" media="(min-width: 990px)">
-      <source srcset="~/assets/images/bg/main-sm.jpg 990w, ~/assets/images/bg/main-sm@2x.jpg 1980w" media="(min-width: 640px)">
+
+    <picture class="w-full h-full bg-gradient-to-r from-black via-orange-500 to-orange-800">
+      <source :data-srcset="`${require('~/assets/images/bg/main-xl.jpg')} 1920w, ${require('~/assets/images/bg/main-xl@2x.jpg')} 3840w`" media="(min-width: 1380px)">
+      <source :data-srcset="`${require('~/assets/images/bg/main-md.jpg')} 1380w, ${require('~/assets/images/bg/main-md@2x.jpg')} 2760w`" media="(min-width: 990px)">
+      <source :data-srcset="`${require('~/assets/images/bg/main-sm.jpg')} 990w, ${require('~/assets/images/bg/main-sm@2x.jpg')} 1980w`" media="(min-width: 640px)">
       <img
-        class="object-cover w-full h-full"
-        srcset="~/assets/images/bg/main-xs.jpg 640w, ~/assets/images/bg/main-xs@2x.jpg"
+        class="object-cover w-full h-full lazyload"
+        :data-srcset="`${require('~/assets/images/bg/main-xs.jpg')} 640w, ${require('~/assets/images/bg/main-xs@2x.jpg')}`"
+        src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
         alt="Main background">
     </picture>
   </div>
 </template>
 
-<script>
-  export default {
-
-  }
-</script>
-
 <style lang="scss" scoped>
 .hero {
-  // height: 65vh;
   max-height: 500px;
 
   display: grid;

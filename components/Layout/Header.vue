@@ -10,20 +10,11 @@
 
 <script>
   import Logo from "~/assets/images/icons/vc.svg?inline";
-  import NavList from "@/components/Navigation/NavList";
-  import Hamburger from "@/components/Navigation/Hamburger";
 
   export default {
     name: "Header",
     components: {
       Logo,
-      Hamburger,
-      NavList
     }
   }
 </script>
-
-<style lang="scss" scoped>
-.header {
-}
-</style>

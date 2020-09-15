@@ -10,10 +10,13 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "@nuxt/content": "^1.7.0",
+    "@nuxt/content": "^1.8.1",
+    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/cloudinary": "0.0.11",
+    "@nuxtjs/strapi": "^0.1.6",
     "@tailwindcss/typography": "^0.2.0",
-    "lottie-web": "^5.7.3",
-    "nuxt": "^2.14.4"
+    "lazysizes": "^5.2.2",
+    "nuxt": "^2.14.5"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",
@@ -23,6 +26,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "node-sass": "^4.14.1",
     "prettier": "^2.1.1",
-    "sass-loader": "^10.0.1"
+    "sass-loader": "^10.0.2"
   }
 }

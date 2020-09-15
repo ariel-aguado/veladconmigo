@@ -69,10 +69,6 @@ export default {
     }
   }
 
-  @include breakpoint(lg) {
-    display: none;
-  }
-
   svg {
     width: 100%;
     height: 100%;

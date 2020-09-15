@@ -9,7 +9,11 @@ $breakpoint arguement choices:
 1448px + :      xxl
 */
 
-@mixin breakpoint($breakpoint) {
+@function em($pixels, $context: 16) {
+  @return #{$pixels/$context}em;
+}
+
+@mixin respond($breakpoint) {
 
   @if $breakpoint==sm {
     @media only screen and (min-width: #{em(640)}) {
@@ -18,7 +22,7 @@ $breakpoint arguement choices:
   }
 
   @if $breakpoint==md {
-    @media only screen and (max-width: #{em(768)}) {
+    @media only screen and (min-width: #{em(768)}) {
       @content
     };
   }
