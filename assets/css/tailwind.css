@@ -8,7 +8,6 @@
   font-weight: normal;
   src: local('Montserrat Regular'),
     url('~assets/fonts/Montserrat-Regular.woff') format('woff');
-  font-display: swap;
 }
 
 @font-face {
