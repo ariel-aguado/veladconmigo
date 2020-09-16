@@ -37,7 +37,7 @@ export default {
     }
   },
   async fetch() {
-    this.articles = await this.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=false&_sort=createdAt:DESC');
+    this.articles = await this.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC');
   }
 }
 </script>
