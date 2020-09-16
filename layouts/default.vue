@@ -14,5 +14,18 @@ export default {
   components: {
     Header
   },
+  mounted() {
+    var FontFaceObserver = require('fontfaceobserver');
+
+    const montserratObserver = new FontFaceObserver('Montserrat Regular');
+    const inconsolataObserver = new FontFaceObserver('Inconsolata Regular');
+
+    Promise.all([
+      montserratObserver.load(),
+      inconsolataObserver.load()
+    ]).then(function() {
+      document.documentElement.className += " fonts-loaded";
+    });
+  },
 }
 </script>
