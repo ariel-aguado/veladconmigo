@@ -86,7 +86,7 @@ export default {
 
 <style lang="scss" scoped>
 .article {
-  border-radius: 18px;
+  border-radius: 30px;
   border-width: 3px;
   border-color: #FFF;
   overflow: hidden;
