@@ -51,7 +51,7 @@
 
   h1 {
     // padding: 2rem 1rem;
-    border-radius: 20px;
+    border-radius: 18px;
   }
 
   img {

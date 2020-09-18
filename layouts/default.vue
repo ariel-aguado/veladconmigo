@@ -17,14 +17,19 @@ export default {
   mounted() {
     var FontFaceObserver = require('fontfaceobserver');
 
-    const montserratObserver = new FontFaceObserver('Montserrat Regular');
-    const inconsolataObserver = new FontFaceObserver('Inconsolata Regular');
+    const montserratObserver = new FontFaceObserver('MontserratRegular');
+    const inconsolataObserver = new FontFaceObserver('InconsolataRegular');
+
+    console.log('montserratObserver :>> ', montserratObserver);
+    console.log('inconsolataObserver :>> ', inconsolataObserver);
 
     Promise.all([
       montserratObserver.load(),
       inconsolataObserver.load()
     ]).then(function() {
       document.documentElement.className += " fonts-loaded";
+    }).catch(error => {
+      console.log('error :>> ', error);
     });
   },
 }

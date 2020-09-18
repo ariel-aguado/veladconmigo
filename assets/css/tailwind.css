@@ -3,19 +3,17 @@
 @import 'tailwindcss/utilities';
 
 @font-face {
-  font-family: 'Montserrat Regular';
-  font-style: normal;
+  font-family: MontserratRegular;
+  src: url('~assets/fonts/Montserrat-Regular.woff') format('woff');
   font-weight: normal;
-  src: local('Montserrat Regular'),
-    url('~assets/fonts/Montserrat-Regular.woff') format('woff');
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inconsolata Regular';
-  font-style: normal;
+  font-family: InconsolataRegular;
+  src: url('~assets/fonts/Inconsolata-Regular.woff') format('woff');
   font-weight: normal;
-  src: local('Inconsolata Regular'),
-    url('~assets/fonts/Inconsolata-Regular.woff') format('woff');
+  font-style: normal;
 }
 
 html {
@@ -37,6 +35,10 @@ html {
   @media only screen and (min-width: 1280px) {
     @apply text-2xl;
   }
+}
+
+html body {
+  font-family: sans-serif;
 }
 
 html.fonts-loaded body {

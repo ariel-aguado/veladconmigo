@@ -8,10 +8,10 @@
         :alt="articulo.titulo"
         sizes="(max-width: 500px) 500px, 750px">
       <div class="px-4 py-3">
-        <ul class="article__tags text-scripture-300 font-bold">
-          <li class="hover:text-orange-500" v-for="(tag, index) in tags" :key="`tag${index + 1}`">{{ tag }}</li>
+        <ul class="inline-block">
+          <li class="article__tag text-sm pr-4 inline-block relative font-bold text-orange-300 hover:text-orange-500 transition-colors duration-200 ease-linear" v-for="(tag, index) in tags" :key="`tag${index + 1}`">{{ tag }}</li>
         </ul>
-        <h4 class="article__title font-display font-bold text-sm text-scripture-600 uppercase mt-2">{{ articulo.titulo }}</h4>
+        <h4 class="article__title font-display font-bold text-sm text-orange-900 uppercase mt-2">{{ articulo.titulo }}</h4>
         <div class="mt-5 flex justify-between items-center">
           <figure class="flex items-center">
             <figcaption class="autor__user flex items-center">
@@ -21,8 +21,8 @@
                 :alt="authorName"
                 class="lazyload autor__photo bg-gradient-to-r from-orange-600 to-orange-400">
               <div class="autor__user-box">
-                <p class="autor__user-name text-scripture-500">{{ authorName }}</p>
-                <p class="autor__user-date text-scripture-400 ">{{ humanDate }}</p>
+                <p class="text-xs font-bold text-orange-900">{{ authorName }}</p>
+                <p class="text-2xs text-orange-900">{{ humanDate }}</p>
               </div>
             </figcaption>
           </figure>
@@ -65,10 +65,10 @@ export default {
   },
   computed: {
     tags() {
-      return this.articulo.etiquetas.split(',').map(tag => `#${tag.trim()}`);
+      return this.articulo.etiquetas.split(',').map(tag => tag.trim());
     },
     humanDate() {
-      const options = { year: "numeric", month: "long", day: "numeric" }
+      const options = { year: "numeric", month: "short", day: "numeric" }
       return new Date(this.articulo.createdAt).toLocaleDateString('es-ES', options)
     },
     autor() {
@@ -116,31 +116,39 @@ export default {
 
   &__img {
     height: 282px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
   }
 
-  &__tags {
-    font-size: .8rem;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20px, max-content));
-    grid-gap: 1rem;
+  &__tag:not(:last-child):after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 3px;
+    border-radius: 18px;
+    background-color: theme('colors.orange.300');
   }
 }
 
 .autor {
   &__photo {
-    height: 2rem;
-    width: 2rem;
+    height: 46px;
+    width: 46px;
     border-radius: 50%;
     margin-right: 10px;
   }
 
   &__user-name {
-    font-size: .75rem;
+    font-size: .80rem;
   }
 
   &__user-date {
-    font-size: .65rem;
+    font-size: .70rem;
   }
 }
 </style>

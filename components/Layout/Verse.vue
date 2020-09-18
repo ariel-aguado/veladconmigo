@@ -1,8 +1,8 @@
 <template>
   <main class="bg-orange-100 py-16 px-6">
     <div class="container mx-auto">
-      <h2 class="text-2xl text-scripture-600 text-center uppercase">Vivimos en tiempos cambiantes</h2>
-      <div class="text-center text-scripture-500 mt-8">
+      <h2 class="text-2xl text-orange-900 text-center uppercase">Vivimos en tiempos cambiantes</h2>
+      <div class="text-center text-orange-900 mt-8">
         <p>Desde la perspectiva cristiana hay mucha desorientación.</p>
         <p>Hace mucho tiempo atrás, el profeta de Dios instó como lo hacemos hoy:</p>
       </div>
@@ -55,7 +55,7 @@ main {
     top: -2.75rem;
     left: -1rem;
     line-height: 1;
-    font-family: Montserrat Regular !important;
+    font-family: MontserratRegular !important;
     font-size: 20rem;
     color: theme('colors.orange.200');
     font-family: sans-serif;

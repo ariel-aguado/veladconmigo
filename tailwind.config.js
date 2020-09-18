@@ -7,25 +7,27 @@
 module.exports = {
   theme: {
     fontFamily: {
-      display: '"Montserrat Regular"',
-      body: '"Inconsolata Regular"',
+      display: '"MontserratRegular"',
+      body: '"InconsolataRegular"',
+    },
+    fontSize: {
+      '2xs': '.70rem',
+      'xs': '.75rem',
+      'sm': '.875rem',
+      'base': '1rem',
+      'lg': '1.125rem',
+      'xl': '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '4rem',
+      '7xl': '5rem',
     },
     extend: {
       colors: {
         'light-orange': '#ffb900d9',
         'dark-orange': '#ff7730d9',
-        scripture: {
-          50: '#F6F6F6',
-          100: '#EDEDED',
-          200: '#D3D3D3',
-          300: '#B8B8B8',
-          400: '#828282',
-          500: '#4D4D4D',
-          600: '#454545',
-          700: '#2E2E2E',
-          800: '#232323',
-          900: '#171717',
-        },
       },
     },
   },

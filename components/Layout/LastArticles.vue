@@ -1,11 +1,11 @@
 <template>
   <div class="last-articles bg-white py-16">
     <div class="container mx-auto z-10 relative">
-      <h2 class="text-2xl text-scripture-600 text-center uppercase">Artículos más recientes</h2>
+      <h2 class="text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
 
-      <p v-if="$fetchState.error">>{{ $fetchState.error.message }}</p>
-      <p v-else-if="$fetchState.pending">
-        Loading articles...
+      <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar los artículos</p>
+      <p v-else-if="$fetchState.pending" class="text-center text-orange-500 text-md py-6 px-4">
+        Cargando los artículos...
       </p>
       <div
         v-else
@@ -17,7 +17,7 @@
           :articulo="article" />
       </div>
 
-      <div class="last-articles__link-to-all flex justify-center mt-10 text-scripture-400">
+      <div class="last-articles__link-to-all flex justify-center mt-10 text-orange-900">
         <nuxt-link to="/articulos">
           <span class="font-display text-base">Ver todos los artículos</span>
           <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" role="presentation" preserveAspectRatio="xMidYMid meet" fill="none" class="vd-button-icon icon stroke-current h-auto w-4 ml-2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -124,7 +124,7 @@ export default {
       span {
         padding-top: .25rem;
         padding-bottom: .25rem;
-        border-color: theme('colors.scripture.400');
+        border-color: theme('colors.orange.900');
         border-bottom-width: 3px;
         transition: border-color .15s linear;
       }
