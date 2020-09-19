@@ -21,7 +21,7 @@
         md:text-left
         bg-gradient-to-br
         from-light-orange
-        to-dark-orange">Velad Conmigo<span class="block text-base text-white mt-5 md:mt-1 leading-6">A la luz de las Escrituras</span></h1>
+        to-dark-orange">Velad Conmigo<span class="block font-display text-base text-white mt-5 md:mt-1 leading-6">A la luz de las Escrituras</span></h1>
     </div>
 
     <picture class="w-full h-full bg-gradient-to-r from-black via-orange-500 to-orange-800">

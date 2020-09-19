@@ -4,6 +4,7 @@
       <li @click="$emit('vc-nav-click')">
         <nuxt-link
           class="
+            nav-item
             font-display
             px-4
             py-2
@@ -34,3 +35,9 @@ export default {
 }
 </script>
 
+<style lang="scss" scoped>
+.nav-item.nuxt-link-active {
+  background-color: theme('colors.orange.600');
+  color: #FFF;
+}
+</style>

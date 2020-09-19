@@ -10,7 +10,6 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "@nuxt/content": "^1.8.1",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/cloudinary": "0.0.11",
     "@nuxtjs/strapi": "^0.1.6",

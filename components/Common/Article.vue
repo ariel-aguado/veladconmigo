@@ -1,6 +1,6 @@
 <template>
-  <nuxt-link class="hover:translate-y-4" :to="`/articulos/${articulo.slug}`">
-    <div class="article bg-white">
+  <nuxt-link :to="`/articulos/${articulo.slug}`">
+    <div class="article bg-white hover:translate-y-4">
       <img
         class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-600 to-orange-400"
         :data-srcset="`${cloudinary}small_${articulo.imagen.hash}.jpg 500w, ${cloudinary}small_${articulo.imagen.hash}.jpg 750w`"
@@ -9,7 +9,7 @@
         sizes="(max-width: 500px) 500px, 750px">
       <div class="px-4 py-3">
         <ul class="inline-block">
-          <li class="article__tag text-sm pr-4 inline-block relative font-bold text-orange-300 hover:text-orange-500 transition-colors duration-200 ease-linear" v-for="(tag, index) in tags" :key="`tag${index + 1}`">{{ tag }}</li>
+          <li class="article__tag text-sm inline-block relative font-bold text-orange-500 hover:text-orange-300 transition-colors duration-200 ease-linear" v-for="(tag, index) in tags" :key="`tag${index + 1}`"><nuxt-link :to="`/tema/${tag}`">{{ tag }}</nuxt-link></li>
         </ul>
         <h4 class="article__title font-display font-bold text-sm text-orange-900 uppercase mt-2">{{ articulo.titulo }}</h4>
         <div class="mt-5 flex justify-between items-center">
@@ -20,14 +20,25 @@
                 src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
                 :alt="authorName"
                 class="lazyload autor__photo bg-gradient-to-r from-orange-600 to-orange-400">
-              <div class="autor__user-box">
+              <div>
                 <p class="text-xs font-bold text-orange-900">{{ authorName }}</p>
                 <p class="text-2xs text-orange-900">{{ humanDate }}</p>
               </div>
             </figcaption>
           </figure>
           <div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right-circle" width="56" height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ED8936" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-arrow-right-circle"
+              width="56"
+              height="56"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#ED8936"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="margin-right: -8px;">
               <path stroke="none" d="M0 0h24v24H0z"/>
               <circle cx="12" cy="12" r="9" />
               <line x1="16" y1="12" x2="8" y2="12" />
@@ -50,16 +61,16 @@ export default {
       default: () => {}
     }
   },
-  async fetch() {
-    const url = this
-    .$cloudinary()
-    .url(`small_${this.articulo.imagen.hash}`);
+  // async fetch() {
+  //   const url = this
+  //   .$cloudinary()
+  //   .url(`small_${this.articulo.imagen.hash}`);
 
-    this.pictureUrl = url;
-  },
+  //   this.pictureUrl = url;
+  // },
   data() {
     return {
-      pictureUrl: "",
+      // pictureUrl: "",
       cloudinary: "https://res.cloudinary.com/dkdfpm2og/image/upload/"
     }
   },
@@ -78,7 +89,9 @@ export default {
       return this.autor ? this.autor.nombre : "Desconocido";
     },
     authorCover() {
-      return this.autor ? `${this.cloudinary}${this.autor.avatar.hash}` : `${this.cloudinary}v1600203140/autor_desconocido_712790be28.png`;
+      return this.autor
+      ? `${this.cloudinary}${this.autor.avatar.hash}`
+      : `${this.cloudinary}v1600203140/autor_desconocido_712790be28.png`;
     }
   }
 }
@@ -115,11 +128,20 @@ export default {
   }
 
   &__img {
-    height: 282px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    height: 200px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    margin-top: -2px;
+
+    @include respond(md) {
+      height: 282px;
+    }
+  }
+
+  &__tag {
+    padding-right: 20px;
   }
 
   &__tag:not(:last-child):after {
@@ -131,7 +153,7 @@ export default {
     width: 3px;
     height: 3px;
     border-radius: 18px;
-    background-color: theme('colors.orange.300');
+    background-color: theme('colors.orange.500');
   }
 }
 

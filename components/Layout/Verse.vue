@@ -23,7 +23,7 @@
         from-light-orange
         to-dark-orange
         z-10">
-        <blockquote class="text-lg text-white font-bold">
+        <blockquote class="text-lg text-white font-incbold">
           Paraos en los caminos, y mirad, y preguntad por las sendas antiguas, cuál sea el buen camino, y andad por él, y hallaréis descanso para vuestra alma.
         </blockquote>
         <figcaption class="text-right text-orange-200 italic">

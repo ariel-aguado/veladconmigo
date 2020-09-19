@@ -9,6 +9,8 @@ module.exports = {
     fontFamily: {
       display: '"MontserratRegular"',
       body: '"InconsolataRegular"',
+      montbold: '"MontserratBold"',
+      incbold: '"InconsolataBold"'
     },
     fontSize: {
       '2xs': '.70rem',

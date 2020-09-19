@@ -1,4 +1,5 @@
 <template>
+  <header class="bg-gray-100 px-8 py-2 shadow-md grid" style="height: 85px">
   <div class="header lg:container lg:mx-auto flex justify-between items-center sticky">
     <nuxt-link to="/" id="logo" class="header__logo">
       <Logo />
@@ -6,6 +7,7 @@
     <NavList class="hidden lg:block"/>
     <Hamburger class="lg:hidden" @toggle="$emit('sidenavToggle')"/>
   </div>
+  </header>
 </template>
 
 <script>

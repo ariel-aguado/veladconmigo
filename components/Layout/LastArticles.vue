@@ -3,19 +3,24 @@
     <div class="container mx-auto z-10 relative">
       <h2 class="text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
 
-      <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar los artículos</p>
-      <p v-else-if="$fetchState.pending" class="text-center text-orange-500 text-md py-6 px-4">
-        Cargando los artículos...
-      </p>
-      <div
-        v-else
-        class="last-articles__list mt-12"
-        :class="{'only-one': articles.length == 1}">
-        <Article
-          v-for="article in articles"
-          :key="article._id"
-          :articulo="article" />
-      </div>
+      <template v-if="$fetchState.pending">
+        <p class="text-center text-orange-500 text-md py-6 px-4">
+          Cargando los artículos...
+        </p>
+      </template>
+      <template v-else-if="$fetchState.error">
+        <p class="text-center text-red-500 text-md py-6 px-4" >Error al cargar los artículos</p>
+      </template>
+      <template v-else>
+        <div class="last-articles__list mt-12"
+          :class="{'only-one': articles.length == 1}">
+          <div class="last-articles__article"
+            v-for="article in articles"
+            :key="article._id">
+            <Article :articulo="article" />
+          </div>
+        </div>
+      </template>
 
       <div class="last-articles__link-to-all flex justify-center mt-10 text-orange-900">
         <nuxt-link to="/articulos">
@@ -38,7 +43,8 @@ export default {
   },
   async fetch() {
     this.articles = await this.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC');
-  }
+  },
+  fetchOnServer: false
 }
 </script>
 
@@ -75,23 +81,23 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
 
-    & a {
+  &__article {
+    flex: 1 1 16rem;
+    margin: 20px;
+
+    @include respond(md) {
+      flex: 0 1 16rem;
+    }
+  }
+
+  &.only-one {
+    &__article {
       flex: 0 1 100%;
-      margin: 20px;
 
       @include respond(sm) {
-        flex: 1 1 16rem;
-      }
-    }
-
-    &.only-one {
-      a {
-        flex: 0 1 100%;
-
-        @include respond(sm) {
-          flex: 0 1 400px;
-        }
+        flex: 0 1 400px;
       }
     }
   }
