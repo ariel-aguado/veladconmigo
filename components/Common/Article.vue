@@ -8,9 +8,10 @@
         :alt="articulo.titulo"
         sizes="(max-width: 500px) 500px, 750px">
       <div class="px-4 py-3">
-        <ul class="inline-block">
+        <!-- <ul class="inline-block">
           <li class="article__tag text-sm inline-block relative font-bold text-orange-500 hover:text-orange-300 transition-colors duration-200 ease-linear" v-for="(tag, index) in tags" :key="`tag${index + 1}`"><nuxt-link :to="`/tema/${tag}`">{{ tag }}</nuxt-link></li>
-        </ul>
+        </ul> -->
+        <Tags :tags="tags"/>
         <h4 class="article__title font-display font-bold text-sm text-orange-900 uppercase mt-2">{{ articulo.titulo }}</h4>
         <div class="mt-5 flex justify-between items-center">
           <figure class="flex items-center">

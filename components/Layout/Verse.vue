@@ -9,7 +9,6 @@
       <figure class="
         verse
         bg-orange-200
-        text-center
         pt-24
         pb-6
         px-6
