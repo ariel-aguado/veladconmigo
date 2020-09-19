@@ -30,6 +30,7 @@
           <p>Jeremías 6:16</p>
         </figcaption>
       </figure>
+      <p class="mt-4 text-center text-orange-900">Necesitamos recordar y ser reafirmados en que las <em>“sendas antiguas”</em> — todavía son <strong>nuevas</strong>.</p>
     </div>
   </main>
 </template>
