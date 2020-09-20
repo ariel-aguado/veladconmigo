@@ -116,10 +116,6 @@
     & .prose {
       max-width: 100%;
 
-      & * {
-        color: theme('colors.orange.900');
-      }
-
       @include respond(md) {
         max-width: 65ch;
       }

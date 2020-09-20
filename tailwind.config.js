@@ -32,38 +32,38 @@ module.exports = {
         'dark-orange': '#ff7730d9',
       },
     },
-    // typography: (theme) => ({
-    //   default: {
-    //     css: {
-    //       color: theme('colors.orange.900'),
-    //       strong: {
-    //         color: theme('colors.orange.900'),
-    //       },
-    //       blockquote: {
-    //         color: theme('colors.orange.900'),
-    //         borderLeftColor: theme('colors.orange.900'),
-    //       },
-    //       h1: {
-    //         color: theme('colors.orange.900'),
-    //       },
-    //       h2: {
-    //         color: theme('colors.orange.900'),
-    //       },
-    //       h3: {
-    //         color: theme('colors.orange.900'),
-    //       },
-    //       h4: {
-    //         color: theme('colors.orange.900'),
-    //       },
-    //       h5: {
-    //         color: theme('colors.orange.900'),
-    //       },
-    //       h6: {
-    //         color: theme('colors.orange.900'),
-    //       },
-    //     },
-    //   },
-    // }),
+    typography: (theme) => ({
+      default: {
+        css: {
+          color: theme('colors.orange.900'),
+          strong: {
+            color: theme('colors.orange.900'),
+          },
+          blockquote: {
+            color: theme('colors.orange.900'),
+            borderLeftColor: theme('colors.orange.900'),
+          },
+          h1: {
+            color: theme('colors.orange.900'),
+          },
+          h2: {
+            color: theme('colors.orange.900'),
+          },
+          h3: {
+            color: theme('colors.orange.900'),
+          },
+          h4: {
+            color: theme('colors.orange.900'),
+          },
+          h5: {
+            color: theme('colors.orange.900'),
+          },
+          h6: {
+            color: theme('colors.orange.900'),
+          },
+        },
+      },
+    }),
   },
   variants: {},
   plugins: [require('@tailwindcss/typography')],
