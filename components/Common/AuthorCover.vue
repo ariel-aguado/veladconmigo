@@ -43,9 +43,6 @@
         ? `${this.author.avatar.url}`
         : `${this.cloudinary}v1600203140/autor_desconocido_712790be28.png`;
       }
-    },
-    mounted() {
-      console.log('this.author :>> ', this.author);
     }
   }
 </script>

@@ -5,9 +5,14 @@
         <nuxt-link
           class="
             nav-item
-            font-display
-            px-4
-            py-2
+            font-montbold
+            md:font-display
+            text-lg
+            md:text-base
+            px-6
+            md:px-4
+            py-4
+            md:py-2
             rounded-lg
             bg-orange-600
             bg-opacity-0
