@@ -42,6 +42,7 @@ export default {
   async asyncData({app, error}) {
     const articles = await app.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC&_limit=5');
     if (!articles) return error('No existen artículos.')
+    console.log('articles :>> ', articles);
     return { articles };
   },
   // fetchOnServer: false,
