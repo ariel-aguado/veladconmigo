@@ -1,14 +1,14 @@
 <template>
-  <div class="article px-4 pt-8 pb-16 md:px-10" style="margin-top: 85px;">
-    <div class="container mx-auto">
+  <div class="article pt-8 pb-16 md:px-10" style="margin-top: 85px;">
+    <div class="md:container md:mx-auto">
       <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar el artículo</p>
       <p v-else-if="$fetchState.pending" class="text-center text-orange-500 text-md py-6 px-4">
         Cargando el artículo...
       </p>
       <div v-else class="article__box">
-        <h1 class="article__title text-3xl text-orange-900 mt-6 pr-2">{{article.titulo}}</h1>
+        <h1 class="article__title text-3xl text-orange-900 mt-6 px-6 md:px-0">{{article.titulo}}</h1>
 
-        <div class="article__content">
+        <div class="article__content px-6 md:px-0">
           <img
             class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-600 to-orange-400"
             :data-srcset="`${cloudinary}medium_${article.imagen.hash}.jpg 750w, ${cloudinary}${article.imagen.hash}.jpg 1000w`"
@@ -19,7 +19,7 @@
         </div>
 
         <div class="article__author">
-          <div class="article__author--details bg-orange-100 md:bg-gradient-to-tr from-orange-100 to-orange-200 md:shadow-lg px-4 py-4">
+          <div class="article__author--details bg-orange-200 md:bg-orange-100 md:shadow-lg px-6 py-4">
             <AuthorCover :author="article.autor"/>
             <div class="flex justify-start items-center mt-3">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -35,8 +35,8 @@
           </div>
         </div>
 
-        <div v-if="this.articlesOwner.length" class="article__author--last-articles mt-4">
-          <p class="font-incbold text-center px-2 text-orange-900 mb-4">Artículos más recientes</p>
+        <div v-if="this.articlesOwner.length" class="article__recient-articles mt-4 px-6 md:px-0">
+          <p class="font-montbold text-lg text-center px-2 uppercase text-orange-900 mb-4">Otros artículos recientes</p>
           <Articles :articles="articlesOwner" :side="true" />
         </div>
       </div>
@@ -76,28 +76,26 @@
 <style lang="scss" scoped>
 .article {
 
-  @include respond(md) {
-    @include lightLiquid;
-  }
+  @include lightLiquid;
 
   &__box {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: min-content min-content 1fr;
-  grid-template-areas:
-  "title"
-  "author"
-  "content"
-  "latest";
-  grid-gap: 2rem;
-
-  @include respond(md) {
-    grid-template-columns: 1fr 320px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content 1fr;
     grid-template-areas:
-    "title title"
-    "content author"
-    "content latest";
-  }
+    "title"
+    "author"
+    "content"
+    "latest";
+    grid-gap: 2rem;
+
+    @include respond(md) {
+      grid-template-columns: 1fr 320px;
+      grid-template-areas:
+      "title title"
+      "content author"
+      "content latest";
+    }
   }
 
   &__img {
@@ -124,15 +122,28 @@
 
   &__author {
     grid-area: author;
+    // margin-left: -1.5rem;
+    // margin-right: -1.5rem;
+
+    // @include respond(md) {
+    //   margin-left: 0;
+    //   margin-right: 0;
+    // }
 
     &--details {
       border-radius: 30px;
+      border-radius: 0;
+
+      @include respond(md) {
+        border-radius: 30px;
+      }
     }
 
-    &--last-articles {
-      grid-area: latest;
-      border-radius: 30px;
-    }
+  }
+
+  &__recient-articles {
+    grid-area: latest;
+    border-radius: 30px;
   }
 }
 </style>
