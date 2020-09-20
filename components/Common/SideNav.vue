@@ -6,7 +6,7 @@
     <transition name="side">
       <div
         v-if="show"
-        class="sidenav flex flex-col items-center h-full shadow-2xl fixed top-0 left-0 py-3" style="width: 260px; z-index: 60;">
+        class="sidenav flex flex-col items-center h-full shadow-2xl fixed top-0 left-0 py-4" style="width: 260px; z-index: 60;">
           <div @click="toggleActive">
             <nuxt-link to="/" >
               <Logo />

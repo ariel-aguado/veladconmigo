@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-gray-100 pl-8 pr-0 py-2 shadow-md grid fixed top-0 w-full z-50" style="height: 85px">
+  <header class="bg-gray-100 pl-6 md:pl-0 pr-0 py-2 shadow-md grid fixed top-0 w-full z-50" style="height: 85px">
   <div class="header lg:container lg:mx-auto flex justify-between items-center">
     <nuxt-link to="/" id="logo" class="header__logo">
       <Logo />
