@@ -23,6 +23,13 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   /*
+   ** Customize the progress-bar color
+   */
+  loading: {
+    color: "#ED8936",
+    height: "4px"
+  },
+  /*
    ** Global CSS
    */
   css: [],

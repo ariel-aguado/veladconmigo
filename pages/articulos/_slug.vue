@@ -1,14 +1,14 @@
 <template>
   <div class="article pt-8 pb-16 md:px-10" style="margin-top: 85px;">
     <div class="md:container md:mx-auto">
-      <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar el artículo</p>
+      <!-- <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar el artículo</p>
       <p v-else-if="$fetchState.pending" class="text-center text-orange-500 text-md py-6 px-4">
         Cargando el artículo...
-      </p>
-      <div v-else class="article__box">
+      </p> -->
+      <div class="article__box">
         <h1 class="article__title text-3xl text-orange-900 mt-6 px-6 md:px-0">{{article.titulo}}</h1>
 
-        <div class="article__content px-6 md:px-0">
+        <div class="article__content px-6 mt-4 md:mt-0 md:px-0">
           <img
             class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-600 to-orange-400"
             :data-srcset="`${cloudinary}medium_${article.imagen.hash}.jpg 750w, ${cloudinary}${article.imagen.hash}.jpg 1000w`"
@@ -53,11 +53,20 @@
         cloudinary: "https://res.cloudinary.com/dkdfpm2og/image/upload/"
       }
     },
-    async fetch() {
-      const articles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?slug=${this.$route.params.slug}`);
-      this.article = articles[0];
-      this.articlesOwner = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${this.article._id}&autor._id=${this.article.autor._id}&_sort=createdAt:DESC&_limit=3`);
-      console.log('article :>> ', this.article);
+    // async fetch() {
+    //   const articles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?slug=${this.$route.params.slug}`);
+    //   this.article = articles[0];
+    //   this.articlesOwner = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${this.article._id}&autor._id=${this.article.autor._id}&_sort=createdAt:DESC&_limit=3`);
+    //   console.log('article :>> ', this.article);
+    // },
+    async asyncData({app, route, error}) {
+      // Get the slug from the route
+      const slug = route.params.slug;
+      const articles = await app.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?slug=${slug}`);
+      if (!articles) return error('No existen artículos.')
+      const article = articles[0];
+      const articlesOwner = await app.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${article._id}&autor._id=${article.autor._id}&_sort=createdAt:DESC&_limit=3`);
+      return { article, articlesOwner };
     },
     computed: {
       humanDate() {
