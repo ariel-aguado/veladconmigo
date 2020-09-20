@@ -1,6 +1,6 @@
 <template>
-  <header class="bg-gray-100 px-8 py-2 shadow-md grid" style="height: 85px">
-  <div class="header lg:container lg:mx-auto flex justify-between items-center sticky">
+  <header class="bg-gray-100 px-8 py-2 shadow-md grid fixed top-0 w-full z-50" style="height: 85px">
+  <div class="header lg:container lg:mx-auto flex justify-between items-center">
     <nuxt-link to="/" id="logo" class="header__logo">
       <Logo />
     </nuxt-link>

@@ -10,15 +10,15 @@ module.exports = {
       display: '"MontserratRegular"',
       body: '"InconsolataRegular"',
       montbold: '"MontserratBold"',
-      incbold: '"InconsolataBold"'
+      incbold: '"InconsolataBold"',
     },
     fontSize: {
       '2xs': '.70rem',
-      'xs': '.75rem',
-      'sm': '.875rem',
-      'base': '1rem',
-      'lg': '1.125rem',
-      'xl': '1.25rem',
+      xs: '.75rem',
+      sm: '.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
       '2xl': '1.5rem',
       '3xl': '1.875rem',
       '4xl': '2.25rem',
@@ -32,6 +32,38 @@ module.exports = {
         'dark-orange': '#ff7730d9',
       },
     },
+    // typography: (theme) => ({
+    //   default: {
+    //     css: {
+    //       color: theme('colors.orange.900'),
+    //       strong: {
+    //         color: theme('colors.orange.900'),
+    //       },
+    //       blockquote: {
+    //         color: theme('colors.orange.900'),
+    //         borderLeftColor: theme('colors.orange.900'),
+    //       },
+    //       h1: {
+    //         color: theme('colors.orange.900'),
+    //       },
+    //       h2: {
+    //         color: theme('colors.orange.900'),
+    //       },
+    //       h3: {
+    //         color: theme('colors.orange.900'),
+    //       },
+    //       h4: {
+    //         color: theme('colors.orange.900'),
+    //       },
+    //       h5: {
+    //         color: theme('colors.orange.900'),
+    //       },
+    //       h6: {
+    //         color: theme('colors.orange.900'),
+    //       },
+    //     },
+    //   },
+    // }),
   },
   variants: {},
   plugins: [require('@tailwindcss/typography')],

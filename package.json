@@ -12,11 +12,13 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/cloudinary": "0.0.11",
+    "@nuxtjs/markdownit": "^1.2.10",
     "@nuxtjs/strapi": "^0.1.6",
     "@tailwindcss/typography": "^0.2.0",
     "fontfaceobserver": "^2.1.0",
     "lazysizes": "^5.2.2",
-    "nuxt": "^2.14.5"
+    "nuxt": "^2.14.5",
+    "reading-time": "^1.2.0"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",

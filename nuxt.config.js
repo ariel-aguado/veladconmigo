@@ -52,9 +52,11 @@ export default {
     '@nuxtjs/strapi',
     '@nuxtjs/axios',
     '@nuxtjs/cloudinary',
+    '@nuxtjs/markdownit',
   ],
+  markdownit: { html: true, injected: true },
   cloudinary: {
-    cloudName: 'dkdfpm2og'
+    cloudName: 'dkdfpm2og',
     // useComponent: true
   },
   strapi: {
@@ -62,7 +64,7 @@ export default {
   },
   axios: {},
   styleResources: {
-    scss: ['~/assets/css/tokens.scss', '~/assets/css/breakpoints.scss'],
+    scss: ['~/assets/css/tokens.scss', '~/assets/css/breakpoints.scss', '~/assets/css/mixins.scss'],
   },
   /*
    ** Build configuration

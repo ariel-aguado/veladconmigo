@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <div style="margin-top: 85px;">
     <Hero />
     <Verse />
     <!-- Last articles -->
     <div class="last-articles bg-white py-16">
       <div class="container mx-auto z-10 relative">
         <h2 class="px-6 text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
-
 
         <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar los artículos</p>
         <p v-else-if="$fetchState.pending" class="text-center text-orange-500 text-md py-6 px-4">
@@ -49,30 +48,31 @@ export default {
 
 <style lang="scss" scoped>
 .last-articles {
-  position: relative;
-  overflow: hidden;
-  z-index: 10;
+  @include liquid;
+  // position: relative;
+  // overflow: hidden;
+  // z-index: 10;
 
-  &::before,
-  &::after {
-    position: absolute;
-    width: 110%;
-    top: -9rem;
-    content: " ";
-    box-sizing: border-box;
-    border: 0 solid;
-  }
+  // &::before,
+  // &::after {
+  //   position: absolute;
+  //   width: 110%;
+  //   top: -9rem;
+  //   content: " ";
+  //   box-sizing: border-box;
+  //   border: 0 solid;
+  // }
 
-  &::before {
-    height: 900px;
-    background: none;
-    transform: rotate(-8deg);
-    z-index: 0;
+  // &::before {
+  //   height: 900px;
+  //   background: none;
+  //   transform: rotate(-8deg);
+  //   z-index: 0;
 
-    @include respond(md) {
-      background: url(~assets/images/patterns/articles.svg);
-    }
-  }
+  //   @include respond(md) {
+  //     background: url(~assets/images/patterns/articles.svg);
+  //   }
+  // }
 
   &::after {
     background: none;

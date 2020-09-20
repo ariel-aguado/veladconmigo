@@ -1,6 +1,6 @@
 <template>
-  <div class="articules py-16">
-    <div class="container mx-auto">
+  <div class="articles py-16 bg-gradient-to-tr from-orange-200 to-white" style="margin-top: 85px;">
+    <div class="container mx-auto relative z-10">
       <h1 class="text-2xl text-orange-900 text-center uppercase">Artículos</h1>
 
       <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar los artículos</p>
@@ -16,8 +16,6 @@
           <Articles :articles="articles" />
         </div>
       </div>
-
-      <p></p>
     </div>
   </div>
 </template>
@@ -44,4 +42,7 @@
 </script>
 
 <style lang="scss" scoped>
+.articles {
+  @include liquid;
+}
 </style>
