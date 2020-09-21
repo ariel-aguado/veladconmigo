@@ -49,7 +49,7 @@
     async asyncData({app, error}) {
       const articles = await app.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC');
       if (!articles) return error('No existen artículos.')
-      const tags = articles.map(article => article.etiquetas.split(',').map(tag => tag.trim())).reduce((tags, tag) => tags.concat(tag));
+      const tags = [...new Set(articles.map(article => article.etiquetas.split(',').map(tag => tag.trim())).reduce((tags, tag) => tags.concat(tag)))];
       return { articles, tags };
     }
   }

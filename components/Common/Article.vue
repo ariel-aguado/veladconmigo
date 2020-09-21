@@ -1,6 +1,9 @@
 <template>
-  <nuxt-link :to="`/articulos/${articulo.slug}`">
-    <div class="article bg-white hover:translate-y-4">
+  <nuxt-link
+    class="article flex flex-col justify-between bg-white hover:translate-y-4"
+    :class="{'no-margin': side, 'only-one': one}"
+    :to="`/articulos/${articulo.slug}`">
+    <div>
       <img
         class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-600 to-orange-400"
         :class="{'small': side}"
@@ -11,11 +14,11 @@
       <div class="px-4 py-3">
         <Tags :tags="tags"/>
         <h4 class="article__title font-display font-bold text-sm text-orange-900 mt-2">{{ articulo.titulo }}</h4>
-        <div class="mt-5 flex justify-between items-center">
-          <AuthorCover :author="articulo.autor" :createdAt="articulo.createdAt" />
-          <ArticleArrow />
-        </div>
       </div>
+    </div>
+    <div class="mt-3 mb-3 px-4 flex justify-between items-center">
+      <AuthorCover :author="articulo.autor" :createdAt="articulo.createdAt" />
+      <ArticleArrow />
     </div>
   </nuxt-link>
 </template>
@@ -29,6 +32,10 @@ export default {
       default: () => {}
     },
     side: {
+      type: Boolean,
+      default: false
+    },
+    one: {
       type: Boolean,
       default: false
     }
@@ -68,6 +75,27 @@ export default {
   transition-property: background-color,border-color,color,fill,stroke,opacity,box-shadow,transform;
   transition-duration: .15s;
   transition-timing-function: linear;
+
+  flex: 1 1 16rem;
+  margin: 20px;
+
+  @include respond(md) {
+    flex: 0 1 16rem;
+  }
+
+  &.no-margin {
+    flex: 1 1 100%;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  &.only-one {
+    flex: 0 1 100%;
+
+    @include respond(sm) {
+      flex: 0 1 400px;
+    }
+  }
 
   &:hover,
   &:focus {
