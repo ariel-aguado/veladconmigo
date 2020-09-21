@@ -43,7 +43,7 @@ export default {
   &.no-margin {
     flex: 1 1 100%;
     margin: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   @include respond(md) {
