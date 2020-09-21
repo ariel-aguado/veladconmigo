@@ -7,16 +7,11 @@
       <div class="container mx-auto z-10 relative">
         <h2 class="px-6 text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
 
-        <!-- <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar los artículos</p>
+        <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar los artículos</p>
         <p v-else-if="$fetchState.pending" class="text-center text-orange-500 text-md py-6 px-4">
           Cargando los artículos...
         </p>
         <div v-else class="mt-12"
-          :class="{'only-one': articles.length == 1}">
-          <Articles :articles="articles"/>
-        </div> -->
-
-        <div class="mt-12"
           :class="{'only-one': articles.length == 1}">
           <Articles :articles="articles"/>
         </div>
@@ -39,18 +34,21 @@ export default {
       articles: []
     }
   },
-  async asyncData({app, error}) {
-    const articles = await app.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC&_limit=5');
-    if (!articles) return error('No existen artículos.')
-    console.log('articles :>> ', articles);
-    return { articles };
-  },
-  // fetchOnServer: false,
-  // activated() {
-  //   if (this.$fetchState.timestamp <= Date.now() - 60000) {
-  //     this.$fetch()
-  //   }
+  // async asyncData({app, error}) {
+  //   const articles = await app.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC&_limit=5');
+  //   if (!articles) return error('No existen artículos.')
+  //   console.log('articles :>> ', articles);
+  //   return { articles };
   // },
+  async fetch() {
+    this.articles = await this.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC&_limit=5');
+  },
+  fetchOnServer: false,
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - 60000) {
+      this.$fetch()
+    }
+  },
 }
 </script>
 
