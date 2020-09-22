@@ -13,7 +13,7 @@
         sizes="(max-width: 500px) 500px, 750px">
       <div class="px-4 py-3">
         <Tags :tags="tags"/>
-        <h4 class="article__title font-display font-bold text-sm text-orange-900 mt-2">{{ articulo.titulo }}</h4>
+        <h4 class="article__title font-display font-bold text-orange-900 mt-2">{{ articulo.titulo }}</h4>
       </div>
     </div>
     <div class="mt-3 mb-3 px-4 flex justify-between items-center">

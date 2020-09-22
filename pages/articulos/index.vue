@@ -17,7 +17,7 @@
         </div>
       </div> -->
 
-      <p class="text-center text-xs font-display text-orange-900">{{ `${articles.length} artículos` }}</p>
+      <p class="text-center text-sm font-display text-orange-900">{{ `${articles.length} artículos` }}</p>
       <div class="text-center mt-5 px-5">
         <Tags :tags="tags" />
       </div>

@@ -7,8 +7,8 @@
         :alt="authorName"
         class="lazyload autor__photo bg-gradient-to-r from-orange-600 to-orange-400">
       <div>
-        <p class="text-xs font-bold text-orange-900">{{ authorName }}</p>
-        <p v-if="createdAt" class="text-2xs text-orange-900">{{ humanDate }}</p>
+        <p class="text-sm font-bold text-orange-900">{{ authorName }}</p>
+        <p v-if="createdAt" class="text-xs text-orange-900">{{ humanDate }}</p>
       </div>
     </figcaption>
   </figure>

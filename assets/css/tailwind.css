@@ -32,23 +32,23 @@
 
 html {
 
-  @apply text-sm;
+  @apply text-lg;
 
   @media only screen and (min-width: 640px) {
-    @apply text-base;
-  }
-
-  @media only screen and (min-width: 768px) {
-    @apply text-lg;
-  }
-
-  @media only screen and (min-width: 1024px) {
     @apply text-xl;
   }
 
-  @media only screen and (min-width: 1280px) {
+  /* @media only screen and (min-width: 768px) {
+    @apply text-xl;
+  } */
+
+  @media only screen and (min-width: 1024px) {
     @apply text-2xl;
   }
+
+  /* @media only screen and (min-width: 1280px) {
+    @apply text-3xl;
+  } */
 }
 
 html body {
