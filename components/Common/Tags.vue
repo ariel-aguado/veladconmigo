@@ -28,7 +28,7 @@ export default {
   transform: translateY(-50%);
   width: 3px;
   height: 3px;
-  border-radius: 18px;
+  border-radius: 30px;
   background-color: theme('colors.orange.500');
 }
 </style>

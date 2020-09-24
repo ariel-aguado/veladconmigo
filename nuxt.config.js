@@ -37,7 +37,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/lazysizes.client.js'],
+  plugins: [
+    '~/plugins/lazysizes.client.js',
+    '~/plugins/vue-placeholders.js',
+    '~/plugins/vue-observe-visibility.client.js'
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -68,6 +72,7 @@ export default {
   },
   strapi: {
     // Options
+    url: 'https://strapi-velad-conmigo.herokuapp.com/'
   },
   axios: {},
   styleResources: {

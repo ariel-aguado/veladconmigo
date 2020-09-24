@@ -1,16 +1,16 @@
 <template>
-  <div class="article pt-8 pb-16 md:px-10" style="margin-top: 85px;">
+  <div class="article-page pt-8 pb-16 md:px-10" style="margin-top: 85px;">
     <div class="md:container md:mx-auto">
       <!-- <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar el artículo</p>
       <p v-else-if="$fetchState.pending" class="text-center text-orange-500 text-md py-6 px-4">
         Cargando el artículo...
       </p> -->
-      <div class="article__box">
-        <h1 class="article__title text-3xl text-orange-900 mt-6 px-6 md:px-0">{{article.titulo}}</h1>
+      <div class="article-page__box">
+        <h1 class="article-page__title text-3xl text-orange-900 mt-6 px-6 md:px-0">{{article.titulo}}</h1>
 
-        <div class="article__content px-6 mt-4 md:mt-0 md:px-0">
+        <div class="article-page__content px-6 mt-4 md:mt-0 md:px-0">
           <img
-            class="lazyload article__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-600 to-orange-400"
+            class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-600 to-orange-400"
             :data-srcset="`${cloudinary}medium_${article.imagen.hash}.jpg 750w, ${cloudinary}${article.imagen.hash}.jpg 1000w`"
             src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
             :alt="article.titulo"
@@ -18,8 +18,8 @@
           <div v-html="$md.render(article.contenido)" class="prose mt-8 text-orange-900"></div>
         </div>
 
-        <div class="article__author">
-          <div class="article__author--details bg-orange-200 md:bg-orange-100 md:shadow-lg px-6 py-4">
+        <div class="article-page__author">
+          <div class="article-page__author--details bg-orange-200 md:bg-orange-100 md:shadow-lg px-6 py-4">
             <AuthorCover :author="article.autor"/>
             <div class="flex justify-start items-center mt-3">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -35,9 +35,16 @@
           </div>
         </div>
 
-        <div v-if="this.articlesOwner.length" class="article__recient-articles mt-4 px-6 md:px-0">
-          <p class="font-montbold text-lg text-center px-2 uppercase text-orange-900 mb-4">Otros artículos recientes</p>
-          <Articles :articles="articlesOwner" :side="true" />
+        <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0">
+          <p class="font-montbold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
+          <!-- <Articles :articles="recentArticles" :side="true" /> -->
+          <div class="flex flex-wrap justify-center">
+            <Article v-for="article in recentArticles"
+              :key="article._id"
+              :articulo="article"
+              :side="true"
+              :one="recentArticles.length == 1" />
+          </div>
         </div>
       </div>
     </div>
@@ -49,14 +56,14 @@
     data() {
       return {
         article: {},
-        articlesOwner: [],
+        recentArticles: [],
         cloudinary: "https://res.cloudinary.com/dkdfpm2og/image/upload/"
       }
     },
     // async fetch() {
     //   const articles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?slug=${this.$route.params.slug}`);
     //   this.article = articles[0];
-    //   this.articlesOwner = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${this.article._id}&autor._id=${this.article.autor._id}&_sort=createdAt:DESC&_limit=3`);
+    //   this.recentArticles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${this.article._id}&autor._id=${this.article.autor._id}&_sort=createdAt:DESC&_limit=3`);
     //   console.log('article :>> ', this.article);
     // },
     async asyncData({app, route, error}) {
@@ -65,8 +72,9 @@
       const articles = await app.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?slug=${slug}`);
       if (!articles) return error('No existen artículos.')
       const article = articles[0];
-      const articlesOwner = await app.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${article._id}&autor._id=${article.autor._id}&_sort=createdAt:DESC&_limit=3`);
-      return { article, articlesOwner };
+      const recentArticles = await app.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${article._id}&_sort=createdAt:DESC&_limit=3`);
+      console.log('recentArticles :>> ', recentArticles);
+      return { article, recentArticles };
     },
     computed: {
       humanDate() {
@@ -83,7 +91,7 @@
 </script>
 
 <style lang="scss" scoped>
-.article {
+.article-page {
 
   @include lightLiquid;
 

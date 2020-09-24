@@ -18,7 +18,10 @@
     "fontfaceobserver": "^2.1.0",
     "lazysizes": "^5.2.2",
     "nuxt": "^2.14.5",
-    "reading-time": "^1.2.0"
+    "qs": "^6.9.4",
+    "reading-time": "^1.2.0",
+    "vue-content-placeholders": "^0.2.1",
+    "vue-observe-visibility": "^0.4.6"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",

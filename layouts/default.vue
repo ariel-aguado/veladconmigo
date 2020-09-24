@@ -2,7 +2,7 @@
   <div>
     <Header />
     <SideNav :show="isActive" @close="toggleActive"/>
-    <Nuxt />
+    <Nuxt keep-alive/>
     <Footer />
   </div>
 </template>

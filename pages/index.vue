@@ -3,18 +3,28 @@
     <Hero />
     <Verse />
     <!-- Last articles -->
-    <div class="last-articles bg-white py-16">
+    <div class="last-articles bg-orange-100 pt-8 pb-16">
       <div class="container mx-auto z-10 relative">
         <h2 class="px-6 text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
 
-        <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar los artículos</p>
-        <p v-else-if="$fetchState.pending" class="text-center text-orange-500 text-md py-6 px-4">
-          Cargando los artículos...
-        </p>
-        <div v-else class="mt-12"
-          :class="{'only-one': articles.length == 1}">
-          <Articles :articles="articles"/>
-        </div>
+        <template v-if="$fetchState.pending && !articles.length">
+          <ArticlePlaceholder :limitTo="limitTo" />
+        </template>
+        <template v-else-if="$fetchState.error">
+          <inline-error-block :error="$fetchState.error" />
+        </template>
+        <template v-else>
+          <div class="flex flex-wrap justify-center mt-10">
+            <Article v-for="article in articles"
+              :key="article._id"
+              :articulo="article"
+              :one="articles.length == 1" />
+          </div>
+        </template>
+
+        <template v-if="$fetchState.pending && articles.length">
+          <ArticlePlaceholder :limitTo="limitTo" />
+        </template>
 
         <div class="last-articles__link-to-all flex justify-center mt-10 text-orange-900">
           <nuxt-link to="/articulos">
@@ -28,10 +38,15 @@
 </template>
 
 <script>
+const qs = require('qs');
+
 export default {
   data() {
     return {
-      articles: []
+      articles: [],
+      startFrom: 0,
+      limitTo: 5,
+      // fullArticles: false
     }
   },
   // async asyncData({app, error}) {
@@ -41,30 +56,53 @@ export default {
   //   return { articles };
   // },
   async fetch() {
-    this.articles = await this.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC&_limit=5');
+
+    const query = qs.stringify(
+      { _where:{publico: true}, _sort: 'createdAt:DESC', _start: this.startFrom, _limit: this.limitTo },
+      { encode: false }
+    );
+
+    const articles = await this.$strapi.find('articulos', query);
+    // const articles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?${query}`);
+
+    // if (articles.length) this.startFrom += articles.length;
+    // if (articles.length < this.limitTo) this.fullArticles = true;
+
+    // this.fullArticles = true;
+
+    this.articles = this.articles.concat(articles);
   },
   fetchOnServer: false,
-  activated() {
-    if (this.$fetchState.timestamp <= Date.now() - 60000) {
-      this.$fetch()
-    }
-  },
+  // activated() {
+  //   if (this.$fetchState.timestamp <= Date.now() - 60000) {
+  //     this.$fetch()
+  //   }
+  // },
+  // methods: {
+  //   lazyLoadArticles(isVisible) {
+  //     if (isVisible) {
+  //       if (!this.fullArticles) {
+  //         this.$fetch();
+  //       }
+  //     }
+  //   }
+  // }
 }
 </script>
 
 <style lang="scss" scoped>
 .last-articles {
-  @include liquid;
+  // @include liquid;
 
-  &::after {
-    background: none;
-    z-index: 1;
-    height: 1160px;
+  // &::after {
+  //   background: none;
+  //   z-index: 1;
+  //   height: 1160px;
 
-    @include respond(md) {
-      background: linear-gradient(28deg,#fff,hsla(0,0%,100%,.95) 55%,hsla(0,0%,100%,.2));
-    }
-  }
+  //   @include respond(md) {
+  //     background: linear-gradient(28deg,#fff,hsla(0,0%,100%,.95) 55%,hsla(0,0%,100%,.2));
+  //   }
+  // }
 
   &__link-to-all {
     a {
@@ -126,6 +164,49 @@ export default {
       span {
         border-color: theme('colors.orange.500');
       }
+    }
+  }
+}
+
+.content-placeholder-article {
+  // width: 16rem;
+  margin: 20px;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 3px;
+
+  flex: 1 1 16rem;
+
+  @include respond(md) {
+    flex: 0 1 16rem;
+  }
+
+  &__image {
+    border-radius: 20px;
+    height: 200px;
+
+    @include respond(md) {
+      height: 282px;
+    }
+  }
+
+  &__cover,
+  &__arrow {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  &__name-date {
+    width: 100%;
+    flex: 0 1 50%;
+    text-align: left;
+    margin-right: auto;
+    margin-left: 10px;
+
+    &.vue-content-placeholders-text .vue-content-placeholders-text__line {
+      margin-bottom: 0 !important;
     }
   }
 }
