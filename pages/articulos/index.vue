@@ -30,7 +30,8 @@
         <div class="text-center mt-5 px-5">
           <Tags :tags="tags" />
         </div>
-        <div class="flex flex-wrap justify-center mt-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
+        <!-- <div class="flex flex-wrap justify-center mt-10"> -->
           <Article v-for="article in articles"
             :key="article._id"
             :articulo="article"
