@@ -76,6 +76,10 @@ html.fonts-regular-loaded h6 {
   background-color: theme('colors.orange.900');
 }
 
+.prose ol>li::before {
+  color: theme('colors.orange.900');
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

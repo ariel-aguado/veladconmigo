@@ -21,10 +21,16 @@
           <div class="article-page__content px-6 mt-4 md:mt-0 md:px-0">
             <img
               class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-600 to-orange-400"
+              :data-srcset="`${article.imagen.formats.medium.url} 750w, ${article.imagen.url} 1000w`"
+              src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+              :alt="article.titulo"
+              sizes="(max-width: 750px) 750px, 1000px">
+            <!-- <img
+              class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-600 to-orange-400"
               :data-srcset="`${cloudinary}medium_${article.imagen.hash}.jpg 750w, ${cloudinary}${article.imagen.hash}.jpg 1000w`"
               src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
               :alt="article.titulo"
-              sizes="(max-width: 500px) 500px, 750px">
+              sizes="(max-width: 750px) 750px, 1000px"> -->
             <div v-html="$md.render(article.contenido)" class="prose mt-8 text-orange-900"></div>
           </div>
 

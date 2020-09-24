@@ -7,10 +7,17 @@
       <img
         class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-600 to-orange-400"
         :class="{'small': side}"
-        :data-srcset="`${cloudinary}small_${articulo.imagen.hash}.jpg 500w, ${cloudinary}medium_${articulo.imagen.hash}.jpg 750w`"
+        :data-srcset="`${articulo.imagen.formats.small.url} 500w, ${articulo.imagen.formats.medium.url} 750w`"
         src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
         :alt="articulo.titulo"
         sizes="(max-width: 500px) 500px, 750px">
+      <!-- <img
+        class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-600 to-orange-400"
+        :class="{'small': side}"
+        :data-srcset="`${cloudinary}small_${articulo.imagen.hash}.jpg 500w, ${cloudinary}medium_${articulo.imagen.hash}.jpg 750w`"
+        src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+        :alt="articulo.titulo"
+        sizes="(max-width: 500px) 500px, 750px"> -->
       <div class="px-4 py-3">
         <Tags :tags="tags"/>
         <h4 class="article__title font-display font-bold text-orange-900 mt-2">{{ articulo.titulo }}</h4>
