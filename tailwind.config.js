@@ -64,6 +64,9 @@ module.exports = {
           h6: {
             color: theme('colors.orange.900'),
           },
+          a: {
+            color: theme('colors.orange.900'),
+          }
         },
       },
     }),

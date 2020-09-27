@@ -13,8 +13,9 @@
       </template>
       <template v-else>
         <div class="article-page__box">
+          <!-- Title -->
           <h1 class="article-page__title text-3xl text-orange-900 mt-6 px-6 md:px-0">{{article.titulo}}</h1>
-
+          <!-- Content -->
           <div class="article-page__content px-6 mt-4 md:mt-0 md:px-0">
             <img
               class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-600 to-orange-400"
@@ -28,6 +29,11 @@
               src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
               :alt="article.titulo"
               sizes="(max-width: 750px) 750px, 1000px"> -->
+
+            <!-- Summary -->
+            <h2 class="text-2xl text-orange-900 mt-8 px-0" >Resumen</h2>
+            <p class="article-page__summary italic prose mt-4 text-orange-700">{{ article.resumen }}</p>
+
             <div v-html="$md.render(article.contenido)" class="prose mt-8 text-orange-900"></div>
           </div>
 
@@ -42,12 +48,13 @@
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 <p class="text-sm text-orange-900 ml-1">{{ readingTime }}</p>
               </div>
+              <!-- Tags -->
               <div class="mt-2 text-sm">
                 <Tags :tags="article.etiquetas.split(',').map(tag => tag.trim())"/>
               </div>
             </div>
           </div>
-
+          <!-- Recent articles -->
           <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0">
             <p class="font-montbold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
             <Articles :articles="recentArticles" :grid="gridCount" :side="true"/>
@@ -144,7 +151,7 @@ export default {
     "author"
     "content"
     "latest";
-    grid-gap: 2rem;
+    grid-gap: 3rem;
 
     @include respond(md) {
       grid-template-columns: 1fr 320px;
@@ -165,6 +172,33 @@ export default {
     grid-area: title;
   }
 
+  &__summary {
+    padding: 32px;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 25px;
+      border-style: double;
+      border-color: theme('colors.orange.500');
+    }
+
+    &::before {
+      border-width: 6px 0px 0px 6px;
+      margin-left: -30px !important;
+      margin-top: -20px !important;
+    }
+
+    &::after {
+      float: right;
+      border-width: 0px 6px 6px 0px;
+      margin-right: -30px !important;
+      margin-top: 0px !important;
+    }
+  }
+
   &__content {
     grid-area: content;
 
@@ -172,7 +206,7 @@ export default {
       max-width: 100%;
 
       @include respond(md) {
-        max-width: 65ch;
+        max-width: 70ch;
       }
     }
   }
