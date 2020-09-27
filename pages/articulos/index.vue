@@ -15,23 +15,7 @@
         <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
       </template>
       <template v-else>
-        <p class="text-center text-sm font-display text-orange-900">{{ articlesCountText }}</p>
-        <div class="text-center mt-5 px-5">
-          <Tags :tags="tags" />
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
-          <Article v-for="article in articles"
-            :key="article._id"
-            :articulo="article"
-            :one="articles.length == 1" />
-          <!-- <Article v-for="(article, index) in articles"
-            :key="article._id"
-            v-observe-visibility="
-              index === articles.length - 1 ? lazyLoadArticles : false
-            "
-            :articulo="article"
-            :one="articles.length == 1" /> -->
-        </div>
+        <Articles :articles="articles" :tags="tags" :grid="gridCount" />
       </template>
 
       <!-- In case of pagination -->
@@ -89,7 +73,11 @@ export default {
     articlesCountText() {
       const count = this.articles.length;
       return count == 1 ? `${count} artículo` : `${count} artículos`;
-    }
+    },
+    gridCount() {
+      const articles = this.articles.length;
+      return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
+    },
   }
   // methods: {
   //   lazyLoadArticles(isVisible) {

@@ -16,7 +16,7 @@
           <!-- Title -->
           <h1 class="article-page__title text-3xl text-orange-900 mt-6 px-6 md:px-0">{{article.titulo}}</h1>
           <!-- Content -->
-          <div class="article-page__content px-6 mt-4 md:mt-0 md:px-0">
+          <div class="article-page__content px-6 mt-3 md:mt-0 md:px-0">
             <img
               class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-600 to-orange-400"
               :data-srcset="`${article.imagen.formats.medium.url} 750w, ${article.imagen.url} 1000w`"
@@ -151,7 +151,7 @@ export default {
     "author"
     "content"
     "latest";
-    grid-gap: 3rem;
+    grid-gap: 2rem;
 
     @include respond(md) {
       grid-template-columns: 1fr 320px;
