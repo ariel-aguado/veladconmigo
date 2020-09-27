@@ -15,7 +15,8 @@
           <!-- <inline-error-block :error="$fetchState.error" /> -->
         </template>
         <template v-else>
-          <Articles :articles="articles" :grid="gridCount" />
+          <Articles :articles="articles.slice(0,2)" grid="two" :count="false" />
+          <Articles :articles="articles.slice(2,5)" grid="three-flex" :count="false" :noArticlesTop="true" />
         </template>
 
         <div class="last-articles__link-to-all flex justify-center mt-10 text-orange-900">

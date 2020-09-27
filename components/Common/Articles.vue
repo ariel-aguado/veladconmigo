@@ -1,10 +1,10 @@
 <template>
   <div>
-    <p v-if="!side" class="text-center text-sm font-display text-orange-900">{{ articlesCountText }}</p>
+    <p v-if="count" class="text-center text-sm font-display text-orange-900">{{ articlesCountText }}</p>
     <div v-if="tags.length" class="text-center mt-5 px-5">
       <Tags :tags="tags" />
     </div>
-    <div class="article-list mt-8" :class="[articleGrid, side ? 'side' : '']">
+    <div class="article-list" :class="[articleGrid, side ? 'side' : '', noArticlesTop ? 'mt-0' : 'mt-8']">
       <Article v-for="article in articles"
         :key="article._id"
         :articulo="article"
@@ -38,6 +38,14 @@ export default {
     side: {
       type: Boolean,
       default: false
+    },
+    count: {
+      type: Boolean,
+      default: true
+    },
+    noArticlesTop: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -69,6 +77,35 @@ export default {
 
     @include respond(md) {
       grid-template-columns: minmax(0, 23rem);
+    }
+  }
+
+  &.flexible {
+
+    & > a:nth-of-type(1) {
+      grid-area: first;
+    }
+    & > a:nth-of-type(2) {
+      grid-area: second;
+    }
+    & > a:nth-of-type(3) {
+      grid-area: third;
+    }
+
+    grid-template-areas:
+    "first"
+    "second"
+    "third";
+
+    @include respond(md) {
+      grid-template-areas:
+      "first second"
+      "third third";
+    }
+
+    @include respond(lg) {
+      grid-template-areas:
+      "first second third";
     }
   }
 }

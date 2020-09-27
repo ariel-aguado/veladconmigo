@@ -32,7 +32,9 @@
 
             <!-- Summary -->
             <h2 class="text-2xl text-orange-900 mt-8 px-0" >Resumen</h2>
-            <p class="article-page__summary italic prose mt-4 text-orange-700">{{ article.resumen }}</p>
+            <blockquote class="article-page__summary italic prose mt-4 text-orange-700">
+              <p class="">{{ article.resumen }}</p>
+            </blockquote>
 
             <div v-html="$md.render(article.contenido)" class="prose mt-8 text-orange-900"></div>
           </div>
@@ -57,7 +59,7 @@
           <!-- Recent articles -->
           <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0">
             <p class="font-montbold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
-            <Articles :articles="recentArticles" :grid="gridCount" :side="true"/>
+            <Articles :articles="recentArticles" :grid="gridCount" :side="true" :count="false" />
             <!-- <div class="flex flex-wrap justify-center mt-8">
               <Article v-for="article in recentArticles"
                 :key="article._id"
@@ -127,7 +129,7 @@ export default {
     readingTime() {
       const readingTime = require('reading-time');
       const stats = readingTime(this.article.contenido);
-      return stats.text;
+      return stats.text.replace('read', 'de lectura');
     },
     gridCount() {
       const articles = this.recentArticles.length;
