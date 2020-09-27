@@ -1,10 +1,10 @@
 <template>
   <div>
-    <p class="text-center text-sm font-display text-orange-900">{{ articlesCountText }}</p>
+    <p v-if="!side" class="text-center text-sm font-display text-orange-900">{{ articlesCountText }}</p>
     <div v-if="tags.length" class="text-center mt-5 px-5">
       <Tags :tags="tags" />
     </div>
-    <div class="article-list mt-10" :class="[articleGrid]">
+    <div class="article-list mt-8" :class="[articleGrid, side ? 'side' : '']">
       <Article v-for="article in articles"
         :key="article._id"
         :articulo="article"
@@ -57,6 +57,19 @@ export default {
   &.one,
   &.two {
     grid-template-columns: repeat(auto-fit, minmax(0, 23rem));
+  }
+
+  &.side {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+
+    & > a {
+      margin: 0;
+    }
+
+    @include respond(md) {
+      grid-template-columns: minmax(0, 23rem);
+    }
   }
 }
 </style>

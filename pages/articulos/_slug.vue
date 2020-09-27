@@ -8,7 +8,8 @@
         </p>
       </template>
       <template v-else-if="$fetchState.error">
-        <inline-error-block :error="$fetchState.error" />
+        <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
+        <!-- <inline-error-block :error="$fetchState.error" /> -->
       </template>
       <template v-else>
         <div class="article-page__box">
@@ -49,13 +50,14 @@
 
           <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0">
             <p class="font-montbold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
-            <div class="flex flex-wrap justify-center mt-8">
+            <Articles :articles="recentArticles" :grid="gridCount" :side="true"/>
+            <!-- <div class="flex flex-wrap justify-center mt-8">
               <Article v-for="article in recentArticles"
                 :key="article._id"
                 :articulo="article"
                 :side="true"
                 :one="recentArticles.length == 1" />
-            </div>
+            </div> -->
           </div>
         </div>
       </template>
@@ -93,6 +95,7 @@ export default {
       { _where:[{ publico: true }, { '_id_ne': this.article._id }], _sort: 'createdAt:DESC', _limit: 3 },
       { encode: false }
     );
+
     this.recentArticles = await this.$strapi.find('articulos', query);
 
     console.log('article :>> ', this.article);
@@ -118,7 +121,11 @@ export default {
       const readingTime = require('reading-time');
       const stats = readingTime(this.article.contenido);
       return stats.text;
-    }
+    },
+    gridCount() {
+      const articles = this.recentArticles.length;
+      return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
+    },
   }
 }
 </script>

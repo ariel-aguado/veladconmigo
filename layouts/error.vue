@@ -2,7 +2,7 @@
   <div v-if="error" class="page-wrapper">
     <!-- <h1>{{ error.statusCode }}</h1>
     <h2>{{ error.message }}</h2> -->
-    <inline-error-block :error="$fetchState.error" />
+    <inline-error-block :error="$fetchState.error.message" />
 
     <div class="error-navigation">
       <a href="#" @click="$router.push(-1)"> Regresar </a>

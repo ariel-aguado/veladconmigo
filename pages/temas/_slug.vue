@@ -10,17 +10,11 @@
         <ArticlePlaceholder />
       </template>
       <template v-else-if="$fetchState.error">
-        <inline-error-block :error="$fetchState.error" />
+        <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
+        <!-- <inline-error-block :error="$fetchState.error" /> -->
       </template>
       <template v-else>
-        <Articles :articles="articles" :grid="articlesCount" />
-        <!-- <p class="text-center text-sm font-display text-orange-900">{{ articlesCountText }}</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
-          <Article v-for="article in articles"
-            :key="article._id"
-            :articulo="article"
-            :one="articles.length == 1" />
-        </div> -->
+        <Articles :articles="articles" :grid="gridCount" />
       </template>
     </div>
   </div>
@@ -48,7 +42,7 @@ export default {
   },
   fetchOnServer: false,
   computed: {
-    articlesCount() {
+    gridCount() {
       const articles = this.articles.length;
       return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
     },

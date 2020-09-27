@@ -11,7 +11,8 @@
         <ArticlePlaceholder :articlesPerPage="articlesPerPage" />
       </template>
       <template v-else-if="$fetchState.error">
-        <inline-error-block :error="$fetchState.error" />
+        <!-- <inline-error-block :error="$fetchState.error" /> -->
+        <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
       </template>
       <template v-else>
         <p class="text-center text-sm font-display text-orange-900">{{ articlesCountText }}</p>

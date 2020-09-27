@@ -1,7 +1,8 @@
 <template>
   <div class="error-block">
     <warning-icon />
-    <h2 class="text-red-400">{{ error.message }}</h2>
+    <h2 class="text-red-400">{{ error }}</h2>
+    <!-- <h2 class="text-red-400">{{ error.message }}</h2> -->
   </div>
 </template>
 

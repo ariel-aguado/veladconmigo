@@ -11,15 +11,11 @@
           <ArticlePlaceholder :articlesPerPage="limitTo" />
         </template>
         <template v-else-if="$fetchState.error">
-          <inline-error-block :error="$fetchState.error" />
+          <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
+          <!-- <inline-error-block :error="$fetchState.error" /> -->
         </template>
         <template v-else>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
-            <Article v-for="article in articles"
-              :key="article._id"
-              :articulo="article"
-              :one="articles.length == 1" />
-          </div>
+          <Articles :articles="articles" :grid="gridCount" />
         </template>
 
         <div class="last-articles__link-to-all flex justify-center mt-10 text-orange-900">
@@ -52,7 +48,13 @@ export default {
 
     this.articles = await this.$strapi.find('articulos', query);
   },
-  fetchOnServer: false
+  fetchOnServer: false,
+  computed: {
+    gridCount() {
+      const articles = this.articles.length;
+      return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
+    },
+  }
 }
 </script>
 
