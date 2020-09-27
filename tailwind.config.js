@@ -43,6 +43,9 @@ module.exports = {
             color: theme('colors.orange.900'),
             borderLeftColor: theme('colors.orange.900'),
           },
+          thead: {
+            color: theme('colors.orange.900'),
+          },
           h1: {
             color: theme('colors.orange.900'),
           },
@@ -75,6 +78,7 @@ module.exports = {
       'layouts/**/*.vue',
       'pages/**/*.vue',
       'plugins/**/*.js',
+      'validators/*.js',
       'nuxt.config.js',
     ],
   },

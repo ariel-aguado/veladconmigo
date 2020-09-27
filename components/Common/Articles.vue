@@ -1,14 +1,20 @@
 <template>
-  <div class="flex flex-wrap justify-center">
-    <Article v-for="article in articles"
-      :key="article._id"
-      :articulo="article"
-      :side="side"
-      :one="articles.length == 1" />
+  <div>
+    <p class="text-center text-sm font-display text-orange-900">{{ articlesCountText }}</p>
+    <div v-if="tags.length" class="text-center mt-5 px-5">
+      <Tags :tags="tags" />
+    </div>
+    <div class="article-list mt-10" :class="[articleGrid]">
+      <Article v-for="article in articles"
+        :key="article._id"
+        :articulo="article"
+        :one="articles.length == 1" />
+    </div>
   </div>
 </template>
 
 <script>
+import { ArticleGrid } from '~/validators/Article';
 
 export default {
   name: "Articles",
@@ -17,10 +23,40 @@ export default {
       type: Array,
       default: () => []
     },
+    tags: {
+      type: Array,
+      default: () => []
+    },
+    grid: {
+      required: false,
+      type: String,
+      default: 'three',
+      validator: value => {
+        return Object.keys(ArticleGrid).includes(value);
+      }
+    },
     side: {
       type: Boolean,
       default: false
     }
+  },
+  computed: {
+    articleGrid() {
+      return ArticleGrid[this.grid];
+    },
+    articlesCountText() {
+      const count = this.articles.length;
+      return count == 1 ? `${count} artículo` : `${count} artículos`;
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.article-list {
+  &.one,
+  &.two {
+    grid-template-columns: repeat(auto-fit, minmax(0, 23rem));
+  }
+}
+</style>

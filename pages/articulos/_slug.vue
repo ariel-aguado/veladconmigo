@@ -1,10 +1,6 @@
 <template>
-  <div class="article-page pt-8 pb-16 md:px-10" style="margin-top: 85px;">
+  <div class="article-page pt-8 pb-16 md:px-10 bg-gradient-to-tr from-orange-200 to-white" style="margin-top: 85px;">
     <div class="md:container md:mx-auto">
-      <!-- <p v-if="$fetchState.error" class="text-center text-red-500 text-md py-6 px-4" >Error al cargar el artículo</p>
-      <p v-else-if="$fetchState.pending" class="text-center text-orange-500 text-md py-6 px-4">
-        Cargando el artículo...
-      </p> -->
 
       <template v-if="$fetchState.pending">
         <p class="text-center text-orange-500 text-md py-6 px-4">
@@ -53,8 +49,7 @@
 
           <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0">
             <p class="font-montbold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
-            <!-- <Articles :articles="recentArticles" :side="true" /> -->
-            <div class="flex flex-wrap justify-center">
+            <div class="flex flex-wrap justify-center mt-8">
               <Article v-for="article in recentArticles"
                 :key="article._id"
                 :articulo="article"
@@ -130,7 +125,7 @@ export default {
 
 <style lang="scss" scoped>
 .article-page {
-  @include lightLiquid;
+  // @include lightLiquid;
   min-height: calc(100vh - 85px - 65px);
 
   &__box {

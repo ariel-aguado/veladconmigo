@@ -8,22 +8,18 @@
         <h2 class="px-6 text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
 
         <template v-if="$fetchState.pending && !articles.length">
-          <ArticlePlaceholder :limitTo="limitTo" />
+          <ArticlePlaceholder :articlesPerPage="limitTo" />
         </template>
         <template v-else-if="$fetchState.error">
           <inline-error-block :error="$fetchState.error" />
         </template>
         <template v-else>
-          <div class="flex flex-wrap justify-center mt-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
             <Article v-for="article in articles"
               :key="article._id"
               :articulo="article"
               :one="articles.length == 1" />
           </div>
-        </template>
-
-        <template v-if="$fetchState.pending && articles.length">
-          <ArticlePlaceholder :limitTo="limitTo" />
         </template>
 
         <div class="last-articles__link-to-all flex justify-center mt-10 text-orange-900">
@@ -44,49 +40,19 @@ export default {
   data() {
     return {
       articles: [],
-      startFrom: 0,
-      limitTo: 5,
-      // fullArticles: false
+      limitTo: 6,
     }
   },
-  // async asyncData({app, error}) {
-  //   const articles = await app.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC&_limit=5');
-  //   if (!articles) return error('No existen artículos.')
-  //   console.log('articles :>> ', articles);
-  //   return { articles };
-  // },
   async fetch() {
 
     const query = qs.stringify(
-      { _where:{publico: true}, _sort: 'createdAt:DESC', _start: this.startFrom, _limit: this.limitTo },
+      { _where:{publico: true}, _sort: 'createdAt:DESC', _start: 0, _limit: this.limitTo },
       { encode: false }
     );
 
-    const articles = await this.$strapi.find('articulos', query);
-    // const articles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?${query}`);
-
-    // if (articles.length) this.startFrom += articles.length;
-    // if (articles.length < this.limitTo) this.fullArticles = true;
-
-    // this.fullArticles = true;
-
-    this.articles = this.articles.concat(articles);
+    this.articles = await this.$strapi.find('articulos', query);
   },
-  fetchOnServer: false,
-  // activated() {
-  //   if (this.$fetchState.timestamp <= Date.now() - 60000) {
-  //     this.$fetch()
-  //   }
-  // },
-  // methods: {
-  //   lazyLoadArticles(isVisible) {
-  //     if (isVisible) {
-  //       if (!this.fullArticles) {
-  //         this.$fetch();
-  //       }
-  //     }
-  //   }
-  // }
+  fetchOnServer: false
 }
 </script>
 

@@ -82,26 +82,26 @@ export default {
   transition-duration: .15s;
   transition-timing-function: linear;
 
-  flex: 1 1 16rem;
+  // flex: 1 1 16rem;
   margin: 20px;
 
-  @include respond(md) {
-    flex: 0 1 16rem;
-  }
+  // @include respond(md) {
+  //   flex: 0 1 16rem;
+  // }
 
-  &.no-margin {
-    flex: 1 1 100%;
-    margin: 0;
-    margin-bottom: 2rem;
-  }
+  // &.no-margin {
+  //   flex: 1 1 100%;
+  //   margin: 0;
+  //   margin-bottom: 2rem;
+  // }
 
-  &.only-one {
-    flex: 0 1 100%;
+  // &.only-one {
+  //   flex: 0 1 100%;
 
-    @include respond(sm) {
-      flex: 0 1 400px;
-    }
-  }
+  //   @include respond(sm) {
+  //     flex: 0 1 400px;
+  //   }
+  // }
 
   &:hover,
   &:focus {
