@@ -3,7 +3,7 @@
     <main class="bg-white py-16 px-6">
       <div class="container mx-auto">
         <h2 class="text-2xl text-orange-900 text-center uppercase">Vivimos en tiempos cambiantes</h2>
-        <div class="text-center text-orange-900 mt-8">
+        <div class="text-center text-orange-900 mt-8 px-4 lg:px-30">
           <p>Desde la perspectiva cristiana hay mucha desorientación.</p>
           <p>Hace mucho tiempo atrás, el profeta de Dios instó como lo hacemos hoy:</p>
         </div>
@@ -31,7 +31,7 @@
             <p>Jeremías 6:16</p>
           </figcaption>
         </figure>
-        <p class="mt-4 text-center text-orange-900">Necesitamos recordar y ser reafirmados en que las <em>“sendas antiguas”</em> — todavía son <strong>nuevas</strong>.</p>
+        <p class="mt-4 px-6 lg:px-32 text-center text-orange-900">Necesitamos recordar y ser reafirmados en que las <em>“sendas antiguas”</em> — todavía son <strong>nuevas</strong>.</p>
       </div>
     </main>
     <Separator fill="#FFFAF0" opacity="1" />

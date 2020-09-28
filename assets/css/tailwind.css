@@ -68,16 +68,9 @@ html.fonts-regular-loaded h6 {
   @apply font-montbold;
 }
 
+/* Lazy loading image animation */
 .lazyloaded {
   animation: fadeIn 1s ease-in-out;
-}
-
-.prose ul>li:before {
-  background-color: theme('colors.orange.900');
-}
-
-.prose ol>li::before {
-  color: theme('colors.orange.900');
 }
 
 @keyframes fadeIn {
@@ -88,4 +81,21 @@ html.fonts-regular-loaded h6 {
   to {
     opacity: 1;
   }
+}
+
+/* Tailwind typografy */
+.prose ul>li:before {
+  background-color: theme('colors.orange.900');
+}
+
+.prose ol>li::before {
+  color: theme('colors.orange.900');
+}
+
+.prose thead {
+  border-bottom-color: theme('colors.orange.900');
+}
+
+.prose tbody tr {
+  border-bottom-color: theme('colors.orange.900');
 }
