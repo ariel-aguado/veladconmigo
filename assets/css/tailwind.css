@@ -70,7 +70,7 @@ html.fonts-regular-loaded h6 {
 
 /* Lazy loading image animation */
 .lazyloaded {
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn .5s linear;
 }
 
 @keyframes fadeIn {

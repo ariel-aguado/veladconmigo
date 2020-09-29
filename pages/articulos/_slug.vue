@@ -18,7 +18,7 @@
           <!-- Content -->
           <div class="article-page__content px-6 mt-3 md:mt-0 md:px-0">
             <img
-              class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-600 to-orange-400"
+              class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-300 to-orange-100"
               :data-srcset="`${article.imagen.formats.medium.url} 750w, ${article.imagen.url} 1000w`"
               src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
               :alt="article.titulo"
