@@ -15,26 +15,39 @@ export default {
   head: {
     title: 'VeladConmigo',
     htmlAttrs: {
-      lang: 'es'
+      lang: 'es',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       ...createSEOMeta({
-        description: "Descubre las verdades de la palabra de Dios con un enfoque bíblico e inspirado en un lema: Hablar donde la Biblia habla y callar donde la Biblia calla.",
+        description:
+          'Descubre las verdades de la palabra de Dios con un enfoque bíblico e inspirado en un lema: Hablar donde la Biblia habla y callar donde la Biblia calla.',
       }),
       { name: 'msapplication-TileColor', content: '#da532c' },
-      { name: 'theme-color', content: '#ffffff' }
+      { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
       {
-        rel: 'preconnect', href: 'https://strapi-velad-conmigo.herokuapp.com/',
-        rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png',
-        rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png',
-        rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png',
-        rel: 'manifest', href: '/site.webmanifest',
-        rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5',
-      }
+        rel: 'preconnect',
+        href: 'https://strapi-velad-conmigo.herokuapp.com',
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+        rel: 'manifest',
+        href: '/site.webmanifest',
+        rel: 'mask-icon',
+        href: '/safari-pinned-tab.svg',
+        color: '#5bbad5',
+      },
       // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
   },
@@ -42,8 +55,8 @@ export default {
    ** Customize the progress-bar color
    */
   loading: {
-    color: "#ED8936",
-    height: "4px"
+    color: '#ED8936',
+    height: '4px',
   },
   /*
    ** Global CSS
@@ -56,7 +69,7 @@ export default {
   plugins: [
     '~/plugins/lazysizes.client.js',
     '~/plugins/vue-placeholders.js',
-    '~/plugins/vue-observe-visibility.client.js'
+    '~/plugins/vue-observe-visibility.client.js',
   ],
   /*
    ** Auto import components
@@ -80,7 +93,16 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/cloudinary',
     '@nuxtjs/markdownit',
+    '@nuxtjs/pwa',
   ],
+  workbox: {
+    runtimeCaching: [
+      {
+        urlPattern: 'https://strapi-velad-conmigo.herokuapp.com/.*',
+        handler: 'staleWhileRevalidate'
+      },
+    ],
+  },
   markdownit: { html: true, injected: true },
   cloudinary: {
     cloudName: 'dkdfpm2og',
@@ -88,11 +110,15 @@ export default {
   },
   strapi: {
     // Options
-    url: 'https://strapi-velad-conmigo.herokuapp.com/'
+    url: 'https://strapi-velad-conmigo.herokuapp.com/',
   },
   axios: {},
   styleResources: {
-    scss: ['~/assets/css/tokens.scss', '~/assets/css/breakpoints.scss', '~/assets/css/mixins.scss'],
+    scss: [
+      '~/assets/css/tokens.scss',
+      '~/assets/css/breakpoints.scss',
+      '~/assets/css/mixins.scss',
+    ],
   },
   /*
    ** Build configuration
@@ -107,7 +133,7 @@ export default {
     },
   },
   generate: {
-    fallback: true
+    fallback: true,
   },
   publicRuntimeConfig: {
     hostName: process.env.HOST_NAME,
