@@ -24,6 +24,11 @@
 const qs = require('qs');
 
 export default {
+  head() {
+    return {
+      title: `${this.$route.params.slug} - VeladConmigo`,
+    }
+  },
   data() {
     return {
       articles: []

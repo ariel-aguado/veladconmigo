@@ -77,8 +77,19 @@
 
 <script>
 const qs = require('qs');
+import {
+  createSEOMeta
+} from "~/utils/seo";
 
 export default {
+  head() {
+    const { titulo: title, resumen: description } = this.article;
+
+    return {
+      title,
+      meta: createSEOMeta({ description }),
+    }
+  },
   data() {
     return {
       article: {},
