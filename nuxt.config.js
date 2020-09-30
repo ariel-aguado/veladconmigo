@@ -1,6 +1,9 @@
-import {
-  createSEOMeta
-} from "./utils/seo.js";
+import { createSEOMeta } from "./utils/seo.js";
+const dotenv = require('dotenv');
+
+dotenv.config({
+  path: './config.env',
+})
 
 export default {
   /*
@@ -97,7 +100,7 @@ export default {
     '@nuxtjs/sitemap',
   ],
   sitemap: {
-    hostname: process.env.hostName,
+    hostname: process.env.HOST_NAME,
     gzip: true,
   },
   workbox: {
@@ -139,8 +142,5 @@ export default {
   },
   generate: {
     fallback: true,
-  },
-  publicRuntimeConfig: {
-    hostName: process.env.HOST_NAME,
   },
 }

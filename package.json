@@ -17,6 +17,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/strapi": "^0.1.6",
     "@tailwindcss/typography": "^0.2.0",
+    "dotenv": "^8.2.0",
     "fontfaceobserver": "^2.1.0",
     "lazysizes": "^5.2.2",
     "nuxt": "^2.14.5",
