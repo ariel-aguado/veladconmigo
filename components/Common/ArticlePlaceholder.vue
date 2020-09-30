@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-wrap justify-center mt-10">
+  <div class="placeholder-article" :class="[articleGrid]">
+  <!-- <div class="flex flex-wrap justify-center mt-6"> -->
       <content-placeholders
         v-for="p in articlesPerPage"
         :key="`placeholder-${p}`"
@@ -20,35 +21,88 @@
 </template>
 
 <script>
+import { ArticleGrid } from '~/validators/Article';
+
 export default {
   props: {
     articlesPerPage: {
       type: Number,
       default: 9
-    }
+    },
+    grid: {
+      required: false,
+      type: String,
+      default: 'three',
+      validator: value => {
+        return Object.keys(ArticleGrid).includes(value);
+      }
+    },
+  },
+  computed: {
+    articleGrid() {
+      return ArticleGrid[this.grid];
+    },
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.placeholder-article {
+  gap: 1.5rem;
+
+  &.one,
+  &.two {
+    grid-template-columns: repeat(auto-fit, minmax(0, 23rem));
+  }
+
+  &.flexible {
+
+    & > div:nth-of-type(1) {
+      grid-area: first;
+    }
+    & > div:nth-of-type(2) {
+      grid-area: second;
+    }
+    & > div:nth-of-type(3) {
+      grid-area: third;
+    }
+
+    grid-template-areas:
+    "first"
+    "second"
+    "third";
+
+    @include respond(md) {
+      grid-template-areas:
+      "first second"
+      "third third";
+    }
+
+    @include respond(xl) {
+      grid-template-areas:
+      "first second third";
+    }
+  }
+}
+
 .content-placeholder-article {
-  margin: 20px;
+  // margin: 20px;
   background-color: white;
   border-radius: 20px;
   overflow: hidden;
   padding: 3px;
 
-  flex: 1 1 16rem;
+  // flex: 1 1 16rem;
 
-  @include respond(md) {
-    flex: 0 1 16rem;
-  }
+  // @include respond(md) {
+  //   flex: 0 1 16rem;
+  // }
 
   &__image {
     border-radius: 20px;
     height: 200px;
 
-    @include respond(md) {
+    @include respond(xl) {
       height: 282px;
     }
   }

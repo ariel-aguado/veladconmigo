@@ -83,7 +83,7 @@ export default {
   transition-timing-function: linear;
 
   // flex: 1 1 16rem;
-  margin: 20px;
+  // margin: 20px;
 
   // @include respond(md) {
   //   flex: 0 1 16rem;
@@ -122,7 +122,7 @@ export default {
       height: 200px;
     }
 
-    @include respond(md) {
+    @include respond(xl) {
       height: 282px;
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <ul class="tags inline-block">
-    <li class="tag text-sm inline-block relative font-bold text-orange-500 hover:text-orange-900 transition-colors duration-200 ease-linear" v-for="(tag, index) in sortedTags" :key="`tag${index + 1}`"><nuxt-link :to="`/temas/${tag}`">{{ tag }}</nuxt-link></li>
+    <li class="tag inline-block relative font-bold text-orange-600 hover:text-orange-900 transition-colors duration-200 ease-linear" v-for="(tag, index) in sortedTags" :key="`tag${index + 1}`"><nuxt-link :to="`/temas/${tag}`">{{ tag }}</nuxt-link></li>
   </ul>
 </template>
 
@@ -25,6 +25,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tag {
+  font-size: 16px;
+
+  @include respond(md) {
+    font-size: 18px;
+  }
+}
+
 .tag:not(:last-child) {
   padding-right: 20px;
 }

@@ -1,9 +1,9 @@
 <template>
-  <div class="article-page pt-8 pb-16 md:px-10 bg-gradient-to-tr from-orange-200 to-white" style="margin-top: 85px;">
+  <div class="article-page pt-8 pb-16 bg-gradient-to-tr from-orange-200 to-white" style="margin-top: 85px;">
     <div class="md:container md:mx-auto">
 
       <template v-if="$fetchState.pending">
-        <p class="text-center text-orange-500 text-md py-6 px-4">
+        <p class="font-montbold text-3xl text-orange-900 text-md py-6 pl-6">
           Cargando el artículo...
         </p>
       </template>
@@ -12,7 +12,7 @@
         <!-- <inline-error-block :error="$fetchState.error" /> -->
       </template>
       <template v-else>
-        <div class="article-page__box">
+        <div class="article-page__box px-0 md:px-6">
           <!-- Title -->
           <h1 class="article-page__title text-3xl text-orange-900 mt-6 px-6 md:px-0">{{article.titulo}}</h1>
           <!-- Content -->
@@ -164,12 +164,12 @@ export default {
     "author"
     "content"
     "latest";
-    grid-gap: 2rem;
+    grid-gap: 2.5rem;
 
-    @include respond(md) {
+    @include respond(lg) {
       grid-template-columns: 1fr 320px;
       grid-template-areas:
-      "title ."
+      "title title"
       "content author"
       "content latest";
     }

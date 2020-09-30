@@ -8,7 +8,8 @@
       <Article v-for="article in articles"
         :key="article._id"
         :articulo="article"
-        :one="articles.length == 1" />
+        :one="articles.length == 1"
+        :side="side" />
     </div>
   </div>
 </template>
@@ -62,6 +63,8 @@ export default {
 
 <style lang="scss" scoped>
 .article-list {
+  gap: 1.5rem;
+
   &.one,
   &.two {
     grid-template-columns: repeat(auto-fit, minmax(0, 23rem));
@@ -69,13 +72,13 @@ export default {
 
   &.side {
     grid-template-columns: 1fr;
-    row-gap: 2rem;
+    // row-gap: 2rem;
 
     & > a {
       margin: 0;
     }
 
-    @include respond(md) {
+    @include respond(lg) {
       grid-template-columns: minmax(0, 23rem);
     }
   }
@@ -103,7 +106,7 @@ export default {
       "third third";
     }
 
-    @include respond(lg) {
+    @include respond(xl) {
       grid-template-areas:
       "first second third";
     }

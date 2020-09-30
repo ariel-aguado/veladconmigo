@@ -94,12 +94,17 @@ export default {
     '@nuxtjs/cloudinary',
     '@nuxtjs/markdownit',
     '@nuxtjs/pwa',
+    '@nuxtjs/sitemap',
   ],
+  sitemap: {
+    hostname: process.env.hostName,
+    gzip: true,
+  },
   workbox: {
     runtimeCaching: [
       {
         urlPattern: 'https://strapi-velad-conmigo.herokuapp.com/.*',
-        handler: 'staleWhileRevalidate'
+        handler: 'staleWhileRevalidate',
       },
     ],
   },

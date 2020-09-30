@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden">
-    <main class="bg-white py-16 px-6">
+    <main class="bg-white py-16">
       <div class="container mx-auto">
         <h2 class="text-2xl text-orange-900 text-center uppercase">Vivimos en tiempos cambiantes</h2>
         <div class="text-center text-orange-900 mt-8 px-4 lg:px-30">
@@ -16,7 +16,7 @@
           md:py-6
           md:pl-24
           md:pr-16
-          md:mx-3
+          mx-6
           my-6
           overflow-hidden
           relative

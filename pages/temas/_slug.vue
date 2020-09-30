@@ -7,14 +7,14 @@
         <content-placeholders>
           <content-placeholders-text :lines="1" class="flex justify-center w-20 mx-auto mt-2"/>
         </content-placeholders>
-        <ArticlePlaceholder />
+        <ArticlePlaceholder class="mt-6 px-6" :articlesPerPage="9" grid="three-flex" />
       </template>
       <template v-else-if="$fetchState.error">
         <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
         <!-- <inline-error-block :error="$fetchState.error" /> -->
       </template>
       <template v-else>
-        <Articles :articles="articles" :grid="gridCount" />
+        <Articles class="px-6" :articles="articles" :grid="gridCount" />
       </template>
     </div>
   </div>
@@ -26,7 +26,7 @@ const qs = require('qs');
 export default {
   head() {
     return {
-      title: `${this.$route.params.slug} - VeladConmigo`,
+      title: `${this.capitalizeTitle(this.$route.params.slug)} - VeladConmigo`,
     }
   },
   data() {
@@ -54,6 +54,12 @@ export default {
     articlesCountText() {
       const count = this.articles.length;
       return count == 1 ? `${count} artículo` : `${count} artículos`;
+    }
+  },
+  methods: {
+    capitalizeTitle(title) {
+      if (typeof title !== 'string') return '';
+      return title.charAt(0).toUpperCase() + title.slice(1);
     }
   }
 }
