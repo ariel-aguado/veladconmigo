@@ -40,7 +40,7 @@
             <div v-html="$md.render(article.contenido)" class="prose mt-8 text-orange-900"></div>
 
             <button v-if="gallery.length" class="mt-8 mx-auto lg:mx-0 px-4 py-2 font-montbold text-md shadow-md text-white bg-orange-600 cursor-pointer transition duration-300 rounded-lg flex justify-center items-center hover:bg-orange-500 hover:shadow-lg"
-              @click="lgIndex = 1">
+              @click="lgIndex = 0">
               <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
               <span>Ver imágenes</span>
             </button>
@@ -125,7 +125,7 @@ export default {
     const articles = await this.$strapi.find('articulos', query);
     this.article = articles[0];
 
-    if (this.article && this.article.galeria) this.gallery = this.article.galeria.map(g => g.formats.small.url);
+    if (this.article && this.article.galeria) this.gallery = this.sortedGallery(this.article.galeria.map(g => g.formats.small.url));
 
     // this.recentArticles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${this.article._id}&_sort=createdAt:DESC&_limit=3`);
 
@@ -165,7 +165,14 @@ export default {
       return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
     }
   },
-  mounted() {
+  methods: {
+    sortedGallery(gallery) {
+      return gallery.sort(function (a, b) {
+        if (a.toLowerCase() < b.toLowerCase()) return -1;
+        else if (a > b) return 1;
+        return 0;
+      });
+    }
   }
 }
 </script>
