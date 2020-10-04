@@ -73,6 +73,7 @@ export default {
     '~/plugins/lazysizes.client.js',
     '~/plugins/vue-placeholders.js',
     '~/plugins/vue-observe-visibility.client.js',
+    "~/plugins/lightGallery.client.js",
   ],
   /*
    ** Auto import components

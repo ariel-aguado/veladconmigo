@@ -24,6 +24,7 @@
     "qs": "^6.9.4",
     "reading-time": "^1.2.0",
     "vue-content-placeholders": "^0.2.1",
+    "vue-light-gallery": "^1.0.1",
     "vue-observe-visibility": "^0.4.6"
   },
   "devDependencies": {

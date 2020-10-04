@@ -36,7 +36,14 @@
               <p class="">{{ article.resumen }}</p>
             </blockquote>
 
+            <!-- Text -->
             <div v-html="$md.render(article.contenido)" class="prose mt-8 text-orange-900"></div>
+
+            <button v-if="gallery.length" class="mt-8 mx-auto lg:mx-0 px-4 py-2 font-montbold text-md shadow-md text-white bg-orange-600 cursor-pointer transition duration-300 rounded-lg flex justify-center items-center hover:bg-orange-500 hover:shadow-lg"
+              @click="lgIndex = 1">
+              <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              <span>Ver imágenes</span>
+            </button>
           </div>
 
           <div class="article-page__author">
@@ -68,6 +75,15 @@
                 :one="recentArticles.length == 1" />
             </div> -->
           </div>
+
+          <!-- Light Gallery -->
+          <LightGallery
+            v-if="gallery.length"
+            :images="gallery"
+            :index="lgIndex"
+            :disable-scroll="true"
+            @close="lgIndex = null"
+          />
         </div>
       </template>
 
@@ -77,9 +93,7 @@
 
 <script>
 const qs = require('qs');
-import {
-  createSEOMeta
-} from "~/utils/seo";
+import { createSEOMeta } from "~/utils/seo";
 
 export default {
   head() {
@@ -94,6 +108,8 @@ export default {
     return {
       article: {},
       recentArticles: [],
+      gallery: [],
+      lgIndex: null,
       cloudinary: "https://res.cloudinary.com/dkdfpm2og/image/upload/"
     }
   },
@@ -108,6 +124,8 @@ export default {
     // const articles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?slug=${slug}`);
     const articles = await this.$strapi.find('articulos', query);
     this.article = articles[0];
+
+    if (this.article && this.article.galeria) this.gallery = this.article.galeria.map(g => g.formats.small.url);
 
     // this.recentArticles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${this.article._id}&_sort=createdAt:DESC&_limit=3`);
 
@@ -145,7 +163,9 @@ export default {
     gridCount() {
       const articles = this.recentArticles.length;
       return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
-    },
+    }
+  },
+  mounted() {
   }
 }
 </script>
@@ -249,6 +269,17 @@ export default {
     grid-area: latest;
     border-radius: 30px;
   }
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  position: relative;
+  min-width: 100%;
 }
 </style>
 
