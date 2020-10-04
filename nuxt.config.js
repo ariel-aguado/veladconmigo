@@ -58,6 +58,12 @@ export default async () => {
         },
         // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ],
+      script: [{
+        hid: "thesemetrics",
+        src: "https://unpkg.com/thesemetrics@latest",
+        async: true,
+        type: "text/javascript",
+      }, ],
     },
     /*
     ** Customize the progress-bar color
