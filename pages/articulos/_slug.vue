@@ -97,11 +97,14 @@ import { createSEOMeta } from "~/utils/seo";
 
 export default {
   head() {
+    const url = `articulos/${this.$route.params.slug}`;
     const { titulo: title, resumen: description } = this.article;
+    console.log('this.article :>> ', this.article);
+    const image = this.article && this.article.imagen ? this.article.imagen.formats.small.url : "";
 
     return {
       title,
-      meta: createSEOMeta({ description }),
+      meta: createSEOMeta({ title, description, image, url }),
     }
   },
   data() {
