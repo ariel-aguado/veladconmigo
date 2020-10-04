@@ -1,6 +1,6 @@
 <template>
   <ul class="tags inline-block">
-    <li class="tag inline-block relative font-bold text-orange-600 hover:text-orange-900 transition-colors duration-200 ease-linear" v-for="(tag, index) in sortedTags" :key="`tag${index + 1}`"><nuxt-link :to="`/temas/${tag}`">{{ tag }}</nuxt-link></li>
+    <li class="tag inline-block relative text-orange-900 hover:text-orange-600 transition-colors duration-200 ease-linear" v-for="(tag, index) in sortedTags" :key="`tag${index + 1}`"><nuxt-link :to="`/temas/${tag}`">{{ tag }}</nuxt-link></li>
   </ul>
 </template>
 
