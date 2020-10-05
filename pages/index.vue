@@ -8,16 +8,14 @@
         <h2 class="px-6 text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
 
         <template v-if="$fetchState.pending && !articles.length">
-          <ArticlePlaceholder class="mt-10 px-6" :articlesPerPage="2" grid="two" />
-          <ArticlePlaceholder class="mt-8 px-6" :articlesPerPage="3" grid="three" />
+          <ArticlePlaceholder class="mt-10 px-6" :articlesPerPage="6" grid="three" />
         </template>
         <template v-else-if="$fetchState.error">
           <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
           <!-- <inline-error-block :error="$fetchState.error" /> -->
         </template>
         <template v-else>
-          <Articles class="mt-10 px-6" :articles="articles.slice(0,2)" grid="two" :count="false" :medium="true" />
-          <Articles class="mt-8 px-6" :articles="articles.slice(2,5)" grid="three" :count="false" :noArticlesTop="true" />
+          <Articles class="mt-10 px-6" :articles="articles" grid="three" :count="false" />
         </template>
 
         <div class="last-articles__link-to-all flex justify-center mt-10 text-orange-900">

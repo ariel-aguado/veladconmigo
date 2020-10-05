@@ -4,13 +4,12 @@
     <div v-if="tags.length" class="text-center mt-5 px-5">
       <Tags :tags="tags" />
     </div>
-    <div class="article-list" :class="[articleGrid, side ? 'side' : '', noArticlesTop ? 'mt-0' : 'mt-8', medium ? 'medium' : '']">
+    <div class="article-list" :class="[articleGrid, side ? 'side' : '', noArticlesTop ? 'mt-0' : 'mt-8']">
       <Article v-for="article in articles"
         :key="article._id"
         :articulo="article"
         :one="articles.length == 1"
-        :side="side"
-        :medium="medium" />
+        :side="side" />
     </div>
   </div>
 </template>
@@ -48,11 +47,7 @@ export default {
     noArticlesTop: {
       type: Boolean,
       default: false
-    },
-    medium: {
-      type: Boolean,
-      default: false
-    },
+    }
   },
   computed: {
     articleGrid() {
@@ -75,10 +70,6 @@ export default {
     grid-template-columns: repeat(auto-fit, minmax(0, 18rem));
     justify-content: center;
     // grid-template-columns: repeat(auto-fit, minmax(0, 23rem));
-  }
-
-  &.medium {
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   }
 
   &.side {

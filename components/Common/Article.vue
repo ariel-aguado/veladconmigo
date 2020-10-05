@@ -8,7 +8,7 @@
         class="shadow-lg bg-gradient-to-r from-orange-300 to-orange-100">
         <source
           media="(min-width: 768px)"
-          :data-srcset="medium ? articulo.imagen.formats.medium.url : articulo.imagen.formats.small.url">
+          :data-srcset="articulo.imagen.formats.small.url">
         <source
           media="(min-width: 575px)"
           :data-srcset="articulo.imagen.formats.medium.url">
@@ -58,10 +58,6 @@ export default {
       default: false
     },
     one: {
-      type: Boolean,
-      default: false
-    },
-    medium: {
       type: Boolean,
       default: false
     }

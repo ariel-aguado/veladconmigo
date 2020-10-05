@@ -52,37 +52,12 @@ export default {
 
   &.one,
   &.two {
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(0, 18rem));
+
+    @include respond(sm) {
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
   }
-
-  // &.flexible {
-
-  //   & > div:nth-of-type(1) {
-  //     grid-area: first;
-  //   }
-  //   & > div:nth-of-type(2) {
-  //     grid-area: second;
-  //   }
-  //   & > div:nth-of-type(3) {
-  //     grid-area: third;
-  //   }
-
-  //   grid-template-areas:
-  //   "first"
-  //   "second"
-  //   "third";
-
-  //   @include respond(md) {
-  //     grid-template-areas:
-  //     "first second"
-  //     "third third";
-  //   }
-
-  //   @include respond(xl) {
-  //     grid-template-areas:
-  //     "first second third";
-  //   }
-  // }
 }
 
 .content-placeholder-article {
