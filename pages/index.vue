@@ -16,7 +16,7 @@
           <!-- <inline-error-block :error="$fetchState.error" /> -->
         </template>
         <template v-else>
-          <Articles class="mt-10 px-6" :articles="articles.slice(0,2)" grid="two" :count="false" :medium="true"/>
+          <Articles class="mt-10 px-6" :articles="articles.slice(0,2)" grid="two" :count="false" :medium="true" />
           <Articles class="mt-8 px-6" :articles="articles.slice(2,5)" grid="three" :count="false" :noArticlesTop="true" />
         </template>
 

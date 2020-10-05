@@ -26,11 +26,10 @@
                 media="(min-width: 640px)"
                 :data-srcset="article.imagen.formats.medium.url">
               <img
-                class="lazyload object-cover w-full h-full"
+                class="article-page__img lazyload object-cover w-full h-full"
                 :data-srcset="article.imagen.formats.small.url"
                 src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-                :alt="article.titulo"
-                style="height: auto; max-height: 563px; border-radius: 30px;">
+                :alt="article.titulo">
             </picture>
             <!-- <img
               :srcset="`${article.imagen.formats.small.url} 500w, ${article.imagen.formats.medium.url} 750w, ${article.imagen.url} 1000w`"
@@ -145,8 +144,15 @@ export default {
     this.article = articles[0];
 
     if (this.article && this.article.galeria)
-      this.gallery = this.sortedGallery(this.article.galeria.map(g => g.url))
-      .map((image, index) => ({title: `${index + 1}`, url: image}));
+      // this.gallery = this.sortedGallery(this.article.galeria.map(g => g.url))
+      // .map((image, index) => ({title: `${index + 1}`, url: image}));
+      this.gallery = this.article.galeria.map((g, index) => ({name: g.name.replace(g.ext, ''), url: g.url}))
+      .sort(function (a, b) {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+        else if (a > b) return 1;
+        return 0;
+      })
+      .map((g, index) => ({title: index + 1, url: g.url}));
 
     // this.recentArticles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${this.article._id}&_sort=createdAt:DESC&_limit=3`);
 
@@ -251,6 +257,20 @@ export default {
       border-width: 0px 6px 6px 0px;
       margin-right: -30px !important;
       margin-top: 0px !important;
+    }
+  }
+
+  &__img {
+    height: auto;
+    border-radius: 30px;
+    max-height: 390px;
+
+    @include respond(lg) {
+      max-height: 308px;
+    }
+
+    @include respond(xl) {
+      max-height: 468px;
     }
   }
 

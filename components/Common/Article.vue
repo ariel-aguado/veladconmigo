@@ -17,8 +17,7 @@
           :class="{'small': side}"
           :data-srcset="articulo.imagen.formats.small.url"
           src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-          :alt="articulo.titulo"
-          style="height: auto; max-height: 563px; border-radius: 30px;">
+          :alt="articulo.titulo">
       </picture>
       <!-- <img
         class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-300 to-orange-100"
@@ -131,20 +130,20 @@ export default {
   }
 
   &__img {
-    height: 200px;
+    height: 210px;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     margin-top: -2px;
 
-    &.small {
-      height: 200px;
-    }
+    // &.small {
+    //   height: 200px;
+    // }
 
-    @include respond(xl) {
-      height: 282px;
-    }
+    // @include respond(xl) {
+    //   height: 282px;
+    // }
   }
 }
 </style>

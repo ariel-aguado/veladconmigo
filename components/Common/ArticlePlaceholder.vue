@@ -52,37 +52,37 @@ export default {
 
   &.one,
   &.two {
-    grid-template-columns: repeat(auto-fit, minmax(0, 23rem));
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   }
 
-  &.flexible {
+  // &.flexible {
 
-    & > div:nth-of-type(1) {
-      grid-area: first;
-    }
-    & > div:nth-of-type(2) {
-      grid-area: second;
-    }
-    & > div:nth-of-type(3) {
-      grid-area: third;
-    }
+  //   & > div:nth-of-type(1) {
+  //     grid-area: first;
+  //   }
+  //   & > div:nth-of-type(2) {
+  //     grid-area: second;
+  //   }
+  //   & > div:nth-of-type(3) {
+  //     grid-area: third;
+  //   }
 
-    grid-template-areas:
-    "first"
-    "second"
-    "third";
+  //   grid-template-areas:
+  //   "first"
+  //   "second"
+  //   "third";
 
-    @include respond(md) {
-      grid-template-areas:
-      "first second"
-      "third third";
-    }
+  //   @include respond(md) {
+  //     grid-template-areas:
+  //     "first second"
+  //     "third third";
+  //   }
 
-    @include respond(xl) {
-      grid-template-areas:
-      "first second third";
-    }
-  }
+  //   @include respond(xl) {
+  //     grid-template-areas:
+  //     "first second third";
+  //   }
+  // }
 }
 
 .content-placeholder-article {
@@ -100,11 +100,11 @@ export default {
 
   &__image {
     border-radius: 20px;
-    height: 200px;
+    height: 210px;
 
-    @include respond(xl) {
-      height: 282px;
-    }
+    // @include respond(xl) {
+    //   height: 282px;
+    // }
   }
 
   &__cover,
