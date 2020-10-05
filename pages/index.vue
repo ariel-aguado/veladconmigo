@@ -9,15 +9,15 @@
 
         <template v-if="$fetchState.pending && !articles.length">
           <ArticlePlaceholder class="mt-10 px-6" :articlesPerPage="2" grid="two" />
-          <ArticlePlaceholder class="mt-8 px-6" :articlesPerPage="3" grid="three-flex" />
+          <ArticlePlaceholder class="mt-8 px-6" :articlesPerPage="3" grid="three" />
         </template>
         <template v-else-if="$fetchState.error">
           <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
           <!-- <inline-error-block :error="$fetchState.error" /> -->
         </template>
         <template v-else>
-          <Articles class="mt-10 px-6" :articles="articles.slice(0,2)" grid="two" :count="false" />
-          <Articles class="mt-8 px-6" :articles="articles.slice(2,5)" grid="three-flex" :count="false" :noArticlesTop="true" />
+          <Articles class="mt-10 px-6" :articles="articles.slice(0,2)" grid="two" :count="false" :medium="true"/>
+          <Articles class="mt-8 px-6" :articles="articles.slice(2,5)" grid="three" :count="false" :noArticlesTop="true" />
         </template>
 
         <div class="last-articles__link-to-all flex justify-center mt-10 text-orange-900">

@@ -4,13 +4,29 @@
     :class="{'no-margin': side, 'only-one': one}"
     :to="`/articulos/${articulo.slug}`">
     <div>
-      <img
+      <picture
+        class="shadow-lg bg-gradient-to-r from-orange-300 to-orange-100">
+        <source
+          media="(min-width: 768px)"
+          :data-srcset="medium ? articulo.imagen.formats.medium.url : articulo.imagen.formats.small.url">
+        <source
+          media="(min-width: 575px)"
+          :data-srcset="articulo.imagen.formats.medium.url">
+        <img
+          class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-300 to-orange-100"
+          :class="{'small': side}"
+          :data-srcset="articulo.imagen.formats.small.url"
+          src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+          :alt="articulo.titulo"
+          style="height: auto; max-height: 563px; border-radius: 30px;">
+      </picture>
+      <!-- <img
         class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-300 to-orange-100"
         :class="{'small': side}"
         :data-srcset="`${articulo.imagen.formats.small.url} 500w, ${articulo.imagen.formats.medium.url} 750w`"
         src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
         :alt="articulo.titulo"
-        sizes="(max-width: 500px) 500px, 750px">
+        sizes="500px, (min-width: 575px) 750px, (min-width: 1280px) 500px"> -->
       <!-- <img
         class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-600 to-orange-400"
         :class="{'small': side}"
@@ -43,6 +59,10 @@ export default {
       default: false
     },
     one: {
+      type: Boolean,
+      default: false
+    },
+    medium: {
       type: Boolean,
       default: false
     }

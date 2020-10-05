@@ -7,7 +7,7 @@
         <content-placeholders>
           <content-placeholders-text :lines="1" class="flex justify-center w-20 mx-auto mt-2"/>
         </content-placeholders>
-        <ArticlePlaceholder class="mt-6 px-6" :articlesPerPage="9" grid="three-flex" />
+        <ArticlePlaceholder class="mt-6 px-6" :articlesPerPage="9" grid="three" />
       </template>
       <template v-else-if="$fetchState.error">
         <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />

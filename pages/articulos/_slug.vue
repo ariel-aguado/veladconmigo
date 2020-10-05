@@ -17,12 +17,28 @@
           <h1 class="article-page__title text-3xl text-orange-900 mt-6 px-6 md:px-0">{{article.titulo}}</h1>
           <!-- Content -->
           <div class="article-page__content px-6 mt-3 md:mt-0 md:px-0">
-            <img
-              class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-300 to-orange-100"
-              :data-srcset="`${article.imagen.formats.medium.url} 750w, ${article.imagen.url} 1000w`"
-              src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+            <picture
+              class="shadow-lg bg-gradient-to-r from-orange-300 to-orange-100">
+              <source
+                media="(min-width: 1280px)"
+                :data-srcset="article.imagen.url">
+              <source
+                media="(min-width: 640px)"
+                :data-srcset="article.imagen.formats.medium.url">
+              <img
+                class="lazyload object-cover w-full h-full"
+                :data-srcset="article.imagen.formats.small.url"
+                src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+                :alt="article.titulo"
+                style="height: auto; max-height: 563px; border-radius: 30px;">
+            </picture>
+            <!-- <img
+              :srcset="`${article.imagen.formats.small.url} 500w, ${article.imagen.formats.medium.url} 750w, ${article.imagen.url} 1000w`"
+              sizes="(max-width: 1023px) 69vw, (max-width: 767px) 92vw, (max-width: 640px) 91vw, (max-width: 560px) 90vw, 830px"
+              class="object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-300 to-orange-100"
               :alt="article.titulo"
-              sizes="(max-width: 750px) 750px, 1000px">
+              src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+              style="height: auto; max-height: 563px; border-radius: 30px;"> -->
             <!-- <img
               class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-600 to-orange-400"
               :data-srcset="`${cloudinary}medium_${article.imagen.hash}.jpg 750w, ${cloudinary}${article.imagen.hash}.jpg 1000w`"
@@ -128,7 +144,9 @@ export default {
     const articles = await this.$strapi.find('articulos', query);
     this.article = articles[0];
 
-    if (this.article && this.article.galeria) this.gallery = this.sortedGallery(this.article.galeria.map(g => g.formats.small.url));
+    if (this.article && this.article.galeria)
+      this.gallery = this.sortedGallery(this.article.galeria.map(g => g.url))
+      .map((image, index) => ({title: `${index + 1}`, url: image}));
 
     // this.recentArticles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${this.article._id}&_sort=createdAt:DESC&_limit=3`);
 
@@ -205,12 +223,6 @@ export default {
     }
   }
 
-  &__img {
-    max-width: 100%;
-    max-height: 563px;
-    border-radius: 30px;
-  }
-
   &__title {
     grid-area: title;
   }
@@ -279,17 +291,6 @@ export default {
     grid-area: latest;
     border-radius: 30px;
   }
-}
-
-.embla {
-  overflow: hidden;
-}
-.embla__container {
-  display: flex;
-}
-.embla__slide {
-  position: relative;
-  min-width: 100%;
 }
 </style>
 

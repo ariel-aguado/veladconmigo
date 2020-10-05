@@ -9,7 +9,8 @@
         :key="article._id"
         :articulo="article"
         :one="articles.length == 1"
-        :side="side" />
+        :side="side"
+        :medium="medium" />
     </div>
   </div>
 </template>
@@ -45,6 +46,10 @@ export default {
       default: true
     },
     noArticlesTop: {
+      type: Boolean,
+      default: false
+    },
+    medium: {
       type: Boolean,
       default: false
     }
@@ -83,33 +88,33 @@ export default {
     }
   }
 
-  &.flexible {
+  // &.flexible {
 
-    & > a:nth-of-type(1) {
-      grid-area: first;
-    }
-    & > a:nth-of-type(2) {
-      grid-area: second;
-    }
-    & > a:nth-of-type(3) {
-      grid-area: third;
-    }
+  //   & > a:nth-of-type(1) {
+  //     grid-area: first;
+  //   }
+  //   & > a:nth-of-type(2) {
+  //     grid-area: second;
+  //   }
+  //   & > a:nth-of-type(3) {
+  //     grid-area: third;
+  //   }
 
-    grid-template-areas:
-    "first"
-    "second"
-    "third";
+  //   grid-template-areas:
+  //   "first"
+  //   "second"
+  //   "third";
 
-    @include respond(md) {
-      grid-template-areas:
-      "first second"
-      "third third";
-    }
+  //   @include respond(md) {
+  //     grid-template-areas:
+  //     "first second"
+  //     "third third";
+  //   }
 
-    @include respond(xl) {
-      grid-template-areas:
-      "first second third";
-    }
-  }
+  //   @include respond(xl) {
+  //     grid-template-areas:
+  //     "first second third";
+  //   }
+  // }
 }
 </style>

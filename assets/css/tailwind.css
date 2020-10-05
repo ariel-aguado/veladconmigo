@@ -103,3 +103,16 @@ html.fonts-regular-loaded h6 {
 .prose tbody tr {
   border-bottom-color: theme('colors.orange.900');
 }
+
+/* Make more transparent the title section and smaller too */
+.light-gallery__text {
+  background: rgba(0, 0, 0, 0.5) !important;
+  font-size: 12px;
+  font-weight: 700;
+  bottom: 5px !important;
+  left: 5px;
+  width: 20px !important;
+  height: 20px !important;
+  padding: 0 !important;
+  border-radius: 50%;
+}

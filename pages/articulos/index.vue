@@ -8,14 +8,14 @@
           <content-placeholders-text :lines="1" class="flex justify-center w-20 mx-auto mt-2"/>
           <content-placeholders-text :lines="2" class="w-full flex flex-col items-center px-12 mt-6"/>
         </content-placeholders>
-        <ArticlePlaceholder class="mt-8 px-6" :articlesPerPage="articlesPerPage" grid="three-flex" />
+        <ArticlePlaceholder class="mt-8 px-6" :articlesPerPage="articlesPerPage" grid="three" />
       </template>
       <template v-else-if="$fetchState.error">
         <!-- <inline-error-block :error="$fetchState.error" /> -->
         <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
       </template>
       <template v-else>
-        <Articles class="px-6" :articles="articles" :tags="tags" grid="three-flex" />
+        <Articles class="px-6" :articles="articles" :tags="tags" grid="three" />
       </template>
 
       <!-- In case of pagination -->
