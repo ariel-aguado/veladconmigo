@@ -8,16 +8,19 @@
         class="shadow-lg bg-gradient-to-r from-orange-300 to-orange-100">
         <source
           media="(min-width: 768px)"
-          :data-srcset="articulo.imagen.formats.small.url">
+          :data-srcset="articulo.imagen.formats.small.url"
+          width="500" height="282">
         <source
           media="(min-width: 575px)"
-          :data-srcset="articulo.imagen.formats.medium.url">
+          :data-srcset="articulo.imagen.formats.medium.url"
+          width="750" height="422">
         <img
           class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-300 to-orange-100"
           :class="{'small': side}"
           :data-srcset="articulo.imagen.formats.small.url"
           src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-          :alt="articulo.titulo">
+          :alt="articulo.titulo"
+          width="500" height="282">
       </picture>
       <!-- <img
         class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-300 to-orange-100"

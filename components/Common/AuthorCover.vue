@@ -5,7 +5,8 @@
         :data-src="authorCover"
         src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
         :alt="authorName"
-        class="lazyload autor__photo bg-gradient-to-r from-orange-600 to-orange-400">
+        class="lazyload autor__photo bg-gradient-to-r from-orange-600 to-orange-400"
+        width="46" height="46">
       <div>
         <p class="text-sm font-bold text-orange-900">{{ authorName }}</p>
         <p v-if="createdAt" class="text-xs text-orange-900">{{ humanDate }}</p>

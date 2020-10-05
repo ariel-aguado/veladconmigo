@@ -21,15 +21,18 @@
               class="shadow-lg bg-gradient-to-r from-orange-300 to-orange-100">
               <source
                 media="(min-width: 1280px)"
-                :data-srcset="article.imagen.url">
+                :data-srcset="article.imagen.url"
+                width="1000" height="563">
               <source
                 media="(min-width: 640px)"
-                :data-srcset="article.imagen.formats.medium.url">
+                :data-srcset="article.imagen.formats.medium.url"
+                width="750" height="422">
               <img
                 class="article-page__img lazyload object-cover w-full h-full"
                 :data-srcset="article.imagen.formats.small.url"
                 src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-                :alt="article.titulo">
+                :alt="article.titulo"
+                width="500" height="282">
             </picture>
             <!-- <img
               :srcset="`${article.imagen.formats.small.url} 500w, ${article.imagen.formats.medium.url} 750w, ${article.imagen.url} 1000w`"
