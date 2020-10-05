@@ -1,5 +1,6 @@
 <template>
-  <div class="articles py-16 bg-gradient-to-tr from-orange-200 to-white" style="margin-top: 85px;">
+  <div class="articles py-16 bg-gradient-to-tr from-orange-200 to-white"
+    style="min-height: calc(100vh - 85px - 65px); margin-top: 85px;">
     <div class="container mx-auto relative z-10">
       <h1 class="text-2xl text-orange-900 text-center uppercase">{{ $route.params.slug }}</h1>
 
@@ -64,10 +65,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.articles {
-  // @include liquid;
-  min-height: calc(100vh - 85px - 65px);
-}
-</style>

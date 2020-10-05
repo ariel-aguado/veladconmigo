@@ -65,11 +65,26 @@ export default {
 .article-list {
   gap: 1.5rem;
 
-  &.one,
-  &.two {
-    grid-template-columns: repeat(auto-fit, minmax(0, 18rem));
+  &.one {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     justify-content: center;
-    // grid-template-columns: repeat(auto-fit, minmax(0, 23rem));
+
+    @include respond(md) {
+      grid-template-columns: repeat(auto-fit, minmax(0, 18rem));
+    }
+  }
+
+  &.two {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    justify-content: center;
+
+    @include respond(md) {
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+
+    @include respond(lg) {
+      grid-template-columns: repeat(auto-fit, minmax(0, 18rem));
+    }
   }
 
   &.side {

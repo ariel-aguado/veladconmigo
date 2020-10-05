@@ -1,5 +1,6 @@
 <template>
-  <div class="articles py-16 bg-gradient-to-tr from-orange-200 to-white" style="margin-top: 85px;">
+  <div class="articles py-16 bg-gradient-to-tr from-orange-200 to-white"
+    style="min-height: calc(100vh - 85px - 65px); margin-top: 85px;">
     <div class="container mx-auto relative z-10">
       <h1 class="text-2xl text-orange-900 text-center uppercase">Artículos</h1>
 
@@ -55,15 +56,8 @@ export default {
       { _where:{ publico: true }, _sort: 'createdAt:DESC' },
       { encode: false }
     );
-    // const query = qs.stringify(
-    //   { _where:{ publico: true }, _sort: 'createdAt:DESC', _start: this.startFrom, _limit: this.articlesPerPage },
-    //   { encode: false }
-    // );
 
     const articles = await this.$strapi.find('articulos', query);
-    console.log('articles count :>> ', articles.length);
-
-    // if (articles.length) this.startFrom += this.articlesPerPage;
 
     this.articles = this.articles.concat(articles);
     this.tags = [...new Set(this.articles.map(article => article.etiquetas.split(',').map(tag => tag.trim())).reduce((tags, tag) => tags.concat(tag)))];
@@ -79,33 +73,5 @@ export default {
       return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
     },
   }
-  // methods: {
-  //   lazyLoadArticles(isVisible) {
-  //     if (isVisible) {
-  //       if (this.currentPage < this.numPages) {
-  //         this.currentPage++;
-  //         this.$fetch();
-  //       }
-  //     }
-  //   }
-  // }
-  // activated() {
-  //   if (this.$fetchState.timestamp <= Date.now() - 60000) {
-  //     this.$fetch()
-  //   }
-  // }
-  // async asyncData({app, error}) {
-  //   const articles = await app.$axios.$get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC');
-  //   if (!articles) return error('No existen artículos.')
-  //   const tags = [...new Set(articles.map(article => article.etiquetas.split(',').map(tag => tag.trim())).reduce((tags, tag) => tags.concat(tag)))];
-  //   return { articles, tags };
-  // }
 }
 </script>
-
-<style lang="scss" scoped>
-.articles {
-  // @include liquid;
-  min-height: calc(100vh - 85px - 65px);
-}
-</style>

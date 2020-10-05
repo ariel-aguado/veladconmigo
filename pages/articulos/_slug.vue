@@ -34,19 +34,6 @@
                 :alt="article.titulo"
                 width="500" height="282">
             </picture>
-            <!-- <img
-              :srcset="`${article.imagen.formats.small.url} 500w, ${article.imagen.formats.medium.url} 750w, ${article.imagen.url} 1000w`"
-              sizes="(max-width: 1023px) 69vw, (max-width: 767px) 92vw, (max-width: 640px) 91vw, (max-width: 560px) 90vw, 830px"
-              class="object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-300 to-orange-100"
-              :alt="article.titulo"
-              src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-              style="height: auto; max-height: 563px; border-radius: 30px;"> -->
-            <!-- <img
-              class="lazyload article-page__img object-cover w-full h-full shadow-lg bg-gradient-to-r from-orange-600 to-orange-400"
-              :data-srcset="`${cloudinary}medium_${article.imagen.hash}.jpg 750w, ${cloudinary}${article.imagen.hash}.jpg 1000w`"
-              src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-              :alt="article.titulo"
-              sizes="(max-width: 750px) 750px, 1000px"> -->
 
             <!-- Summary -->
             <h2 class="text-2xl text-orange-900 mt-8 px-0" >Resumen</h2>
@@ -85,13 +72,6 @@
           <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0">
             <p class="font-montbold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
             <Articles :articles="recentArticles" :grid="gridCount" :side="true" :count="false" />
-            <!-- <div class="flex flex-wrap justify-center mt-8">
-              <Article v-for="article in recentArticles"
-                :key="article._id"
-                :articulo="article"
-                :side="true"
-                :one="recentArticles.length == 1" />
-            </div> -->
           </div>
 
           <!-- Light Gallery -->
@@ -142,13 +122,10 @@ export default {
       { encode: false }
     );
 
-    // const articles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?slug=${slug}`);
     const articles = await this.$strapi.find('articulos', query);
     this.article = articles[0];
 
     if (this.article && this.article.galeria)
-      // this.gallery = this.sortedGallery(this.article.galeria.map(g => g.url))
-      // .map((image, index) => ({title: `${index + 1}`, url: image}));
       this.gallery = this.article.galeria.map((g, index) => ({name: g.name.replace(g.ext, ''), url: g.url}))
       .sort(function (a, b) {
         if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
@@ -157,29 +134,14 @@ export default {
       })
       .map((g, index) => ({title: index + 1, url: g.url}));
 
-    // this.recentArticles = await this.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${this.article._id}&_sort=createdAt:DESC&_limit=3`);
-
     query = qs.stringify(
       { _where:[{ publico: true }, { '_id_ne': this.article._id }], _sort: 'createdAt:DESC', _limit: 3 },
       { encode: false }
     );
 
     this.recentArticles = await this.$strapi.find('articulos', query);
-
-    console.log('article :>> ', this.article);
-    console.log('recentArticles :>> ', this.recentArticles);
   },
   fetchOnServer: false,
-  // async asyncData({app, route, error}) {
-  //   // Get the slug from the route
-  //   const slug = route.params.slug;
-  //   const articles = await app.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?slug=${slug}`);
-  //   if (!articles) return error('No existen artículos.')
-  //   const article = articles[0];
-  //   const recentArticles = await app.$axios.$get(`https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_id_ne=${article._id}&_sort=createdAt:DESC&_limit=3`);
-  //   console.log('recentArticles :>> ', recentArticles);
-  //   return { article, recentArticles };
-  // },
   computed: {
     humanDate() {
       const options = { year: "numeric", month: "short", day: "numeric" }
@@ -191,17 +153,8 @@ export default {
       return stats.text.replace('read', 'de lectura');
     },
     gridCount() {
-      const articles = this.recentArticles.length;
-      return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
-    }
-  },
-  methods: {
-    sortedGallery(gallery) {
-      return gallery.sort(function (a, b) {
-        if (a.toLowerCase() < b.toLowerCase()) return -1;
-        else if (a > b) return 1;
-        return 0;
-      });
+      const recentArticles = this.recentArticles.length;
+      return recentArticles == 1 ? 'one' : recentArticles == 2 ? 'two' : 'three';
     }
   }
 }
@@ -209,7 +162,6 @@ export default {
 
 <style lang="scss" scoped>
 .article-page {
-  // @include lightLiquid;
   min-height: calc(100vh - 85px - 65px);
 
   &__box {
@@ -291,13 +243,6 @@ export default {
 
   &__author {
     grid-area: author;
-    // margin-left: -1.5rem;
-    // margin-right: -1.5rem;
-
-    // @include respond(md) {
-    //   margin-left: 0;
-    //   margin-right: 0;
-    // }
 
     &--details {
       border-radius: 30px;

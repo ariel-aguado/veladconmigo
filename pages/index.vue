@@ -60,17 +60,6 @@ export default {
 
 <style lang="scss" scoped>
 .last-articles {
-  // @include liquid;
-
-  // &::after {
-  //   background: none;
-  //   z-index: 1;
-  //   height: 1160px;
-
-  //   @include respond(md) {
-  //     background: linear-gradient(28deg,#fff,hsla(0,0%,100%,.95) 55%,hsla(0,0%,100%,.2));
-  //   }
-  // }
 
   &__link-to-all {
     a {
@@ -132,49 +121,6 @@ export default {
       span {
         border-color: theme('colors.orange.500');
       }
-    }
-  }
-}
-
-.content-placeholder-article {
-  // width: 16rem;
-  margin: 20px;
-  background-color: white;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 3px;
-
-  flex: 1 1 16rem;
-
-  @include respond(md) {
-    flex: 0 1 16rem;
-  }
-
-  &__image {
-    border-radius: 20px;
-    height: 200px;
-
-    @include respond(md) {
-      height: 282px;
-    }
-  }
-
-  &__cover,
-  &__arrow {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-  }
-
-  &__name-date {
-    width: 100%;
-    flex: 0 1 50%;
-    text-align: left;
-    margin-right: auto;
-    margin-left: 10px;
-
-    &.vue-content-placeholders-text .vue-content-placeholders-text__line {
-      margin-bottom: 0 !important;
     }
   }
 }
