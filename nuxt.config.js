@@ -32,31 +32,39 @@ export default async () => {
           image: process.env.HOST_NAME + "/icon.png",
           url: process.env.HOST_NAME
         }),
+        { name: 'author', content: 'Ariel Aguado' },
+        { name: 'robots', content: 'index, follow' },
         { name: 'msapplication-TileColor', content: '#da532c' },
         { name: 'theme-color', content: '#ffffff' },
       ],
       link: [
-        {
-          rel: 'preconnect',
-          href: 'https://strapi-velad-conmigo.herokuapp.com',
-          rel: 'apple-touch-icon',
-          sizes: '180x180',
-          href: '/apple-touch-icon.png',
-          rel: 'icon',
-          type: 'image/png',
-          sizes: '32x32',
-          href: '/favicon-32x32.png',
-          rel: 'icon',
-          type: 'image/png',
-          sizes: '16x16',
-          href: '/favicon-16x16.png',
-          rel: 'manifest',
-          href: '/site.webmanifest',
-          rel: 'mask-icon',
-          href: '/safari-pinned-tab.svg',
-          color: '#5bbad5',
-        },
-        // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'preconnect', href: 'https://strapi-velad-conmigo.herokuapp.com' },
+        { rel: 'preconnect', href: 'https://res.cloudinary.com' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
+        // {
+        //   rel: 'preconnect',
+        //   href: 'https://strapi-velad-conmigo.herokuapp.com',
+        //   rel: 'apple-touch-icon',
+        //   sizes: '180x180',
+        //   href: '/apple-touch-icon.png',
+        //   rel: 'icon',
+        //   type: 'image/png',
+        //   sizes: '32x32',
+        //   href: '/favicon-32x32.png',
+        //   rel: 'icon',
+        //   type: 'image/png',
+        //   sizes: '16x16',
+        //   href: '/favicon-16x16.png',
+        //   rel: 'manifest',
+        //   href: '/site.webmanifest',
+        //   rel: 'mask-icon',
+        //   href: '/safari-pinned-tab.svg',
+        //   color: '#5bbad5',
+        // },
       ],
     },
     /*
@@ -106,7 +114,9 @@ export default async () => {
       '@nuxtjs/sitemap',
     ],
     sitemap: {
+      path: '/sitemap.xml',
       hostname: process.env.HOST_NAME,
+      cacheTime: 1000 * 60 * 15,
       gzip: true,
       routes
     },
@@ -121,10 +131,10 @@ export default async () => {
     markdownit: { html: true, injected: true },
     cloudinary: {
       cloudName: 'dkdfpm2og',
-      // useComponent: true
+      useComponent: false,
+      secure: true,
     },
     strapi: {
-      // Options
       url: 'https://strapi-velad-conmigo.herokuapp.com/',
     },
     axios: {},
@@ -145,6 +155,12 @@ export default async () => {
           vue.transformAssetUrls.img = ['data-src', 'src']
           vue.transformAssetUrls.source = ['data-srcset', 'srcset']
         }
+      },
+    },
+    pwa: {
+      manifest: {
+        name: 'velad-conmigo.netlify.app',
+        short_name: 'velad-conmigo',
       },
     },
     generate: {

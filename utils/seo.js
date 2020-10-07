@@ -1,17 +1,17 @@
-export const createSEOMeta = (data) => [{
+export const createSEOMeta = (data) => [
+  {
     hid: 'og:title',
     property: 'og:title',
     content: data.title
   },
   {
+    property: 'og:site_name',
+    content: 'VeladConmigo'
+  },
+  {
     hid: 'description',
     name: 'description',
     content: data.description
-  },
-  {
-    hid: 'og:description',
-    property: 'og:description',
-    content: data.description,
   },
   {
     hid: 'og:image',
@@ -24,13 +24,15 @@ export const createSEOMeta = (data) => [{
     content: process.env.HOST_NAME + '/' + data.url,
   },
   {
-    hid: 'twitter:card',
-    name: 'twitter:card',
-    content: data.cardType || 'summary_large_image',
+    property: 'twitter:card',
+    content: 'summary_large_image'
+  },
+  {
+    property: 'twitter:handle',
+    content: 'velad-conmigo'
+  },
+  {
+    property: 'twitter:creator',
+    content: 'velad-conmigo'
   },
 ]
-// export const createSEOMeta = (data) => [{
-//   hid: 'description',
-//   name: 'description',
-//   content: data.description
-// }, ]
