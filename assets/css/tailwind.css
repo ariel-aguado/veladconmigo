@@ -63,12 +63,12 @@ html.fonts-regular-loaded body {
   @apply font-body;
 }
 
-html.fonts-regular-loaded h1,
-html.fonts-regular-loaded h2,
-html.fonts-regular-loaded h3,
-html.fonts-regular-loaded h4,
-html.fonts-regular-loaded h5,
-html.fonts-regular-loaded h6 {
+html.fonts-bold-loaded h1,
+html.fonts-bold-loaded h2,
+html.fonts-bold-loaded h3,
+html.fonts-bold-loaded h4,
+html.fonts-bold-loaded h5,
+html.fonts-bold-loaded h6 {
   @apply font-montbold;
 }
 
