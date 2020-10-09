@@ -1,27 +1,26 @@
 <template>
-  <figure class="flex items-center">
-    <figcaption class="flex items-center">
-      <img
-        :data-src="authorCover"
-        src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-        :alt="authorName"
-        class="lazyload autor__photo bg-gradient-to-r from-orange-600 to-orange-400"
-        width="46" height="46">
+  <div class="flex items-center">
+    <div class="flex items-center">
+      <div class="rounded-full mr-3 overflow-hidden" style="width: 46px; height: 46px;">
+        <lazy-image
+          ratio="1/1"
+          :alt="authorName"
+          :image="author.avatar"
+          :caption="false"
+          :widths="[200]"
+          sizes="46px"
+        />
+      </div>
       <div>
         <p class="text-sm font-bold text-orange-900">{{ authorName }}</p>
         <p v-if="createdAt" class="text-xs text-orange-900">{{ humanDate }}</p>
       </div>
-    </figcaption>
-  </figure>
+    </div>
+  </div>
 </template>
 
 <script>
   export default {
-    data() {
-      return {
-        cloudinary: "https://res.cloudinary.com/dkdfpm2og/image/upload/"
-      }
-    },
     props: {
       author: {
         type: Object,
@@ -38,21 +37,7 @@
       },
       authorName() {
         return this.author ? this.author.nombre : "Desconocido";
-      },
-      authorCover() {
-        return this.author
-        ? `${this.author.avatar.url}`
-        : `${this.cloudinary}v1600203140/autor_desconocido_712790be28.png`;
       }
     }
   }
 </script>
-
-<style lang="scss" scoped>
-.autor__photo {
-  height: 46px;
-  width: 46px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-</style>

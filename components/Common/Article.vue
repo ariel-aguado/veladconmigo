@@ -4,24 +4,17 @@
     :class="{'no-margin': side, 'only-one': one}"
     :to="`/articulos/${article.slug}`">
     <div>
-      <lazy-image
-        ratio="16/9"
-        :alt="article.titulo"
-        :image="article.imagen"
-        :caption="false"
-        :widths="[245, 500, 750]"
-        sizes="(max-width: 660px) 660px 86vw, (max-width: 767px) 574px, (min-width: 768px) 326px, (min-width: 1024) 446px"
-        :extraclass="`article__img object-cover w-full h-full ${side ? 'small' : ''}`"
-      />
-      <!-- <figure class="article__box">
-        <img
-          data-sizes="(max-width: 660px) 660px 86vw, (max-width: 767px) 574px, (min-width: 768px) 326px, (min-width: 1024) 446px, (min-width: 1282px) 372px"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-          :data-srcset="`${article.imagen.formats.medium.url} 750w, ${article.imagen.formats.small.url} 500w`"
+      <div class="overflow-hidden" style="border-top-left-radius: 16px; border-top-right-radius: 16px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;">
+        <lazy-image
+          ratio="16/9"
           :alt="article.titulo"
-          class="lazyload article__img object-cover w-full h-full"
-          :class="{'small': side}" />
-      </figure> -->
+          :image="article.imagen"
+          :caption="false"
+          :widths="[245, 500, 750]"
+          sizes="(max-width: 660px) 660px 86vw, (max-width: 767px) 574px, (min-width: 768px) 326px, (min-width: 1024) 446px"
+          :extraclass="`object-cover w-full h-full ${side ? 'small' : ''}`"
+        />
+      </div>
       <div class="px-4 py-3">
         <Tags :tags="tags"/>
         <h3 class="article__title font-display font-bold text-orange-900 mt-2">{{ article.titulo }}</h3>
@@ -86,18 +79,6 @@ export default {
     border-color: theme('colors.orange.500');
     box-shadow: 0 0.332071px 1.57734px rgba(0,0,0,.0562291), 0 0.798012px 3.79056px rgba(0,0,0,.0807786), 0 1.50259px 7.13728px rgba(0,0,0,.1), 0 2.68036px 12.7317px rgba(0,0,0,.119221), 0 5.01331px 23.8132px rgba(0,0,0,.143771), 0 12px 57px rgba(0,0,0,.2);
     --transform-translate-y: -0.125rem;
-  }
-
-  &__img {
-    height: 210px;
-
-    // &.small {
-    //   height: 200px;
-    // }
-
-    // @include respond(xl) {
-    //   height: 282px;
-    // }
   }
 }
 </style>

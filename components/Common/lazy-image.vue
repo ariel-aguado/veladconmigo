@@ -52,14 +52,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-figure {
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    overflow: hidden;
-    margin-top: -2px;
-  }
-</style>
