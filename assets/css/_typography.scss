@@ -1,0 +1,53 @@
+html {
+  @apply text-lg;
+
+  @media only screen and (min-width: 640px) {
+    @apply text-xl;
+  }
+
+  /* @media only screen and (min-width: 768px) {
+    @apply text-xl;
+  } */
+
+  @media only screen and (min-width: 1024px) {
+    @apply text-2xl;
+  }
+
+  /* @media only screen and (min-width: 1280px) {
+    @apply text-3xl;
+  } */
+}
+
+html body {
+  font-family: sans-serif;
+}
+
+html body {
+  @apply font-body;
+}
+
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  @apply font-montbold;
+}
+
+/* Tailwind typografy */
+.prose ul>li:before {
+  background-color: theme('colors.orange.900');
+}
+
+.prose ol>li::before {
+  color: theme('colors.orange.900');
+}
+
+.prose thead {
+  border-bottom-color: theme('colors.orange.900');
+}
+
+.prose tbody tr {
+  border-bottom-color: theme('colors.orange.900');
+}

@@ -77,7 +77,7 @@ export default async () => {
     /*
     ** Global CSS
     */
-    css: [],
+    css: ['~/assets/css/index.scss'],
     /*
     ** Plugins to load before mounting the App
     ** https://nuxtjs.org/guide/plugins
@@ -140,9 +140,7 @@ export default async () => {
     styleResources: {
       scss: [
         '~/assets/css/tokens.scss',
-        '~/assets/css/breakpoints.scss',
         '~/assets/css/mixins.scss',
-        '~/assets/css/images.scss',
       ],
     },
     /*
