@@ -83,7 +83,6 @@ export default async () => {
     ** https://nuxtjs.org/guide/plugins
     */
     plugins: [
-      '~/plugins/lazysizes.client.js',
       '~/plugins/vue-placeholders.js',
       '~/plugins/vue-observe-visibility.client.js',
       "~/plugins/lightGallery.client.js",
@@ -143,6 +142,7 @@ export default async () => {
         '~/assets/css/tokens.scss',
         '~/assets/css/breakpoints.scss',
         '~/assets/css/mixins.scss',
+        '~/assets/css/images.scss',
       ],
     },
     /*

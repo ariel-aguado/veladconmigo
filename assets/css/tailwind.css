@@ -72,21 +72,6 @@ html.fonts-bold-loaded h6 {
   @apply font-montbold;
 }
 
-/* Lazy loading image animation */
-.lazyloaded {
-  animation: fadeIn .5s linear;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 /* Tailwind typografy */
 .prose ul>li:before {
   background-color: theme('colors.orange.900');

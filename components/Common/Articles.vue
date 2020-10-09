@@ -7,7 +7,7 @@
     <div class="article-list" :class="[articleGrid, side ? 'side' : '', noArticlesTop ? 'mt-0' : 'mt-8']">
       <Article v-for="article in articles"
         :key="article._id"
-        :articulo="article"
+        :article="article"
         :one="articles.length == 1"
         :side="side" />
     </div>

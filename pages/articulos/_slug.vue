@@ -17,24 +17,21 @@
           <h1 class="article-page__title text-3xl text-orange-900 mt-6 px-6 md:px-0">{{article.titulo}}</h1>
           <!-- Content -->
           <div class="article-page__content px-6 mt-3 md:mt-0 md:px-0">
-            <picture
-              class="shadow-lg bg-gradient-to-r from-orange-300 to-orange-100">
-              <source
-                media="(min-width: 1280px)"
-                :data-srcset="article.imagen.url"
-                width="1000" height="563">
-              <source
-                media="(min-width: 640px)"
-                :data-srcset="article.imagen.formats.medium.url"
-                width="750" height="422">
-              <img
-                class="article-page__img lazyload object-cover w-full h-full"
-                :data-srcset="article.imagen.formats.small.url"
-                src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-                :alt="article.titulo"
-                width="500" height="282">
-            </picture>
-
+            <lazy-image
+              ratio="16/9"
+              :alt="article.titulo"
+              :image="article.imagen"
+              :caption="false"
+              :widths="[245, 500, 750, 1000]"
+              sizes="(max-width: 768px) 90vw, (max-width: 1023px) 708px, (min-width: 1024) 572px, (min-width: 1282px) 820px"
+              extraclass="article-page__img shadow-lg object-cover w-full h-full"
+            />
+            <!-- <img
+              data-sizes="(max-width: 768px) 90vw, (max-width: 1023px) 708px, (min-width: 1024) 572px, (min-width: 1282px) 820px"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              :data-srcset="`${article.imagen.url} 1000w, ${article.imagen.formats.medium.url} 750w, ${article.imagen.formats.small.url} 500w`"
+              :alt="article.titulo"
+              class="article-page__img lazyload shadow-lg bg-gradient-to-br from-teal-100 via-gray-500 to-orange-200 object-cover w-full h-full" /> -->
             <!-- Summary -->
             <h2 class="text-2xl text-orange-900 mt-8 px-0" >Resumen</h2>
             <blockquote class="article-page__summary italic prose mt-4 text-orange-700">
@@ -219,6 +216,7 @@ export default {
     height: auto;
     border-radius: 30px;
     max-height: 390px;
+    box-shadow: 0 0.332071px 1.57734px rgba(0,0,0,.0562291), 0 0.798012px 3.79056px rgba(0,0,0,.0807786), 0 1.50259px 7.13728px rgba(0,0,0,.1), 0 2.68036px 12.7317px rgba(0,0,0,.119221), 0 5.01331px 23.8132px rgba(0,0,0,.143771), 0 12px 57px rgba(0,0,0,.2);
 
     @include respond(lg) {
       max-height: 308px;

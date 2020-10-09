@@ -2,47 +2,33 @@
   <nuxt-link
     class="article flex flex-col justify-between bg-white hover:translate-y-4"
     :class="{'no-margin': side, 'only-one': one}"
-    :to="`/articulos/${articulo.slug}`">
+    :to="`/articulos/${article.slug}`">
     <div>
-      <picture
-        class="shadow-lg bg-gradient-to-r from-orange-300 to-orange-100">
-        <source
-          media="(min-width: 768px)"
-          :data-srcset="articulo.imagen.formats.small.url"
-          width="500" height="282">
-        <source
-          media="(min-width: 575px)"
-          :data-srcset="articulo.imagen.formats.medium.url"
-          width="750" height="422">
+      <lazy-image
+        ratio="16/9"
+        :alt="article.titulo"
+        :image="article.imagen"
+        :caption="false"
+        :widths="[245, 500, 750]"
+        sizes="(max-width: 660px) 660px 86vw, (max-width: 767px) 574px, (min-width: 768px) 326px, (min-width: 1024) 446px"
+        :extraclass="`article__img object-cover w-full h-full ${side ? 'small' : ''}`"
+      />
+      <!-- <figure class="article__box">
         <img
-          class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-300 to-orange-100"
-          :class="{'small': side}"
-          :data-srcset="articulo.imagen.formats.small.url"
-          src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-          :alt="articulo.titulo"
-          width="500" height="282">
-      </picture>
-      <!-- <img
-        class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-300 to-orange-100"
-        :class="{'small': side}"
-        :data-srcset="`${articulo.imagen.formats.small.url} 500w, ${articulo.imagen.formats.medium.url} 750w`"
-        src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-        :alt="articulo.titulo"
-        sizes="500px, (min-width: 575px) 750px, (min-width: 1280px) 500px"> -->
-      <!-- <img
-        class="lazyload article__img object-cover w-full h-full bg-gradient-to-r from-orange-600 to-orange-400"
-        :class="{'small': side}"
-        :data-srcset="`${cloudinary}small_${articulo.imagen.hash}.jpg 500w, ${cloudinary}medium_${articulo.imagen.hash}.jpg 750w`"
-        src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-        :alt="articulo.titulo"
-        sizes="(max-width: 500px) 500px, 750px"> -->
+          data-sizes="(max-width: 660px) 660px 86vw, (max-width: 767px) 574px, (min-width: 768px) 326px, (min-width: 1024) 446px, (min-width: 1282px) 372px"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          :data-srcset="`${article.imagen.formats.medium.url} 750w, ${article.imagen.formats.small.url} 500w`"
+          :alt="article.titulo"
+          class="lazyload article__img object-cover w-full h-full"
+          :class="{'small': side}" />
+      </figure> -->
       <div class="px-4 py-3">
         <Tags :tags="tags"/>
-        <h3 class="article__title font-display font-bold text-orange-900 mt-2">{{ articulo.titulo }}</h3>
+        <h3 class="article__title font-display font-bold text-orange-900 mt-2">{{ article.titulo }}</h3>
       </div>
     </div>
     <div class="mt-3 mb-3 px-4 flex justify-between items-center">
-      <AuthorCover :author="articulo.autor" :createdAt="articulo.createdAt" />
+      <AuthorCover :author="article.autor" :createdAt="article.createdAt" />
       <ArticleArrow />
     </div>
   </nuxt-link>
@@ -50,9 +36,9 @@
 
 <script>
 export default {
-  name: "Articulo",
+  name: "Article",
   props: {
-    articulo: {
+    article: {
       type: Object,
       default: () => {}
     },
@@ -65,14 +51,9 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      cloudinary: "https://res.cloudinary.com/dkdfpm2og/image/upload/"
-    }
-  },
   computed: {
     tags() {
-      return this.articulo.etiquetas.split(',').map(tag => tag.trim());
+      return this.article.etiquetas.split(',').map(tag => tag.trim());
     },
   }
 }
@@ -100,27 +81,6 @@ export default {
   transition-duration: .15s;
   transition-timing-function: linear;
 
-  // flex: 1 1 16rem;
-  // margin: 20px;
-
-  // @include respond(md) {
-  //   flex: 0 1 16rem;
-  // }
-
-  // &.no-margin {
-  //   flex: 1 1 100%;
-  //   margin: 0;
-  //   margin-bottom: 2rem;
-  // }
-
-  // &.only-one {
-  //   flex: 0 1 100%;
-
-  //   @include respond(sm) {
-  //     flex: 0 1 400px;
-  //   }
-  // }
-
   &:hover,
   &:focus {
     border-color: theme('colors.orange.500');
@@ -130,11 +90,6 @@ export default {
 
   &__img {
     height: 210px;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    margin-top: -2px;
 
     // &.small {
     //   height: 200px;
