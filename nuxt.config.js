@@ -25,6 +25,7 @@ export default async () => {
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { property: 'og:site_name', content: 'VeladConmigo' },
         ...createSEOMeta({
           title: "VeladConmigo",
           description:
@@ -34,17 +35,17 @@ export default async () => {
         }),
         { name: 'author', content: 'Ariel Aguado' },
         { name: 'robots', content: 'index, follow' },
-        { name: 'msapplication-TileColor', content: '#da532c' },
-        { name: 'theme-color', content: '#ffffff' },
+        // { name: 'msapplication-TileColor', content: '#da532c' },
+        // { name: 'theme-color', content: '#ffffff' },
       ],
       link: [
         { rel: 'preconnect', href: 'https://strapi-velad-conmigo.herokuapp.com' },
         { rel: 'preconnect', href: 'https://res.cloudinary.com' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-        { rel: 'manifest', href: '/site.webmanifest' },
-        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
+        // { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        // { rel: 'icon', type: 'image/png', sizes: '32x32' },
+        // { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        // { rel: 'manifest', href: '/site.webmanifest' },
+        // { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
         // {
         //   rel: 'preconnect',
         //   href: 'https://strapi-velad-conmigo.herokuapp.com',
@@ -126,14 +127,14 @@ export default async () => {
       gzip: true,
       routes
     },
-    workbox: {
-      runtimeCaching: [
-        {
-          urlPattern: 'https://strapi-velad-conmigo.herokuapp.com/.*',
-          handler: 'staleWhileRevalidate',
-        },
-      ],
-    },
+    // workbox: {
+    //   runtimeCaching: [
+    //     {
+    //       urlPattern: 'https://strapi-velad-conmigo.herokuapp.com/.*',
+    //       handler: 'staleWhileRevalidate',
+    //     },
+    //   ],
+    // },
     markdownit: { html: true, injected: true },
     cloudinary: {
       cloudName: 'dkdfpm2og',
@@ -162,10 +163,13 @@ export default async () => {
         }
       },
     },
+    router: {
+      linkExactActiveClass: 'active',
+    },
     pwa: {
       manifest: {
         name: 'velad-conmigo.netlify.app',
-        short_name: 'velad-conmigo',
+        short_name: 'veladconmigo',
       },
     },
     generate: {

@@ -5,10 +5,6 @@ export const createSEOMeta = (data) => [
     content: data.title
   },
   {
-    property: 'og:site_name',
-    content: 'VeladConmigo'
-  },
-  {
     hid: 'description',
     name: 'description',
     content: data.description
