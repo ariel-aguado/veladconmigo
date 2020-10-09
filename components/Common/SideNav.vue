@@ -39,9 +39,6 @@ export default {
     ...mapActions({
       toggleActive: 'hamburger/toggleActive'
     }),
-    test() {
-      console.log('Click on Logo');
-    }
   }
 };
 </script>

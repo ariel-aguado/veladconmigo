@@ -11,8 +11,7 @@
         <ArticlePlaceholder class="mt-6 px-6" :articlesPerPage="9" grid="three" />
       </template>
       <template v-else-if="$fetchState.error">
-        <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
-        <!-- <inline-error-block :error="$fetchState.error" /> -->
+        <inline-error-block :error="$fetchState.error" />
       </template>
       <template v-else>
         <Articles class="px-6" :articles="articles" :grid="gridCount" />

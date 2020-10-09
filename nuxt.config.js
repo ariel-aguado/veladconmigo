@@ -98,6 +98,14 @@ export default async () => {
     buildModules: [
       // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
       '@nuxtjs/tailwindcss',
+      [
+        '@nuxtjs/pwa',
+        {
+          workbox: {
+            clientsClaim: false,
+          },
+        },
+      ],
     ],
     /*
     ** Nuxt.js modules
@@ -109,7 +117,6 @@ export default async () => {
       '@nuxtjs/axios',
       '@nuxtjs/cloudinary',
       '@nuxtjs/markdownit',
-      '@nuxtjs/pwa',
       '@nuxtjs/sitemap',
     ],
     sitemap: {

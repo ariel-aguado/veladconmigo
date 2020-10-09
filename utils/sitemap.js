@@ -25,8 +25,6 @@ export const fetchSitemapRoutes = async () => {
     routes.push(`articulos/${slug}`)
   );
 
-  console.log('routes :>> ', routes);
-
   // tagsData.tags.forEach((tag) => routes.push(`/topics/${kebabCase(tag.name)}`))
 
   return routes;

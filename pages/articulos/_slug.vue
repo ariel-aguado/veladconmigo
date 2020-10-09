@@ -8,8 +8,7 @@
         </p>
       </template>
       <template v-else-if="$fetchState.error">
-        <inline-error-block error="Revisa la conexión. No se pudo acceder a los datos." />
-        <!-- <inline-error-block :error="$fetchState.error" /> -->
+        <inline-error-block :error="$fetchState.error" />
       </template>
       <template v-else>
         <div class="article-page__box px-0 md:px-6">
@@ -90,7 +89,6 @@ export default {
   head() {
     const url = `articulos/${this.$route.params.slug}`;
     const { titulo: title, resumen: description } = this.article;
-    console.log('this.article :>> ', this.article);
     const image = this.article && this.article.imagen ? this.article.imagen.formats.small.url : "";
 
     return {
@@ -104,7 +102,6 @@ export default {
       recentArticles: [],
       gallery: [],
       lgIndex: null,
-      cloudinary: "https://res.cloudinary.com/dkdfpm2og/image/upload/"
     }
   },
   async fetch() {

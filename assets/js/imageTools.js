@@ -36,8 +36,6 @@ export function getSrcSet(image, widths) {
     '750': 'medium'
   }
 
-  console.log('image :>> ', image);
-
   widths.forEach((width) => {
     const url = width == 1000 || width == 200 ? image.url : image.formats[humanSizes[width]].url;
     srcset += `${url} ${width}w, `;
