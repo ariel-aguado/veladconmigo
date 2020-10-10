@@ -42,7 +42,7 @@ export default {
   async fetch() {
 
     const query = qs.stringify(
-      { _where:{publico: true}, _sort: 'createdAt:DESC', _start: 0, _limit: this.limitTo },
+      { _where:{publico: true}, _sort: 'createdAt:DESC', _start: 0, _limit: 6 },
       { encode: false }
     );
 
