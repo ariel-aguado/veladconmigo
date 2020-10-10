@@ -13,7 +13,7 @@ export const fetchSitemapRoutes = async () => {
   //   starts_with: 'articles/',
   // });
 
-  const {data: articlesData} = await axios.get(`${process.env.API_URL}/articulos`);
+  const {data: articlesData} = await axios.get('https://strapi-velad-conmigo.herokuapp.com/articulos');
 
   // const {
   //   data: tagsData

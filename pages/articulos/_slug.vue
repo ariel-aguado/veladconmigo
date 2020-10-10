@@ -84,21 +84,10 @@
 
 <script>
 const qs = require('qs');
-import { createSEOMeta } from "~/utils/seo";
+// import { createSEOMeta } from "~/utils/seo";
+import mapMetaInfo from '~/utils/mapMetaInfo';
 
 export default {
-  head() {
-    const url = `articulos/${this.$route.params.slug}`;
-    const { titulo: title, resumen: description } = this.article;
-    const image = this.article && this.article.imagen ? this.article.imagen.formats.small.url : "";
-
-    console.log('Articule SEO :>> ', createSEOMeta({ title, description, image, url }));
-
-    return {
-      title,
-      meta: createSEOMeta({ title, description, image, url }),
-    }
-  },
   data() {
     return {
       article: {},
@@ -108,7 +97,6 @@ export default {
     }
   },
   async asyncData(context) {
-    console.log('context :>> ', context);
     const slug = context.params.slug;
 
     let query = qs.stringify(
@@ -141,6 +129,31 @@ export default {
       recentArticles: recentArticles,
       gallery: gallery
     }
+  },
+  head() {
+    const fields = {
+      title: this.article.titulo,
+      description: this.article.resumen,
+      image: this.article.imagen.url,
+      updatedAt: this.article.updatedAt,
+      slug: this.article.slug,
+      createdAt: this.article.createdAt,
+      author: this.article.autor.nombre
+    };
+
+    return mapMetaInfo(
+      fields,
+      'article',
+      this.$router.currentRoute
+    );
+    // const url = `articulos/${this.$route.params.slug}`;
+    // const { titulo: title, resumen: description } = this.article;
+    // const image = this.article && this.article.imagen ? this.article.imagen.formats.small.url : "";
+
+    // return {
+    //   title,
+    //   meta: createSEOMeta({ title, description, image, url }),
+    // }
   },
   // async fetch() {
   //   const slug = this.$route.params.slug;

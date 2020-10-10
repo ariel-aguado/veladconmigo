@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-import { createSEOMeta } from "./utils/seo.js";
+// import { createSEOMeta } from "./utils/seo.js";
 import { fetchSitemapRoutes } from "./utils/sitemap";
 
 dotenv.config({ path: './config.env' });
@@ -26,15 +26,18 @@ export default async () => {
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { property: 'og:site_name', content: 'VeladConmigo' },
-        ...createSEOMeta({
-          title: "VeladConmigo",
-          description:
-            'Descubre las verdades de la palabra de Dios con un enfoque bíblico e inspirado en un lema: Hablar donde la Biblia habla y callar donde la Biblia calla.',
-          image: 'https://velad-conmigo.netlify.app' + "/icon.png",
-          url: 'https://velad-conmigo.netlify.app'
-        }),
-        { name: 'author', content: 'Ariel Aguado' },
+        { property: 'twitter:card', content: 'summary_large_image' },
+        { property: 'twitter:handle', content: 'veladconmigo' },
+        { property: 'twitter:creator', content: 'veladconmigo' },
+        { name: 'author', content: 'Ariel Aguado Albear' },
         { name: 'robots', content: 'index, follow' },
+        // ...createSEOMeta({
+        //   title: "VeladConmigo",
+        //   description:
+        //     'Descubre las verdades de la palabra de Dios con un enfoque bíblico e inspirado en un lema: Hablar donde la Biblia habla y callar donde la Biblia calla.',
+        //   image: 'https://velad-conmigo.netlify.app' + "/icon.png",
+        //   url: 'https://velad-conmigo.netlify.app'
+        // }),
         // { name: 'msapplication-TileColor', content: '#da532c' },
         { name: 'theme-color', content: '#ffffff' },
       ],
@@ -122,9 +125,9 @@ export default async () => {
       '@nuxtjs/style-resources',
       '@nuxtjs/strapi',
       '@nuxtjs/axios',
-      '@nuxtjs/cloudinary',
       '@nuxtjs/markdownit',
       '@nuxtjs/sitemap',
+      '@nuxtjs/cloudinary',
     ],
     sitemap: {
       path: '/sitemap.xml',
@@ -133,14 +136,6 @@ export default async () => {
       gzip: true,
       routes
     },
-    // workbox: {
-    //   runtimeCaching: [
-    //     {
-    //       urlPattern: 'https://strapi-velad-conmigo.herokuapp.com/.*',
-    //       handler: 'staleWhileRevalidate',
-    //     },
-    //   ],
-    // },
     markdownit: { html: true, injected: true },
     cloudinary: {
       cloudName: 'dkdfpm2og',
@@ -180,6 +175,7 @@ export default async () => {
     },
     generate: {
       fallback: true,
+      routes: routes
     },
   }
 }

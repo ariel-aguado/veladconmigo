@@ -16,7 +16,7 @@
         bg-gradient-to-r
         from-orange-600
         to-orange-100
-        text-left">Velad Conmigo<span class="w-1/2 sm:w-full block font-display font-bold text-base text-white mt-2 md:mt-1 leading-6">A la luz de las Escrituras</span>
+        text-left">Velad Conmigo<span class="w-11/12 sm:w-full block font-display font-bold text-base text-white mt-2 md:mt-1 leading-6">A la luz de las Escrituras</span>
       </h1>
     </div>
     <lazy-hero-picture
