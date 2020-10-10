@@ -17,7 +17,7 @@ export const createSEOMeta = (data) => [
   {
     hid: 'og:url',
     property: 'og:url',
-    content: process.env.HOST_NAME + '/' + data.url,
+    content: 'https://velad-conmigo.netlify.app' + '/' + data.url,
   },
   {
     property: 'twitter:card',

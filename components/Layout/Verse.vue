@@ -2,7 +2,7 @@
   <div class="overflow-hidden">
     <main class="bg-white py-16">
       <div class="container mx-auto">
-        <h2 class="text-2xl text-orange-900 text-center uppercase">Vivimos en tiempos cambiantes</h2>
+        <h2 class="px-6 text-2xl text-orange-900 text-center uppercase">Vivimos en tiempos cambiantes</h2>
         <div class="text-center text-orange-900 mt-8 px-4 lg:px-30">
           <p>Desde la perspectiva cristiana hay mucha desorientación.</p>
           <p>Hace mucho tiempo atrás, el profeta de Dios instó como lo hacemos hoy:</p>

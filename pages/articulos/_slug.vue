@@ -91,6 +91,8 @@ export default {
     const { titulo: title, resumen: description } = this.article;
     const image = this.article && this.article.imagen ? this.article.imagen.formats.small.url : "";
 
+    console.log('Articule SEO :>> ', createSEOMeta({ title, description, image, url }));
+
     return {
       title,
       meta: createSEOMeta({ title, description, image, url }),
