@@ -104,6 +104,12 @@ export default async () => {
         {
           workbox: {
             clientsClaim: false,
+            runtimeCaching: [
+              {
+                urlPattern: 'https://strapi-velad-conmigo.herokuapp.com/.*',
+                handler: 'staleWhileRevalidate',
+              },
+            ],
           },
         },
       ],
@@ -163,9 +169,9 @@ export default async () => {
         }
       },
     },
-    router: {
-      linkExactActiveClass: 'active',
-    },
+    // router: {
+    //   linkExactActiveClass: 'active',
+    // },
     pwa: {
       manifest: {
         name: 'velad-conmigo.netlify.app',
