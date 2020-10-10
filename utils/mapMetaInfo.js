@@ -104,7 +104,7 @@ export default function (fields, pageType, route) {
           '@type': 'BlogPosting',
           headline: fields.title,
           image: fields.image,
-          url: `https://velad-conmigo.netlify.app${fields.slug}`,
+          url: url,
           datePublished: `${fields.createdAt}`,
           // datePublished: `${fields.createdAt}T00:00:00`,
           dateCreated: `${fields.createdAt}`,
