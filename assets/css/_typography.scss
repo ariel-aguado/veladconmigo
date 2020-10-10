@@ -32,7 +32,8 @@ html h3,
 html h4,
 html h5,
 html h6 {
-  @apply font-montbold;
+  @apply font-display;
+  @apply font-bold;
 }
 
 /* Tailwind typografy */

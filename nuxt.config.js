@@ -36,7 +36,7 @@ export default async () => {
         { name: 'author', content: 'Ariel Aguado' },
         { name: 'robots', content: 'index, follow' },
         // { name: 'msapplication-TileColor', content: '#da532c' },
-        // { name: 'theme-color', content: '#ffffff' },
+        { name: 'theme-color', content: '#ffffff' },
       ],
       link: [
         { rel: 'preconnect', href: 'https://strapi-velad-conmigo.herokuapp.com' },

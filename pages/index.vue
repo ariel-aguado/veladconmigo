@@ -7,7 +7,7 @@
       <div class="container mx-auto z-10 relative">
         <h2 class="px-6 text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
 
-        <!-- <template v-if="$fetchState.pending && !articles.length">
+        <template v-if="$fetchState.pending && !articles.length">
           <ArticlePlaceholder class="mt-10 px-6" :articlesPerPage="6" grid="three" />
         </template>
         <template v-else-if="$fetchState.error">
@@ -15,9 +15,9 @@
         </template>
         <template v-else>
           <Articles class="mt-10 px-6" :articles="articles" grid="three" :count="false" />
-        </template> -->
+        </template>
 
-        <Articles class="mt-10 px-6" :articles="articles" grid="three" :count="false" />
+        <!-- <Articles class="mt-10 px-6" :articles="articles" grid="three" :count="false" /> -->
 
         <div class="last-articles__link-to-all flex justify-center mt-10 text-orange-900">
           <nuxt-link to="/articulos">
@@ -39,26 +39,26 @@ export default {
       articles: []
     }
   },
-  // async fetch() {
+  async fetch() {
 
-  //   const query = qs.stringify(
-  //     { _where:{publico: true}, _sort: 'createdAt:DESC', _start: 0, _limit: this.limitTo },
-  //     { encode: false }
-  //   );
-
-  //   this.articles = await this.$strapi.find('articulos', query);
-  // },
-  async asyncData({$strapi}) {
     const query = qs.stringify(
-      { _where:{publico: true}, _sort: 'createdAt:DESC', _limit: 6 },
+      { _where:{publico: true}, _sort: 'createdAt:DESC', _start: 0, _limit: this.limitTo },
       { encode: false }
     );
-    const articles = await $strapi.find('articulos', query);
-    return {
-      articles: articles
-    }
+
+    this.articles = await this.$strapi.find('articulos', query);
   },
-  // fetchOnServer: false,
+  // async asyncData({$strapi}) {
+  //   const query = qs.stringify(
+  //     { _where:{publico: true}, _sort: 'createdAt:DESC', _limit: 6 },
+  //     { encode: false }
+  //   );
+  //   const articles = await $strapi.find('articulos', query);
+  //   return {
+  //     articles: articles
+  //   }
+  // },
+  fetchOnServer: false,
   computed: {
     gridCount() {
       const articles = this.articles.length;

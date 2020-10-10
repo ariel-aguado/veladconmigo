@@ -1,5 +1,5 @@
 <template>
-  <figure class="bg-gradient-to-br from-teal-100 via-gray-500 to-orange-200" :style="`--aspect-ratio:${ratio};`">
+  <figure class="bg-gradient-to-r from-orange-900  to-gray-800" :style="`--aspect-ratio:${ratio};`">
     <img
       :data-srcset="generateSrcSet()"
       :alt="alt"

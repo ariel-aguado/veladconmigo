@@ -5,8 +5,7 @@
         <nuxt-link
           class="
             nav-item
-            font-montbold
-            md:font-display
+            font-display
             text-lg
             md:text-base
             px-6

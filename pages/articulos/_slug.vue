@@ -3,7 +3,7 @@
     <div class="md:container md:mx-auto">
 
       <template v-if="$fetchState.pending">
-        <p class="font-montbold text-3xl text-orange-900 text-md py-6 pl-6">
+        <p class="font-display font-bold text-3xl text-orange-900 text-md py-6 pl-6">
           Cargando el artículo...
         </p>
       </template>
@@ -36,7 +36,7 @@
             <!-- Text -->
             <div v-html="$md.render(article.contenido)" class="prose mt-8 text-orange-900"></div>
 
-            <button v-if="gallery.length" class="mt-8 mx-auto lg:mx-0 px-4 py-2 font-montbold text-md shadow-md text-white bg-orange-600 cursor-pointer transition duration-300 rounded-lg flex justify-center items-center hover:bg-orange-500 hover:shadow-lg"
+            <button v-if="gallery.length" class="mt-8 mx-auto lg:mx-0 px-4 py-2 font-display text-md shadow-md text-white bg-orange-600 cursor-pointer transition duration-300 rounded-lg flex justify-center items-center hover:bg-orange-500 hover:shadow-lg"
               @click="lgIndex = 0">
               <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
               <span>Ver imágenes</span>
@@ -62,7 +62,7 @@
           </div>
           <!-- Recent articles -->
           <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0">
-            <p class="font-montbold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
+            <p class="font-display font-bold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
             <Articles :articles="recentArticles" :grid="gridCount" :side="true" :count="false" />
           </div>
 

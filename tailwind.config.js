@@ -7,10 +7,8 @@
 module.exports = {
   theme: {
     fontFamily: {
-      display: '"MontserratRegular"',
-      body: '"InconsolataRegular"',
-      montbold: '"MontserratBold"',
-      incbold: '"InconsolataBold"',
+      display: '"Montserrat"',
+      body: '"Inconsolata"',
     },
     fontSize: {
       '2xs': '.70rem',

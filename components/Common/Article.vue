@@ -17,7 +17,7 @@
       </div>
       <div class="px-4 py-3">
         <Tags :tags="tags"/>
-        <h3 class="article__title text-orange-900 mt-2">{{ article.titulo }}</h3>
+        <h3 class="text-orange-900 mt-2">{{ article.titulo }}</h3>
       </div>
     </div>
     <div class="mt-3 mb-3 px-4 flex justify-between items-center">
