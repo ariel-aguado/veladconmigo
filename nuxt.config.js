@@ -30,8 +30,8 @@ export default async () => {
           title: "VeladConmigo",
           description:
             'Descubre las verdades de la palabra de Dios con un enfoque bíblico e inspirado en un lema: Hablar donde la Biblia habla y callar donde la Biblia calla.',
-          image: process.env.HOST_NAME + "/icon.png",
-          url: process.env.HOST_NAME
+          image: 'https://velad-conmigo.netlify.app' + "/icon.png",
+          url: 'https://velad-conmigo.netlify.app'
         }),
         { name: 'author', content: 'Ariel Aguado' },
         { name: 'robots', content: 'index, follow' },
@@ -128,7 +128,7 @@ export default async () => {
     ],
     sitemap: {
       path: '/sitemap.xml',
-      hostname: process.env.HOST_NAME,
+      hostname: 'https://velad-conmigo.netlify.app',
       cacheTime: 1000 * 60 * 15,
       gzip: true,
       routes
