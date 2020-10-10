@@ -1,5 +1,5 @@
 export default function (fields, pageType, route) {
-  const url = `https://velad-conmigo.netlify.app/${route.path}`
+  const url = `https://velad-conmigo.netlify.app${route.path}`
   const metaData = {
     title: fields.title,
     link: [
@@ -104,7 +104,7 @@ export default function (fields, pageType, route) {
           '@type': 'BlogPosting',
           headline: fields.title,
           image: fields.image,
-          url: `https://timbenniks.dev/articles/${fields.slug}`,
+          url: `https://velad-conmigo.netlify.app${fields.slug}`,
           datePublished: `${fields.createdAt}`,
           // datePublished: `${fields.createdAt}T00:00:00`,
           dateCreated: `${fields.createdAt}`,
@@ -132,6 +132,8 @@ export default function (fields, pageType, route) {
       },
     ]
   }
+
+  console.log('metadata :>> ', metaData);
 
   return metaData
 }
