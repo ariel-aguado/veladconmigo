@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-// import { createSEOMeta } from "./utils/seo.js";
+import mapMetaInfo from './utils/mapMetaInfo';
 import { fetchSitemapRoutes } from "./utils/sitemap";
 
 dotenv.config({ path: './config.env' });
@@ -29,16 +29,19 @@ export default async () => {
         { property: 'twitter:card', content: 'summary_large_image' },
         { property: 'twitter:handle', content: 'veladconmigo' },
         { property: 'twitter:creator', content: 'veladconmigo' },
+        ...mapMetaInfo({
+          title: 'VeladConmigo',
+          description: 'VeladConmigo le ofrece un enfoque bíblico de las escrituras, con la única motivación de hablar donde la Biblia habla y callar donde la Biblia calla.',
+          image: 'https://velad-conmigo.netlify.app/icon.png',
+          },
+          'home',
+          {
+            path: '/'
+          }
+        ).meta,
+        // { name: 'msapplication-TileColor', content: '#da532c' },
         { name: 'author', content: 'Ariel Aguado Albear' },
         { name: 'robots', content: 'index, follow' },
-        // ...createSEOMeta({
-        //   title: "VeladConmigo",
-        //   description:
-        //     'Descubre las verdades de la palabra de Dios con un enfoque bíblico e inspirado en un lema: Hablar donde la Biblia habla y callar donde la Biblia calla.',
-        //   image: 'https://velad-conmigo.netlify.app' + "/icon.png",
-        //   url: 'https://velad-conmigo.netlify.app'
-        // }),
-        // { name: 'msapplication-TileColor', content: '#da532c' },
         { name: 'theme-color', content: '#ffffff' },
       ],
       link: [
@@ -50,8 +53,6 @@ export default async () => {
         // { rel: 'manifest', href: '/site.webmanifest' },
         // { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
         // {
-        //   rel: 'preconnect',
-        //   href: 'https://strapi-velad-conmigo.herokuapp.com',
         //   rel: 'apple-touch-icon',
         //   sizes: '180x180',
         //   href: '/apple-touch-icon.png',

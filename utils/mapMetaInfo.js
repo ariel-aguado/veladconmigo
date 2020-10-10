@@ -76,7 +76,7 @@ export default function (fields, pageType, route) {
         json: {
           '@context': 'http://schema.org',
           '@type': 'Website',
-          url: 'https://velad-conmigo.netlify.app',
+          url: url,
         },
         type: 'application/ld+json',
       },
@@ -132,8 +132,6 @@ export default function (fields, pageType, route) {
       },
     ]
   }
-
-  console.log('metadata :>> ', metaData);
 
   return metaData
 }

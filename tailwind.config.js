@@ -83,8 +83,8 @@ module.exports = {
       'nuxt.config.js',
     ],
   },
-  // future: {
-  //   removeDeprecatedGapUtilities: true,
-  //   purgeLayersByDefault: true,
-  // },
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
 }
