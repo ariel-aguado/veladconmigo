@@ -64,6 +64,12 @@ export default {
       const articles = this.articles.length;
       return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
     },
+  },
+  mounted() {
+    const openSignal = document.createElement("script");
+    openSignal.type = "text/javascript";
+    openSignal.src = "/openSignal.js";
+    document.body.appendChild(openSignal);
   }
 }
 </script>

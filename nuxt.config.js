@@ -50,7 +50,6 @@ export default async () => {
       ],
       script: [
         { src: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js', async:"" },
-        { src: './utils/openSignal.js' }
       ]
     },
     /*
