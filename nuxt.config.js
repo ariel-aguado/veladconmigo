@@ -47,9 +47,6 @@ export default async () => {
       link: [
         { rel: 'preconnect', href: 'https://strapi-velad-conmigo.herokuapp.com' },
         { rel: 'preconnect', href: 'https://res.cloudinary.com' },
-      ],
-      script: [
-        { src: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js', async:"" },
       ]
     },
     /*
