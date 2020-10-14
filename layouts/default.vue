@@ -20,7 +20,7 @@ export default {
     ...mapActions({
       toggleActive: 'hamburger/toggleActive'
     })
-  }
+  },
 }
 </script>
 

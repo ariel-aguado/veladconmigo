@@ -47,6 +47,9 @@ export default async () => {
       link: [
         { rel: 'preconnect', href: 'https://strapi-velad-conmigo.herokuapp.com' },
         { rel: 'preconnect', href: 'https://res.cloudinary.com' },
+      ],
+      script: [
+        { src: 'https://cdn.gravitec.net/storage/71e332c013e0a2a872996331bb200bc4/client.js', async:"true" },
       ]
     },
     /*
