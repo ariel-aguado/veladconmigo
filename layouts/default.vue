@@ -21,5 +21,12 @@ export default {
       toggleActive: 'hamburger/toggleActive'
     })
   },
+  mounted() {
+    const foxpush = document.createElement("script");
+    foxpush.type = "text/javascript";
+    foxpush.src = "/foxpush.js";
+    foxpush['data-cfasync'] = false;
+    document.body.appendChild(foxpush);
+  }
 }
 </script>
