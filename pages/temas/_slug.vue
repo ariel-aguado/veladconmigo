@@ -1,6 +1,5 @@
 <template>
-  <div class="articles py-16 bg-gradient-to-tr from-orange-200 to-white"
-    style="min-height: calc(100vh - 85px - 65px); margin-top: 85px;">
+  <div class="tag-page py-16 bg-gradient-to-tr from-orange-200 to-white">
     <div class="container mx-auto relative z-10">
       <h1 class="text-2xl text-orange-900 text-center uppercase">{{ $route.params.slug }}</h1>
 
@@ -14,7 +13,7 @@
         <inline-error-block :error="$fetchState.error" />
       </template>
       <template v-else>
-        <Articles class="px-6" :articles="articles" :grid="gridCount" />
+        <Articles class="px-6 pb-20 md:pb-0" :articles="articles" :grid="gridCount" />
       </template>
     </div>
   </div>
@@ -64,3 +63,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.tag-page {
+  min-height: calc(100vh - 5rem);
+  margin-top: 0;
+  @include respond(md) {
+    min-height: calc(100vh - 85px - 65px);
+    margin-top: 85px;
+  }
+}
+</style>

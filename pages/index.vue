@@ -1,9 +1,9 @@
 <template>
-  <div style="margin-top: 85px;">
+  <div class="home">
     <Hero />
     <Verse />
     <!-- Last articles -->
-    <div class="last-articles bg-orange-100 pt-8 pb-16">
+    <div class="last-articles bg-orange-100 pt-8 pb-32 md:pb-12">
       <div class="container mx-auto z-10 relative">
         <h2 class="px-6 text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
 
@@ -69,6 +69,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home {
+  margin-top: 0;
+  @include respond(md) {
+    margin-top: 85px;
+  }
+}
+
 .last-articles {
 
   &__link-to-all {

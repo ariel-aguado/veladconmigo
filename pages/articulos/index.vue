@@ -1,6 +1,5 @@
 <template>
-  <div class="articles py-16 bg-gradient-to-tr from-orange-200 to-white"
-    style="min-height: calc(100vh - 85px - 65px); margin-top: 85px;">
+  <div class="articles py-16 bg-gradient-to-tr from-orange-200 to-white">
     <div class="container mx-auto relative z-10">
       <h1 class="text-2xl text-orange-900 text-center uppercase">Artículos</h1>
 
@@ -15,7 +14,7 @@
         <inline-error-block :error="$fetchState.error" />
       </template>
       <template v-else>
-        <Articles class="px-6" :articles="articles" :tags="tags" grid="three" />
+        <Articles class="px-6 pb-20 md:pb-0" :articles="articles" :tags="tags" grid="three" />
       </template>
 
       <!-- In case of pagination -->
@@ -74,3 +73,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.articles {
+  min-height: calc(100vh - 85px - 65px);
+  margin-top: 0;
+  @include respond(md) {
+    margin-top: 85px;
+  }
+}
+</style>

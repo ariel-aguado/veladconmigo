@@ -1,11 +1,11 @@
 <template>
-  <header class="bg-white shadow-md grid fixed top-0 w-full z-50" style="height: 85px">
-    <div class="header pl-6 pr-3 lg:pr-6 lg:container lg:mx-auto flex justify-between items-center">
+  <header class="hidden bg-white shadow-md md:grid md:fixed top-0 w-full z-50" style="height: 85px">
+    <div class="pl-6 pr-3 lg:pr-6 lg:container lg:mx-auto flex justify-between items-center">
       <nuxt-link to="/" id="logo" class="header__logo">
         <Logo />
       </nuxt-link>
-      <NavList class="hidden lg:block"/>
-      <Hamburger class="lg:hidden"/>
+      <NavList />
+      <!-- <Hamburger class="lg:hidden"/> -->
     </div>
   </header>
 </template>

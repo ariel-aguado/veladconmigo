@@ -1,6 +1,6 @@
 <template>
-  <nav class="vc-nav">
-    <ul>
+  <nav>
+    <ul class="hidden md:block">
       <li @click="$emit('vc-nav-click')">
         <nuxt-link
           class="
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import AppLogo from "~/assets/images/icons/logo.svg?inline";
 
 export default {
   name: 'NavList',
@@ -35,6 +36,9 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  components: {
+    AppLogo
   }
 }
 </script>
