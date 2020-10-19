@@ -149,8 +149,9 @@ export default async () => {
     // },
     pwa: {
       manifest: {
-        name: 'velad-conmigo.netlify.app',
-        short_name: 'veladconmigo',
+        name: 'VeladConmigo',
+        short_name: 'VeladConmigo',
+        theme_color: "#ffffff"
       },
     },
     generate: {

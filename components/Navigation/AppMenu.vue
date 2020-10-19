@@ -5,14 +5,14 @@
       <li>
         <nuxt-link to="/">
           <AppLogo />
-          <div class="text-sm">Inicio</div>
+          <div class="text-sm font-bold">Inicio</div>
         </nuxt-link>
       </li>
       <li>
         <nuxt-link
           class="" to="/articulos">
           <ArticleIcon />
-          <div class="text-sm">Artículos</div>
+          <div class="text-sm font-bold">Artículos</div>
         </nuxt-link>
       </li>
     </ul>

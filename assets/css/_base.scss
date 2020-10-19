@@ -17,6 +17,7 @@
   border-radius: 20px !important;
 }
 
+// Personalize the placeholders
 .vue-content-placeholders-img,
 .vue-content-placeholders-text__line {
   background: #FEEBC8 !important;
@@ -25,3 +26,18 @@
     background: linear-gradient(to right, transparent 0%, #FBD38D 15%, transparent 30%) !important;
   }
 }
+
+.vue-content-placeholders-img.rounded-full {
+  border-radius: 9999px !important;
+}
+
+.vue-content-placeholders-img.cover {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.vue-content-placeholders-img.rounded-3xl {
+  border-radius: 20px !important;
+}
+
+
