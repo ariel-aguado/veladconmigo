@@ -84,7 +84,6 @@
 
 <script>
 const qs = require('qs');
-// import { createSEOMeta } from "~/utils/seo";
 import mapMetaInfo from '~/utils/mapMetaInfo';
 
 export default {

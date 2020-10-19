@@ -1,6 +1,7 @@
 <template>
   <div class="articles py-16 bg-gradient-to-tr from-orange-200 to-white">
     <div class="container mx-auto relative z-10">
+      <ArticleIcon class="block md:hidden mx-auto text-orange-900" style="width: 3rem; height: 3rem;"/>
       <h1 class="text-2xl text-orange-900 text-center uppercase">Artículos</h1>
 
       <template v-if="$fetchState.pending && !articles.length">
@@ -28,8 +29,12 @@
 
 <script>
 const qs = require('qs');
+import ArticleIcon from "~/assets/images/icons/article.svg?inline";
 
 export default {
+  components: {
+    ArticleIcon
+  },
   data() {
     return {
       articles: [],
@@ -76,9 +81,10 @@ export default {
 
 <style lang="scss" scoped>
 .articles {
-  min-height: calc(100vh - 85px - 65px);
+  min-height: calc(100vh - 90px);
   margin-top: 0;
   @include respond(md) {
+    min-height: calc(100vh - 85px - 65px);
     margin-top: 85px;
   }
 }

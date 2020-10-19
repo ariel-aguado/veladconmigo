@@ -10,3 +10,18 @@
   padding: 0 !important;
   border-radius: 50%;
 }
+
+// .vue-content-placeholders,
+// .vue-content-placeholders-text,
+.vue-content-placeholders-text__line {
+  border-radius: 20px !important;
+}
+
+.vue-content-placeholders-img,
+.vue-content-placeholders-text__line {
+  background: #FEEBC8 !important;
+
+  &::before {
+    background: linear-gradient(to right, transparent 0%, #FBD38D 15%, transparent 30%) !important;
+  }
+}

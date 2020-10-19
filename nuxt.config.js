@@ -39,7 +39,6 @@ export default async () => {
             path: '/'
           }
         ).meta,
-        // { name: 'msapplication-TileColor', content: '#da532c' },
         { name: 'author', content: 'Ariel Aguado Albear' },
         { name: 'robots', content: 'index, follow' },
         { name: 'theme-color', content: '#ffffff' },
@@ -138,12 +137,12 @@ export default async () => {
     ** See https://nuxtjs.org/api/configuration-build/
     */
     build: {
-      extend(config, { isDev, isClient, loaders: { vue } }) {
-        if (isClient) {
-          vue.transformAssetUrls.img = ['data-src', 'src']
-          vue.transformAssetUrls.source = ['data-srcset', 'srcset']
-        }
-      },
+      // extend(config, { isDev, isClient, loaders: { vue } }) {
+      //   if (isClient) {
+      //     vue.transformAssetUrls.img = ['data-src', 'src']
+      //     vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+      //   }
+      // },
     },
     // router: {
     //   linkExactActiveClass: 'active',
