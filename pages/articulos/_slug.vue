@@ -63,7 +63,7 @@
           </div>
         </div>
         <!-- Recent articles -->
-        <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0 pb-20 md:pb-0">
+        <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0 pb-12 md:pb-0">
           <p class="font-display font-bold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
           <Articles :articles="recentArticles" :grid="gridCount" :side="true" :count="false" />
         </div>
@@ -202,9 +202,16 @@ export default {
 
 <style lang="scss" scoped>
 .article-page {
-  min-height: calc(100vh - 85px - 65px);
+  // min-height: calc(100vh - 85px - 65px);
+  // margin-top: 0;
+  // @include respond(md) {
+  //   margin-top: 85px;
+  // }
+
+  min-height: calc(100vh - 65px);
   margin-top: 0;
   @include respond(md) {
+    min-height: calc(100vh - 85px - 65px);
     margin-top: 85px;
   }
 

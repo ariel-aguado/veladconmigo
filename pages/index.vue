@@ -3,7 +3,7 @@
     <Hero />
     <Verse />
     <!-- Last articles -->
-    <div class="last-articles bg-orange-100 pt-8 pb-32 md:pb-12">
+    <div class="last-articles bg-orange-100 pt-8 pb-24 md:pb-12">
       <div class="container mx-auto z-10 relative">
         <h2 class="px-6 text-2xl text-orange-900 text-center uppercase">Artículos más recientes</h2>
 

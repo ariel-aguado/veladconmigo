@@ -1,7 +1,7 @@
 <template>
   <nav>
-    <ul class="font-display fixed bottom-0 left-0 z-20 bg-white w-full flex items-center justify-evenly md:hidden h-20"
-      style="box-shadow:0 -10px 10px rgba(0,0,0,.2);">
+    <ul class="font-display fixed bottom-0 left-0 z-20 bg-white w-full flex items-center justify-evenly md:hidden"
+      style="height: 65px; box-shadow:0 -10px 10px rgba(0,0,0,.2);">
       <li>
         <nuxt-link to="/">
           <AppLogo />

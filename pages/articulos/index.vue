@@ -15,7 +15,7 @@
         <inline-error-block :error="$fetchState.error" />
       </template>
       <template v-else>
-        <Articles class="px-6 pb-20 md:pb-0" :articles="articles" :tags="tags" grid="three" />
+        <Articles class="px-6 pb-12 md:pb-0" :articles="articles" :tags="tags" grid="three" />
       </template>
 
       <!-- In case of pagination -->
@@ -81,7 +81,7 @@ export default {
 
 <style lang="scss" scoped>
 .articles {
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 65px);
   margin-top: 0;
   @include respond(md) {
     min-height: calc(100vh - 85px - 65px);

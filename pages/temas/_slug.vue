@@ -2,7 +2,7 @@
   <div class="tag-page py-16 bg-gradient-to-tr from-orange-200 to-white">
     <div class="container mx-auto relative z-10">
       <ArticleIcon class="block md:hidden mx-auto text-orange-900" style="width: 3rem; height: 3rem;"/>
-      <h1 class="text-2xl text-orange-900 text-center uppercase">{{ $route.params.slug }}</h1>
+      <h1 class="text-2xl text-orange-900 text-center uppercase">{{ title }}</h1>
       <template v-if="$fetchState.pending && !articles.length">
         <content-placeholders>
           <content-placeholders-text :lines="1" class="flex justify-center w-20 mx-auto mt-2"/>
@@ -13,7 +13,7 @@
         <inline-error-block :error="$fetchState.error" />
       </template>
       <template v-else>
-        <Articles class="px-6 pb-20 md:pb-0" :articles="articles" :grid="gridCount" />
+        <Articles class="px-6 pb-12 md:pb-0" :articles="articles" :grid="gridCount" />
       </template>
     </div>
   </div>
@@ -34,7 +34,8 @@ export default {
   },
   data() {
     return {
-      articles: []
+      articles: [],
+      title: Object.freeze(this.$route.params.slug)
     }
   },
   async fetch() {
@@ -70,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .tag-page {
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 65px);
   margin-top: 0;
   @include respond(md) {
     min-height: calc(100vh - 85px - 65px);
