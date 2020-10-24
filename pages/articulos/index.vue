@@ -47,35 +47,20 @@ export default {
     }
   },
   async fetch() {
-
-    if (this.totalArticles == 0) {
-      const articlesCount = await this.$strapi.count('articulos');
-      if (articlesCount == 0) throw new Error('No se encontraron artículos');
-      this.totalArticles = articlesCount;
-      this.numPages = Math.ceil(this.totalArticles / this.articlesPerPage);
-    }
-
-    const query = qs.stringify(
-      { _where:{ publico: true }, _sort: 'createdAt:DESC' },
-      { encode: false }
-    );
-
-    const articles = await this.$strapi.find('articulos', query);
+    const { articlesFromStrapi } = await import("~/datalayer/pages/articulos/index");
+    const {
+      articles,
+      tags,
+      totalArticles,
+      numPages
+    } = await articlesFromStrapi(this.totalArticles, this.numPages, this.articlesPerPage, this.$strapi);
 
     this.articles = this.articles.concat(articles);
-    this.tags = [...new Set(this.articles.map(article => article.etiquetas.split(',').map(tag => tag.trim())).reduce((tags, tag) => tags.concat(tag)))];
+    this.tags = tags;
+    this.totalArticles = totalArticles;
+    this.numPages = numPages;
   },
-  fetchOnServer: false,
-  computed: {
-    articlesCountText() {
-      const count = this.articles.length;
-      return count == 1 ? `${count} artículo` : `${count} artículos`;
-    },
-    gridCount() {
-      const articles = this.articles.length;
-      return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
-    },
-  }
+  fetchOnServer: false
 }
 </script>
 

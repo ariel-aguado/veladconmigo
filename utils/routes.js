@@ -1,4 +1,3 @@
-// import kebabCase from 'lodash/kebabCase';
 import axios from 'axios';
 
 export const fetchSitemapRoutes = async () => {
@@ -13,7 +12,7 @@ export const fetchSitemapRoutes = async () => {
   //   starts_with: 'articles/',
   // });
 
-  const {data: articlesData} = await axios.get('https://strapi-velad-conmigo.herokuapp.com/articulos');
+  const {data: articlesData} = await axios.get('https://strapi-velad-conmigo.herokuapp.com/articulos?publico=true&_sort=createdAt:DESC');
 
   // const {
   //   data: tagsData

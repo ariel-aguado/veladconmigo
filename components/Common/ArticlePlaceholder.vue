@@ -26,7 +26,7 @@ export default {
   props: {
     articlesPerPage: {
       type: Number,
-      default: 9
+      default: 12
     },
     grid: {
       required: false,

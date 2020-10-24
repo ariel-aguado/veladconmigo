@@ -3,7 +3,7 @@
     <div class="container mx-auto relative z-10">
       <ArticleIcon class="block md:hidden mx-auto text-orange-900" style="width: 3rem; height: 3rem;"/>
       <h1 class="text-2xl text-orange-900 text-center uppercase">{{ title }}</h1>
-      <template v-if="$fetchState.pending && !articles.length">
+      <template v-if="$fetchState.pending">
         <content-placeholders>
           <content-placeholders-text :lines="1" class="flex justify-center w-20 mx-auto mt-2"/>
         </content-placeholders>
@@ -13,7 +13,7 @@
         <inline-error-block :error="$fetchState.error" />
       </template>
       <template v-else>
-        <Articles class="px-6 pb-12 md:pb-0" :articles="articles" :grid="gridCount" />
+        <Articles class="px-6 pb-12 md:pb-0" :articles="articles" :grid="articlesByTagGridColums" />
       </template>
     </div>
   </div>
@@ -34,32 +34,18 @@ export default {
   },
   data() {
     return {
+      title: Object.freeze(this.$route.params.slug),
       articles: [],
-      title: Object.freeze(this.$route.params.slug)
+      articlesByTagGridColums: 'three'
     }
   },
   async fetch() {
-
-    const slug = this.$route.params.slug;
-
-    let query = qs.stringify(
-      { _where:{ 'etiquetas_contains': slug }},
-      { encode: false }
-    );
-
-    this.articles = await this.$strapi.find('articulos', query);
+    const { articlesByTagFromStrapi } = await import("~/datalayer/pages/temas/_slug");
+    const { articles, articlesByTagGridColums } = await articlesByTagFromStrapi(this);
+    this.articles = articles;
+    this.articlesByTagGridColums = articlesByTagGridColums;
   },
   fetchOnServer: false,
-  computed: {
-    gridCount() {
-      const articles = this.articles.length;
-      return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
-    },
-    articlesCountText() {
-      const count = this.articles.length;
-      return count == 1 ? `${count} artículo` : `${count} artículos`;
-    }
-  },
   methods: {
     capitalizeTitle(title) {
       if (typeof title !== 'string') return '';

@@ -41,30 +41,36 @@ export default {
   },
   async fetch() {
 
-    const query = qs.stringify(
-      { _where:{publico: true}, _sort: 'createdAt:DESC', _start: 0, _limit: 6 },
-      { encode: false }
-    );
+    const { lastSixArticlesFromStrapi } = await import("~/datalayer/pages/index");
+    const { articles } = await lastSixArticlesFromStrapi(this.$strapi);
+    this.articles = articles;
 
-    this.articles = await this.$strapi.find('articulos', query);
+    // const query = qs.stringify(
+    //   { _where:{publico: true}, _sort: 'createdAt:DESC', _start: 0, _limit: 6 },
+    //   { encode: false }
+    // );
+
+    // this.articles = await this.$strapi.find('articulos', query);
   },
   fetchOnServer: false,
     // async asyncData({$strapi}) {
-    //   const query = qs.stringify(
-    //     { _where:{publico: true}, _sort: 'createdAt:DESC', _limit: 6 },
-    //     { encode: false }
-    //   );
-    //   const articles = await $strapi.find('articulos', query);
-    //   return {
-    //     articles: articles
-    //   }
+      // const { articlesFromStrapi } = await import("~/datalayer/pages/articulos/index");
+      // return await articlesFromStrapi($strapi);
+      // const query = qs.stringify(
+      //   { _where:{publico: true}, _sort: 'createdAt:DESC', _limit: 6 },
+      //   { encode: false }
+      // );
+      // const articles = await $strapi.find('articulos', query);
+      // return {
+      //   articles: articles
+      // }
     // },
-  computed: {
-    gridCount() {
-      const articles = this.articles.length;
-      return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
-    },
-  }
+  // computed: {
+  //   gridCount() {
+  //     const articles = this.articles.length;
+  //     return articles == 1 ? 'one' : articles == 2 ? 'two' : 'three';
+  //   },
+  // }
 }
 </script>
 

@@ -36,7 +36,8 @@
           </blockquote>
 
           <!-- Text -->
-          <div v-html="$md.render(article.contenido)" class="prose mt-8 text-orange-900"></div>
+          <div v-html="content" class="prose mt-8 text-orange-900"></div>
+          <!-- <div v-html="$md.render(article.contenido)" class="prose mt-8 text-orange-900"></div> -->
 
           <button v-if="gallery.length" class="mt-8 mx-auto lg:mx-0 px-4 py-2 font-display text-md shadow-md text-white bg-orange-600 cursor-pointer transition duration-300 rounded-lg flex justify-center items-center hover:bg-orange-500 hover:shadow-lg"
             @click="lgIndex = 0">
@@ -65,7 +66,7 @@
         <!-- Recent articles -->
         <div v-if="this.recentArticles.length" class="article-page__recient-articles mt-4 px-6 md:px-0 pb-12 md:pb-0">
           <p class="font-display font-bold text-lg text-center px-2 uppercase text-orange-900 mb-4">Recientes</p>
-          <Articles :articles="recentArticles" :grid="gridCount" :side="true" :count="false" />
+          <Articles :articles="recentArticles" :grid="recentArticlesGridColums" :side="true" :count="false" />
         </div>
 
         <!-- Light Gallery -->
@@ -89,55 +90,22 @@ import mapMetaInfo from '~/utils/mapMetaInfo';
 export default {
   data() {
     return {
-      article: {},
-      recentArticles: [],
-      gallery: [],
       lgIndex: null,
     }
   },
   async asyncData(context) {
-    const slug = context.params.slug;
-
-    let query = qs.stringify(
-      { _where:{ slug: slug }},
-      { encode: false }
-    );
-
-    const articles = await context.$strapi.find('articulos', query);
-    const article = articles[0];
-    let gallery = [];
-
-    if (article && article.galeria)
-      gallery = article.galeria.map((g, index) => ({name: g.name.replace(g.ext, ''), url: g.url}))
-      .sort(function (a, b) {
-        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-        else if (a > b) return 1;
-        return 0;
-      })
-      .map((g, index) => ({title: index + 1, url: g.url}));
-
-    query = qs.stringify(
-      { _where:[{ publico: true }, { '_id_ne': article._id }], _sort: 'createdAt:DESC', _limit: 3 },
-      { encode: false }
-    );
-
-    const recentArticles = await context.$strapi.find('articulos', query);
-
-    return {
-      article: article,
-      recentArticles: recentArticles,
-      gallery: gallery
-    }
+    const { articleFromStrapi } = await import("~/datalayer/pages/articulos/_slug");
+    return await articleFromStrapi(context);
   },
   head() {
     const fields = {
       title: this.article.titulo,
       description: this.article.resumen,
       image: this.article.imagen.url,
-      updatedAt: this.article.updatedAt,
+      author: this.article.autor.nombre,
       slug: this.article.slug,
       createdAt: this.article.createdAt,
-      author: this.article.autor.nombre
+      updatedAt: this.article.updatedAt,
     };
 
     return mapMetaInfo(
@@ -145,14 +113,6 @@ export default {
       'article',
       this.$router.currentRoute
     );
-    // const url = `articulos/${this.$route.params.slug}`;
-    // const { titulo: title, resumen: description } = this.article;
-    // const image = this.article && this.article.imagen ? this.article.imagen.formats.small.url : "";
-
-    // return {
-    //   title,
-    //   meta: createSEOMeta({ title, description, image, url }),
-    // }
   },
   // async fetch() {
   //   const slug = this.$route.params.slug;
@@ -182,21 +142,6 @@ export default {
   //   this.recentArticles = await this.$strapi.find('articulos', query);
   // },
   // fetchOnServer: false,
-  computed: {
-    humanDate() {
-      const options = { year: "numeric", month: "short", day: "numeric" }
-      return new Date(this.article.createdAt).toLocaleDateString('es-ES', options)
-    },
-    readingTime() {
-      const readingTime = require('reading-time');
-      const stats = readingTime(this.article.contenido);
-      return stats.text.replace('read', 'de lectura');
-    },
-    gridCount() {
-      const recentArticles = this.recentArticles.length;
-      return recentArticles == 1 ? 'one' : recentArticles == 2 ? 'two' : 'three';
-    }
-  }
 }
 </script>
 

@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 import mapMetaInfo from './utils/mapMetaInfo';
-import { fetchSitemapRoutes } from "./utils/sitemap";
+import { fetchSitemapRoutes } from "./utils/routes";
 
 dotenv.config({ path: './config.env' });
 
