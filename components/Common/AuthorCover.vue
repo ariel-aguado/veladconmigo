@@ -12,7 +12,7 @@
         />
       </div>
       <div class="leading-none">
-        <p class="text-xs font-display text-orange-900">{{ authorName }}</p>
+        <p :class="[authorNameClass]" class="text-xs font-display text-orange-900">{{ authorName }}</p>
         <p v-if="createdAt" class="text-xs text-orange-900" style="--text-opacity: .6;">{{ humanDate }}</p>
       </div>
     </div>
@@ -30,6 +30,10 @@
       },
       createdAt: {
         type: String
+      },
+      authortype: {
+        type: String,
+        default: 'card'
       }
     },
     computed: {
@@ -38,6 +42,9 @@
       },
       authorName() {
         return this.author ? this.author.nombre : "Desconocido";
+      },
+      authorNameClass() {
+        return this.authortype == 'article' ? 'font-bold' : 'font-light';
       }
     }
   }

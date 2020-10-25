@@ -48,7 +48,7 @@
 
         <div class="article-page__author">
           <div class="article-page__author--details bg-orange-200 md:bg-orange-100 md:shadow-lg px-6 py-4">
-            <AuthorCover :author="article.autor"/>
+            <AuthorCover :author="article.autor" authortype="article"/>
             <div class="flex justify-start items-center mt-3">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
               <p class="text-sm text-orange-900 ml-1">{{ humanDate }}</p>

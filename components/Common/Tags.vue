@@ -4,13 +4,11 @@
       v-for="(tag, index) in sortedTags"
       :key="`tag${index + 1}`">
       <nuxt-link :to="`/temas/${tag}`"
-        :class="{ 'article-tag': isArticleTag }"
+        :class="[articleTagClass]"
         class="
           text-xs
-          text-orange-900
-          bg-orange-200
           rounded-full
-          hover:bg-orange-100
+          text-orange-900
           transition-colors
           duration-200
           ease-linear
@@ -40,8 +38,9 @@ export default {
         return 0;
       });
     },
-    isArticleTag() {
-      return this.tagtype == 'article';
+    articleTagClass() {
+      const baseClass = 'bg-orange-200 hover:bg-orange-100';
+      return this.tagtype == 'article' ? 'bg-orange-300 hover:bg-orange-200 md:bg-orange-200 md:hover:bg-orange-100' : 'bg-orange-200 hover:bg-orange-100';
     }
   }
 }
@@ -55,17 +54,17 @@ export default {
     font-size: 18px;
   }
 
-  & .article-tag {
-    @media only screen and (max-width: 767px) {
-      @apply bg-orange-300;
-    }
-  }
+  // & .article-tag {
+  //   @media only screen and (max-width: 767px) {
+  //     @apply bg-orange-300;
+  //   }
+  // }
 
-  & .article-tag:hover {
-    @media only screen and (max-width: 767px) {
-      @apply bg-orange-200;
-    }
-  }
+  // & .article-tag:hover {
+  //   @media only screen and (max-width: 767px) {
+  //     @apply bg-orange-200;
+  //   }
+  // }
 }
 
 .tag:not(:last-child) {
