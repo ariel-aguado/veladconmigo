@@ -1,6 +1,22 @@
 <template>
   <ul class="tags inline-block">
-    <li class="tag inline-block relative text-orange-900 hover:text-orange-600 transition-colors duration-200 ease-linear" v-for="(tag, index) in sortedTags" :key="`tag${index + 1}`"><nuxt-link :to="`/temas/${tag}`">{{ tag }}</nuxt-link></li>
+    <li class="tag inline-block relative"
+      v-for="(tag, index) in sortedTags"
+      :key="`tag${index + 1}`">
+      <nuxt-link :to="`/temas/${tag}`"
+        :class="{ 'article-tag': isArticleTag }"
+        class="
+          text-xs
+          text-orange-900
+          bg-orange-200
+          rounded-full
+          hover:bg-orange-100
+          transition-colors
+          duration-200
+          ease-linear
+          px-2">
+        {{ tag }}
+      </nuxt-link></li>
   </ul>
 </template>
 
@@ -10,6 +26,10 @@ export default {
     tags: {
       type: Array,
       default: () => []
+    },
+    tagtype: {
+      type: String,
+      default: 'list'
     }
   },
   computed: {
@@ -19,6 +39,9 @@ export default {
         else if (a > b) return 1;
         return 0;
       });
+    },
+    isArticleTag() {
+      return this.tagtype == 'article';
     }
   }
 }
@@ -30,6 +53,18 @@ export default {
 
   @include respond(md) {
     font-size: 18px;
+  }
+
+  & .article-tag {
+    @media only screen and (max-width: 767px) {
+      @apply bg-orange-300;
+    }
+  }
+
+  & .article-tag:hover {
+    @media only screen and (max-width: 767px) {
+      @apply bg-orange-200;
+    }
   }
 }
 
@@ -46,6 +81,6 @@ export default {
   width: 3px;
   height: 3px;
   border-radius: 30px;
-  background-color: theme('colors.orange.500');
+  background-color: theme('colors.orange.900');
 }
 </style>

@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     fontFamily: {
       display: '"Montserrat"',
-      body: '"Inconsolata"',
+      body: '"Alegreya"',
     },
     fontSize: {
       '2xs': '.70rem',

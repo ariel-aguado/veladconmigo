@@ -41,6 +41,7 @@ export const articleFromStrapi = async (context) => {
       createdAt: article.createdAt,
       updatedAt: article.updatedAt
     },
+    tags: article.etiquetas.split(',').map(tag => tag.trim()),
     recentArticles: recentArticles,
     recentArticlesGridColums: recentArticles.length == 1 ? 'one' : recentArticles.length == 2 ? 'two' : 'three',
     gallery: gallery,

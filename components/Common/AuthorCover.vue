@@ -11,15 +11,17 @@
           sizes="46px"
         />
       </div>
-      <div>
-        <p class="text-sm font-bold text-orange-900">{{ authorName }}</p>
-        <p v-if="createdAt" class="text-xs text-orange-900">{{ humanDate }}</p>
+      <div class="leading-none">
+        <p class="text-xs font-display text-orange-900">{{ authorName }}</p>
+        <p v-if="createdAt" class="text-xs text-orange-900" style="--text-opacity: .6;">{{ humanDate }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import humanDate from '~/utils/humanDate';
+
   export default {
     props: {
       author: {
@@ -32,8 +34,7 @@
     },
     computed: {
       humanDate() {
-        const options = { year: "numeric", month: "short", day: "numeric" }
-        return new Date(this.createdAt).toLocaleDateString('es-ES', options)
+        return humanDate(this.createdAt);
       },
       authorName() {
         return this.author ? this.author.nombre : "Desconocido";
