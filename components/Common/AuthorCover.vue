@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import humanDate from '~/utils/humanDate';
+  import humanDate from '~/datalayer/helpers/humanDate';
 
   export default {
     props: {

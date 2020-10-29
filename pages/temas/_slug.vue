@@ -40,7 +40,9 @@ export default {
     }
   },
   async fetch() {
-    const { articlesByTagFromStrapi } = await import("~/datalayer/pages/temas/_slug");
+    const { articlesByTagFromStrapi } = await import(
+      /* webpackChunkName: "datalayer-pages-tags" */ "~/datalayer/pages/temas/_slug"
+    );
     const { articles, articlesByTagGridColums } = await articlesByTagFromStrapi(this);
     this.articles = articles;
     this.articlesByTagGridColums = articlesByTagGridColums;

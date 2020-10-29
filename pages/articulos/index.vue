@@ -40,14 +40,16 @@ export default {
       articles: [],
       tags: [],
       startFrom: 0,
-      articlesPerPage: 9,
+      articlesPerPage: 12,
       totalArticles: 0,
       numPages: 0,
       currentPage: 1
     }
   },
   async fetch() {
-    const { articlesFromStrapi } = await import("~/datalayer/pages/articulos/index");
+    const { articlesFromStrapi } = await import(
+      /* webpackChunkName: "datalayer-pages-articles" */ "~/datalayer/pages/articulos/index"
+    );
     const {
       articles,
       tags,

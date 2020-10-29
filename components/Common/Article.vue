@@ -16,7 +16,7 @@
         />
       </div>
       <div class="px-4 py-3">
-        <Tags :tags="tags"/>
+        <Tags :tags="tags" tagtype="article" />
         <h3 class="text-orange-900 mt-2">{{ article.titulo }}</h3>
       </div>
     </div>

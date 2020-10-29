@@ -1,7 +1,7 @@
 <template>
   <div>
     <p v-if="count" class="text-center text-sm font-display text-orange-900">{{ articlesCountText }}</p>
-    <div v-if="tags.length" class="text-center mt-5 px-5">
+    <div v-if="tags.length" class="text-center mt-5">
       <Tags :tags="tags" />
     </div>
     <div class="article-list" :class="[articleGrid, side ? 'side' : '', noArticlesTop ? 'mt-0' : 'mt-8']">

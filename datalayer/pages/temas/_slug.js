@@ -8,7 +8,6 @@ export const articlesByTagFromStrapi = async (context) => {
   );
 
   const articles = await context.$strapi.find('articulos', query);
-  console.log('articles :>> ', articles);
 
   return {
     articles: articles,

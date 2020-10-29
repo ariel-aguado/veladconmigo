@@ -32,7 +32,7 @@
           <!-- Summary -->
           <h2 class="text-2xl text-orange-900 mt-8 px-0" >Resumen</h2>
           <blockquote class="article-page__summary italic prose mt-4 text-orange-700">
-            <p class="">{{ article.resumen }}</p>
+            <p style="margin: -10px">{{ article.resumen }}</p>
           </blockquote>
 
           <!-- Text -->
@@ -59,7 +59,7 @@
             </div>
             <!-- Tags -->
             <div class="mt-2 text-sm">
-              <Tags :tags="tags" tagtype="article" />
+              <Tags :tags="tags" tagtype="author" />
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@
 
 <script>
 const qs = require('qs');
-import mapMetaInfo from '~/utils/mapMetaInfo';
+import mapMetaInfo from '~/datalayer/helpers/mapMetaInfo';
 
 export default {
   data() {
@@ -94,22 +94,42 @@ export default {
     }
   },
   async asyncData(context) {
-    const { articleFromStrapi } = await import("~/datalayer/pages/articulos/_slug");
-    return await articleFromStrapi(context);
+    const { articleFromStrapi } = await import(
+      /* webpackChunkName: "datalayer-pages-article" */ "~/datalayer/pages/articulos/_slug"
+    );
+    const {
+      article,
+      tags,
+      recentArticles,
+      recentArticlesGridColums,
+      gallery,
+      humanDate,
+      readingTime,
+      content
+    } = await articleFromStrapi(context);
+
+    return {
+      article,
+      tags,
+      recentArticles,
+      recentArticlesGridColums,
+      gallery,
+      humanDate,
+      readingTime,
+      content
+    }
   },
   head() {
-    const fields = {
-      title: this.article.titulo,
-      description: this.article.resumen,
-      image: this.article.imagen.url,
-      author: this.article.autor.nombre,
-      slug: this.article.slug,
-      createdAt: this.article.createdAt,
-      updatedAt: this.article.updatedAt,
-    };
-
     return mapMetaInfo(
-      fields,
+      {
+        title: this.article.titulo,
+        description: this.article.resumen,
+        image: this.article.imagen.url,
+        author: this.article.autor.nombre,
+        slug: this.article.slug,
+        createdAt: this.article.createdAt,
+        updatedAt: this.article.updatedAt,
+      },
       'article',
       this.$router.currentRoute
     );

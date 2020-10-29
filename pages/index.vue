@@ -41,16 +41,11 @@ export default {
   },
   async fetch() {
 
-    const { lastSixArticlesFromStrapi } = await import("~/datalayer/pages/index");
+    const { lastSixArticlesFromStrapi } = await import(
+      /* webpackChunkName: "datalayer-pages" */ "~/datalayer/pages/index"
+    );
     const { articles } = await lastSixArticlesFromStrapi(this.$strapi);
     this.articles = articles;
-
-    // const query = qs.stringify(
-    //   { _where:{publico: true}, _sort: 'createdAt:DESC', _start: 0, _limit: 6 },
-    //   { encode: false }
-    // );
-
-    // this.articles = await this.$strapi.find('articulos', query);
   },
   fetchOnServer: false,
     // async asyncData({$strapi}) {

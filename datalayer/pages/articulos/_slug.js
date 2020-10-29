@@ -1,7 +1,7 @@
 const qs = require('qs');
-import humanDate from "~/utils/humanDate";
-import readingTime from "~/utils/readingTime";
-import markdownToHTML from "~/utils/markdownToHTML";
+import humanDate from "~/datalayer/helpers/humanDate";
+import readingTime from "~/datalayer/helpers/readingTime";
+import markdownToHTML from "~/datalayer/helpers/markdownToHTML";
 
 export const articleFromStrapi = async (context) => {
 
