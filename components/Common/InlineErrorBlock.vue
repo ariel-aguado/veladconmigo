@@ -1,7 +1,7 @@
 <template>
   <div class="error-block">
     <warning-icon />
-    <h2 class="text-red-400">{{ error.message }}</h2>
+    <h2 class="w-11/12 md:w-3/5 text-red-400">{{ errorMessage }}</h2>
   </div>
 </template>
 
@@ -18,6 +18,13 @@ export default {
       default: () => {}
     }
   },
+  computed: {
+    errorMessage() {
+      const baseError = 'Parece que tenemos un problema.';
+      if (this.error.statusCode == 500) return `${baseError} Revise la conexión e inténtelo de nuevo.`;
+      return baseError;
+    }
+  }
 }
 </script>
 

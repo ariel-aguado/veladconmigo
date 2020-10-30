@@ -22,6 +22,7 @@
 <script>
 const qs = require('qs');
 import ArticleIcon from "~/assets/images/icons/article.svg?inline";
+import capitalizeTitle from '~/datalayer/helpers/capitalizeTitle';
 
 export default {
   components: {
@@ -29,7 +30,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.capitalizeTitle(this.$route.params.slug)} - VeladConmigo`,
+      title: `${capitalizeTitle(this.$route.params.slug)} - VeladConmigo`,
     }
   },
   data() {
@@ -47,13 +48,7 @@ export default {
     this.articles = articles;
     this.articlesByTagGridColums = articlesByTagGridColums;
   },
-  fetchOnServer: false,
-  methods: {
-    capitalizeTitle(title) {
-      if (typeof title !== 'string') return '';
-      return title.charAt(0).toUpperCase() + title.slice(1);
-    }
-  }
+  fetchOnServer: false
 }
 </script>
 

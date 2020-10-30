@@ -84,7 +84,6 @@
 </template>
 
 <script>
-const qs = require('qs');
 import mapMetaInfo from '~/datalayer/helpers/mapMetaInfo';
 
 export default {
@@ -172,12 +171,6 @@ export default {
 
 <style lang="scss" scoped>
 .article-page {
-  // min-height: calc(100vh - 85px - 65px);
-  // margin-top: 0;
-  // @include respond(md) {
-  //   margin-top: 85px;
-  // }
-
   min-height: calc(100vh - 65px);
   margin-top: 0;
   @include respond(md) {

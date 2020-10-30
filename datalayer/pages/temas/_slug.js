@@ -3,7 +3,7 @@ const qs = require('qs');
 export const articlesByTagFromStrapi = async (context) => {
 
   let query = qs.stringify(
-    { _where:{ 'etiquetas_contains': context.$route.params.slug }},
+    { _where:[ { publico: true }, { 'etiquetas_contains': context.$route.params.slug } ], _sort: 'createdAt:DESC' },
     { encode: false }
   );
 
