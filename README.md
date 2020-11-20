@@ -1,6 +1,6 @@
 # Velad Conmigo
 
-A blog to feed the faith of Church of Christ in Cuba
+A Blog to share the faith promoted by the Church of Christ in Cuba
 
 ## Build Setup
 
